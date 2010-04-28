@@ -1,0 +1,32 @@
+#                                                                        #
+# Routes configuration                                                   #
+#                                                                        #
+# This file contains the configuration for the MVC router.               #
+# Just add your own modifications as necessary.                          #
+#                                                                        #
+# Please refer to the FLOW3 manual for possible configuration options.   #
+#                                                                        #
+
+# $Id$
+
+##
+# TYPO3 subroutes
+
+-
+  name: 'TYPO3'
+  uriPattern: '<TYPO3Subroutes>'
+  subRoutes:
+    TYPO3Subroutes:
+      package: TYPO3
+
+##
+# FLOW3 subroutes
+#
+-
+  name: 'FLOW3'
+  uriPattern: '<FLOW3Subroutes>'
+  defaults:
+    '@format': 'html'
+  subRoutes:
+    FLOW3Subroutes:
+      package: FLOW3

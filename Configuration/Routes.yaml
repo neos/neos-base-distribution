@@ -10,6 +10,18 @@
 # $Id$
 
 ##
+# Testing routes
+#
+-
+  name: 'Testing'
+  uriPattern: 'testing(/{@action})'
+  defaults:
+    '@package': 'Testing'
+    '@controller': 'Standard'
+    '@action': 'index'
+    '@format': 'html'
+
+##
 # TYPO3 subroutes
 
 -

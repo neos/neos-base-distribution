@@ -33,9 +33,10 @@
 
 	<target name="doc-render-js-api">
 		<!-- building ext-doc if it does not exist -->
-		<available file="${project.buildDirectory}/Resources/Java/ext-doc/build/dist/ext-doc-snapshot/ext-doc.jar" property="ext-doc-is-compiled" value="1"/>
 		<if>
-			<not><isset property="ext-doc-is-compiled" /></not>
+			<not>
+				<available file="${project.buildDirectory}/Resources/Java/ext-doc/build/dist/ext-doc-snapshot/ext-doc.jar"/>
+			</not>
 			<then>
 				<exec command="ant" dir="${project.buildDirectory}/Resources/Java/ext-doc/" />
 			</then>

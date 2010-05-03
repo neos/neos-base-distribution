@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!--
+/*                                                                        *
+ * This script belongs to the TYPO3 project.                              *
+ *                                                                        *
+ * It is free software; you can redistribute it and/or modify it under    *
+ * the terms of the GNU General Public License as published by the        *
+ * Free Software Foundation, either version 3 of the License, or (at your *
+ * option) any later version.                                             *
+ *                                                                        *
+ * This script is distributed in the hope that it will be useful, but     *
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-    *
+ * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
+ * Public License for more details.                                       *
+ *                                                                        *
+ * You should have received a copy of the GNU General Public License      *
+ * along with the script.                                                 *
+ * If not, see http://www.gnu.org/licenses/gpl.html                       *
+ *                                                                        *
+ * The TYPO3 project - inspiring people to share!                         *
+ *                                                                        */
+-->
+<project name="Build">
+
+	<target name="build" depends="clean, doc-render, createarchives"/>
+
+	<target name="clean">
+		<delete quiet="true" includeemptydirs="true">
+			<fileset refid="files-temporary"/>
+		</delete>
+	</target>
+
+	<target name="polish" depends="clean, doc-clean-all" description="Clean in a way that removes all build artifacts"/>
+
+	<target name="release" depends="lint, test, release-tag, build, release-publish-archives" description="Release FLOW3 to SourceForge and flow3.typo3.org">
+		<phingcall target="doc-publish-api">
+			<property name="packageKey" value="TYPO3"/>
+		</phingcall>
+		<phingcall target="doc-publish-manual">
+			<property name="packageKey" value="TYPO3"/>
+		</phingcall>
+		<phingcall target="doc-publish-api">
+			<property name="packageKey" value="TypoScript"/>
+		</phingcall>
+		<phingcall target="doc-publish-manual">
+			<property name="packageKey" value="TypoScript"/>
+		</phingcall>
+		<phingcall target="release-publish-on-website"/>
+	</target>
+
+	<target name="release-tag">
+		<fail unless="env.BUILD_NUMBER" message="You must set the environment variable BUILD_NUMBER for this task."/>
+		<fail unless="env.RELEASE_VERSION" message="You must set the environment variable RELEASE_VERSION for this task."/>
+
+		<setpackagesexternals packagespath="${project.basedir}/Packages/Framework" fixrevision="true" />
+
+		<property name="svn.tagDistribution.tag" value="${env.RELEASE_VERSION}"/>
+		<phingcall target="svn-tagdistribution"/>
+
+		<svnswitch targetUrl="${svn.baseUri.distribution}tags/${svn.tagDistribution.tag}" dir="${project.basedir}"/>
+	</target>
+
+	<target name="createarchives">
+		<fail unless="env.RELEASE_VERSION" message="You must set the environment variable RELEASE_VERSION for this task."/>
+
+		<mkdir dir="${project.archivesDirectory}"/>
+
+		<delete file="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.zip" quiet="true"/>
+		<zip destfile="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.zip">
+			<fileset refid="files-for-release-archive"/>
+		</zip>
+
+		<delete file="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.gz" quiet="true"/>
+		<tar destfile="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.gz" compression="gzip">
+			<fileset refid="files-for-release-archive"/>
+		</tar>
+
+		<delete file="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.bz2" quiet="true"/>
+		<tar destfile="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.bz2" compression="bzip2">
+			<fileset refid="files-for-release-archive"/>
+		</tar>
+
+		<filehash file="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.zip" propertyname="md5.zip"/>
+		<filehash file="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.gz" propertyname="md5.targz"/>
+		<filehash file="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.bz2" propertyname="md5.tarbz2"/>
+		<echo>MD5 hashes for the generated archives are:</echo>
+		<echo>${md5.zip} TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.zip</echo>
+		<echo>${md5.targz} TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.gz</echo>
+		<echo>${md5.tarbz2} TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.bz2</echo>
+
+	</target>
+
+	<target name="release-publish-archives">
+		<!-- the only way to create a folder via ssh... -->
+		<exec logoutput="true" checkreturn="true" command="ssh shell.sourceforge.net create"/>
+		<exec logoutput="true" checkreturn="true" command="ssh shell.sourceforge.net mkdir -p /home/frs/project/t/ty/typo3/TYPO3\ Phoenix/${env.RELEASE_VERSION}"/>
+		<exec logoutput="true" checkreturn="true" command="ssh shell.sourceforge.net shutdown"/>
+
+		<exec logoutput="true" checkreturn="true" command="scp ${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.* frs.sourceforge.net:/home/frs/project/t/ty/typo3/TYPO3\ Phoenix/${env.RELEASE_VERSION}/"/>
+	</target>
+
+	<target name="release-publish-on-website">
+		<echo file="${project.archivesDirectory}Release-${env.RELEASE_VERSION}.xml" append="true"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<release>
+	<build number="${env.BUILD_NUMBER}"/>
+	<version>${env.RELEASE_VERSION}</version>
+	<files>
+		<file md5="${md5.zip}">TYPO3-Phoenix-${env.RELEASE_VERSION}.zip</file>
+		<file md5="${md5.targz}">TYPO3-Phoenix-${env.RELEASE_VERSION}.tar.gz</file>
+		<file md5="${md5.tarbz2}">TYPO3-Phoenix-${env.RELEASE_VERSION}.tar.bz2</file>
+	</files>
+</release>]]>
+		</echo>
+
+		<exec logoutput="true" checkreturn="true" command="scp ${project.archivesDirectory}Release-${env.RELEASE_VERSION}.xml ${ssh.host.website}:${path.fileadmin.website}Releases/"/>
+	</target>
+
+</project>

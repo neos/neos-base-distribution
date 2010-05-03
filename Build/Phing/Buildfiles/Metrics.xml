@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*                                                                        *
+ * This script belongs to the TYPO3 project.                              *
+ *                                                                        *
+ * It is free software; you can redistribute it and/or modify it under    *
+ * the terms of the GNU General Public License as published by the        *
+ * Free Software Foundation, either version 3 of the License, or (at your *
+ * option) any later version.                                             *
+ *                                                                        *
+ * This script is distributed in the hope that it will be useful, but     *
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-    *
+ * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
+ * Public License for more details.                                       *
+ *                                                                        *
+ * You should have received a copy of the GNU General Public License      *
+ * along with the script.                                                 *
+ * If not, see http://www.gnu.org/licenses/gpl.html                       *
+ *                                                                        *
+ * The TYPO3 project - inspiring people to share!                         *
+ *                                                                        */
+-->
+<project name="Metrics">
+
+	<target name="metrics" depends="metrics-phpcpd,metrics-phpmd" description="Run metrics collection on source files"/>
+
+
+	<target name="metrics-phpcpd">
+		<mkdir dir="${project.reportsDirectory}" />
+		<phpcpd>
+			<fileset refid="files-php"/>
+			<formatter type="pmd" outfile="${project.reportsDirectory}/cpd.xml"/>
+		</phpcpd>
+	</target>
+
+	<target name="metrics-phpmd">
+		<mkdir dir="${project.reportsDirectory}" />
+		<phpmd>
+			<fileset refid="files-php"/>
+			<formatter type="xml" outfile="${project.reportsDirectory}/pmd.xml"/>
+		</phpmd>
+	</target>
+
+</project>

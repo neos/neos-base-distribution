@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*                                                                        *
+ * This script belongs to the TYPO3 project.                              *
+ *                                                                        *
+ * It is free software; you can redistribute it and/or modify it under    *
+ * the terms of the GNU General Public License as published by the        *
+ * Free Software Foundation, either version 3 of the License, or (at your *
+ * option) any later version.                                             *
+ *                                                                        *
+ * This script is distributed in the hope that it will be useful, but     *
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-    *
+ * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
+ * Public License for more details.                                       *
+ *                                                                        *
+ * You should have received a copy of the GNU General Public License      *
+ * along with the script.                                                 *
+ * If not, see http://www.gnu.org/licenses/gpl.html                       *
+ *                                                                        *
+ * The TYPO3 project - inspiring people to share!                         *
+ *                                                                        */
+-->
+<project name="Tests">
+
+	<target name="lint" depends="lint-php" description="Run lint on source files"/>
+	<target name="test" depends="test-phpunit" description="Run lint on source files"/>
+
+
+	<target name="lint-php">
+		<mkdir dir="${project.reportsDirectory}"/>
+		<phplint haltonfailure="true" level="debug" tofile="${project.reportsDirectory}/Lint.txt">
+			<fileset refid="files-php"/>
+		</phplint>
+	</target>
+
+	<target name="lint-docbook">
+		<xmllint schema="${project.buildDirectory}/Resources/Manual/Xsd/docbook.xsd">
+			<fileset refid="files-docbook-xml"/>
+		</xmllint>
+	</target>
+
+
+	<target name="test-phpunit">
+		<mkdir dir="${project.reportsDirectory}"/>
+
+		<includepath classpath="Build/Resources/PHP"/>
+
+		<if>
+			<isset property="codecoverage"/>
+			<then>
+				<mkdir dir="${project.buildDirectory}/Temporary"/>
+				<coverage-setup database="${project.buildDirectory}/Temporary/coverage.db">
+					<fileset refid="files-php"/>
+				</coverage-setup>
+			</then>
+			<else>
+				<echo>You can set the "codecoverage" property to check, well, code coverage during the tests.</echo>
+				<property name="codecoverage" value="0"/>
+			</else>
+		</if>
+
+		<setenvironment name="FLOW3_ROOTPATH" value="${project.basedir}"/>
+		<setenvironment name="FLOW3_WEBPATH" value="${project.basedir}/Web"/>
+
+		<property name="fail" value="true"/>
+		<phpunit codecoverage="${codecoverage}" haltonerror="${fail}" haltonfailure="${fail}" printsummary="true" bootstrap="${project.buildDirectory}/Scripts/Bootstrap.php">
+			<formatter todir="${project.reportsDirectory}" outfile="unittests.xml" type="xml"/>
+			<batchtest>
+				<fileset refid="files-unittests"/>
+			</batchtest>
+		</phpunit>
+	</target>
+
+</project>

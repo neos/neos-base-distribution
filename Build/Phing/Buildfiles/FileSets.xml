@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*                                                                        *
+ * This script belongs to the TYPO3 project.                              *
+ *                                                                        *
+ * It is free software; you can redistribute it and/or modify it under    *
+ * the terms of the GNU General Public License as published by the        *
+ * Free Software Foundation, either version 3 of the License, or (at your *
+ * option) any later version.                                             *
+ *                                                                        *
+ * This script is distributed in the hope that it will be useful, but     *
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-    *
+ * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
+ * Public License for more details.                                       *
+ *                                                                        *
+ * You should have received a copy of the GNU General Public License      *
+ * along with the script.                                                 *
+ * If not, see http://www.gnu.org/licenses/gpl.html                       *
+ *                                                                        *
+ * The TYPO3 project - inspiring people to share!                         *
+ *                                                                        */
+-->
+<project name="FileSets">
+
+	<fileset dir="${project.basedir}" id="files-for-release-archive">
+		<exclude name="**dir_conflicts.prej"/>
+		<exclude name="Configuration/Production/IncludeCachedConfigurations.php"/>
+		<exclude name="Data/Temporary**"/>
+		<exclude name="Data/Logs/**"/>
+		<exclude name="Web/_Resources**"/>
+
+		<include name="Data/Logs"/>
+		<include name="Configuration/**"/>
+		<include name="Data/**"/>
+		<include name="Packages/**"/>
+		<include name="Web/**"/>
+
+		<include name="Readme.txt"/>
+		<include name="flow3"/>
+	</fileset>
+
+	<fileset dir="." expandsymboliclinks="true" id="files-php">
+		<exclude name="Packages/Framework/Testing/**/*.php"/>
+		<include name="Packages/*/*/Classes/**/*.php"/>
+	</fileset>
+
+	<fileset dir="." id="files-temporary">
+		<exclude name="Data/Temporary"/>
+		<exclude name="Data/Logs"/>
+		<exclude name="Web/_Resources"/>
+		<include name="Data/Temporary/**"/>
+		<include name="Data/Logs/**"/>
+		<include name="Web/_Resources/**"/>
+	</fileset>
+
+	<fileset dir="." expandsymboliclinks="true" id="files-unittests">
+		<include name="Packages/*/*/Tests/Unit/**/*Test.php"/>
+	</fileset>
+
+	<fileset dir="." expandsymboliclinks="true" id="paths-packages">
+		<exclude name="."/>
+		<exclude name=".."/>
+		<include name="Packages/*/*"/>
+		<type type="dir"/>
+	</fileset>
+
+	<fileset dir="./Packages/Framework/" expandsymboliclinks="true" id="packagekeys-framework">
+		<exclude name="."/>
+		<exclude name=".."/>
+		<include name="*"/>
+		<type type="dir"/>
+	</fileset>
+
+	<fileset dir="./Packages/Application/" expandsymboliclinks="true" id="packagekeys-application">
+		<exclude name="."/>
+		<exclude name=".."/>
+		<include name="*"/>
+		<type type="dir"/>
+	</fileset>
+
+	<fileset dir="./Packages/Website/" expandsymboliclinks="true" id="packagekeys-website">
+		<exclude name="."/>
+		<exclude name=".."/>
+		<include name="*"/>
+		<type type="dir"/>
+	</fileset>
+
+	<fileset dir="." expandsymboliclinks="true" id="files-docbook-xml">
+		<include name="Packages/*/*/Documentation/Manual/DocBook/**/*.xml"/>
+		<type type="file"/>
+	</fileset>
+
+</project>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*                                                                        *
+ * This script belongs to the TYPO3 project.                              *
+ *                                                                        *
+ * It is free software; you can redistribute it and/or modify it under    *
+ * the terms of the GNU General Public License as published by the        *
+ * Free Software Foundation, either version 3 of the License, or (at your *
+ * option) any later version.                                             *
+ *                                                                        *
+ * This script is distributed in the hope that it will be useful, but     *
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-    *
+ * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
+ * Public License for more details.                                       *
+ *                                                                        *
+ * You should have received a copy of the GNU General Public License      *
+ * along with the script.                                                 *
+ * If not, see http://www.gnu.org/licenses/gpl.html                       *
+ *                                                                        *
+ * The TYPO3 project - inspiring people to share!                         *
+ *                                                                        */
+-->
+<project name="Svn">
+
+	<target name="svn-tagpackage" description="Tags a single package with the given tag">
+		<fail unless="svn.tagPackage.tag" message="You must set the tag before executing this task."/>
+		<fail unless="svn.tagPackage.packageKey" message="You must set the packageKey before executing this task."/>
+		<exec command="svn delete ${svn.baseUri.packages}${svn.tagPackage.packageKey}/tags/${svn.tagPackage.tag} -m 'Deleting already existing tag ${svn.tagPackage.tag}'"/>
+		<if>
+			<or>
+				<available file="Packages/Framework/${packageKey}/Meta/Package.xml"/>
+				<available file="Packages/Application/${packageKey}/Meta/Package.xml"/>
+				<available file="Packages/Website/${packageKey}/Meta/Package.xml"/>
+			</or>
+			<then>
+				<svncopy
+					repositoryurl="${svn.baseUri.packages}${svn.tagPackage.packageKey}/trunk/"
+					todir="${svn.baseUri.packages}${svn.tagPackage.packageKey}/tags/${svn.tagPackage.tag}"
+					message="Tagged package with tag ${svn.tagPackage.tag}"
+					/>
+			</then>
+		</if>
+	</target>
+
+	<target name="svn-tagdistribution" description="Tags the (local working copy of the) distribution with the given tag">
+		<fail unless="svn.tagDistribution.tag" message="You must set the tag before executing this task."/>
+		<exec command="svn delete ${svn.baseUri.distribution}tags/${svn.tagDistribution.tag} -m 'Deleting already existing tag ${svn.tagDistribution.tag}'"/>
+		<svncopy
+			repositoryurl="${project.basedir}"
+			todir="${svn.baseUri.distribution}tags/${svn.tagDistribution.tag}"
+			message="Tagged distribution with tag ${svn.tagDistribution.tag}"
+			/>
+	</target>
+</project>

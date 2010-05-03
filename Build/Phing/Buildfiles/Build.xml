@@ -32,6 +32,34 @@
 
 	<target name="polish" depends="clean, doc-clean-all" description="Clean in a way that removes all build artifacts"/>
 
+	<target name="build-demo" depends="clean, doc-render, create-archive-bz2"/>
+	<target name="deploy-demo">
+		<fail unless="env.BUILD_NUMBER" message="You must set the environment variable BUILD_NUMBER for this task."/>
+		<fail unless="env.RELEASE_VERSION" message="You must set the environment variable RELEASE_VERSION for this task."/>
+		<if>
+			<not>
+				<available file="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.bz2"/>
+			</not>
+			<then>
+				<phingcall target="build-demo"/>
+			</then>
+		</if>
+		<exec logoutput="true" checkreturn="true" command="scp ${project.archivesDirectory}TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.bz2 ${ssh.host.demo}:${path.demo.base}"/>
+
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Web"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Packages"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Configuration"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Data/Persistent"/>
+
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} tar -C ${path.demo.base} -xjf ${path.demo.base}TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.bz2"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm ${path.demo.base}TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.bz2"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} cp ${path.demo.base}favicon.ico ${path.demo.base}Web/"/>
+
+		<php function="file_get_contents">
+			<param value="${url.demo.base}typo3/setup"/>
+		</php>
+	</target>
+
 	<target name="release" depends="lint, test, release-tag, build, release-publish-archives" description="Release FLOW3 to SourceForge and flow3.typo3.org">
 		<phingcall target="doc-publish-api">
 			<property name="packageKey" value="TYPO3"/>
@@ -60,7 +88,8 @@
 		<svnswitch targetUrl="${svn.baseUri.distribution}tags/${svn.tagDistribution.tag}" dir="${project.basedir}"/>
 	</target>
 
-	<target name="createarchives">
+	<target name="createarchives" depends="create-archive-zip,create-archive-gz,create-archive-bz2"/>
+	<target name="create-archive-zip">
 		<fail unless="env.RELEASE_VERSION" message="You must set the environment variable RELEASE_VERSION for this task."/>
 
 		<mkdir dir="${project.archivesDirectory}"/>
@@ -70,24 +99,37 @@
 			<fileset refid="files-for-release-archive"/>
 		</zip>
 
+		<filehash file="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.zip" propertyname="md5.zip"/>
+		<echo>MD5 hashes for the generated archives are:</echo>
+		<echo>${md5.zip} TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.zip</echo>
+	</target>
+	<target name="create-archive-gz">
+		<fail unless="env.RELEASE_VERSION" message="You must set the environment variable RELEASE_VERSION for this task."/>
+
+		<mkdir dir="${project.archivesDirectory}"/>
+
 		<delete file="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.gz" quiet="true"/>
 		<tar destfile="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.gz" compression="gzip">
 			<fileset refid="files-for-release-archive"/>
 		</tar>
+
+		<filehash file="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.gz" propertyname="md5.targz"/>
+		<echo>MD5 hashes for the generated archives are:</echo>
+		<echo>${md5.targz} TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.gz</echo>
+	</target>
+	<target name="create-archive-bz2">
+		<fail unless="env.RELEASE_VERSION" message="You must set the environment variable RELEASE_VERSION for this task."/>
+
+		<mkdir dir="${project.archivesDirectory}"/>
 
 		<delete file="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.bz2" quiet="true"/>
 		<tar destfile="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.bz2" compression="bzip2">
 			<fileset refid="files-for-release-archive"/>
 		</tar>
 
-		<filehash file="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.zip" propertyname="md5.zip"/>
-		<filehash file="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.gz" propertyname="md5.targz"/>
 		<filehash file="${project.archivesDirectory}/TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.bz2" propertyname="md5.tarbz2"/>
 		<echo>MD5 hashes for the generated archives are:</echo>
-		<echo>${md5.zip} TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.zip</echo>
-		<echo>${md5.targz} TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.gz</echo>
 		<echo>${md5.tarbz2} TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.bz2</echo>
-
 	</target>
 
 	<target name="release-publish-archives">

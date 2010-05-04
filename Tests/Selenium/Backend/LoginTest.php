@@ -38,7 +38,7 @@ class LoginTest extends \F3\Demo\Tests\Selenium\Backend\BackendTestCase {
 	 */
 	public function loginWithWrongCredentialsFails() {
 		$this->backendLogin('username', 'unknownpassword');
-		$this->verifyElementPresent("//input[contains(@class, 'x-form-invalid')]");
+		$this->waitForElementPresent("//input[contains(@class, 'x-form-invalid')]");
 	}
 
 	/**
@@ -47,8 +47,7 @@ class LoginTest extends \F3\Demo\Tests\Selenium\Backend\BackendTestCase {
 	 */
 	public function loginWithCorrectCredentialsWorks() {
 		$this->backendLogin('admin', 'password');
-		$this->waitForElementPresent('//p');
-		$this->checkText('THIS IS THE BACKEND');
+		$this->waitForTextPresent('THIS IS THE BACKEND');
 	}
 }
 ?>

@@ -49,7 +49,7 @@
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Web"/>
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Packages"/>
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Configuration"/>
-		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Data/Persistent"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Data"/>
 
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} tar -C ${path.demo.base} -xjf ${path.demo.base}TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.bz2"/>
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm ${path.demo.base}TYPO3-Phoenix-${env.RELEASE_VERSION}-build${env.BUILD_NUMBER}.tar.bz2"/>

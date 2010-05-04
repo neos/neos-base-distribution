@@ -71,4 +71,14 @@
 		</phpunit>
 	</target>
 
+	<target name="test-selenium">
+		<mkdir dir="${project.reportsDirectory}"/>
+
+		<phpunit haltonerror="${fail}" haltonfailure="${fail}" printsummary="true">
+			<formatter todir="${project.reportsDirectory}" outfile="seleniumtests.xml" type="xml"/>
+			<batchtest>
+				<fileset refid="files-seleniumtests"/>
+			</batchtest>
+		</phpunit>
+	</target>
 </project>

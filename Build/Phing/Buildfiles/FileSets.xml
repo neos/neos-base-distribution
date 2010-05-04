@@ -57,6 +57,10 @@
 		<include name="Packages/*/*/Tests/Unit/**/*Test.php"/>
 	</fileset>
 
+	<fileset dir="." expandsymboliclinks="true" id="files-seleniumtests">
+		<include name="Tests/Selenium/**/*Test.php"/>
+	</fileset>
+
 	<fileset dir="." expandsymboliclinks="true" id="paths-packages">
 		<exclude name="."/>
 		<exclude name=".."/>

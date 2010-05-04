@@ -30,28 +30,26 @@ require_once(__DIR__ . '/BackendTestCase.php');
  * @version $Id$
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class LoginTest extends BackendTestCase {
+class LoginTest extends \F3\Demo\Tests\Selenium\Backend\BackendTestCase {
 
     /**
-     * if the login-in to the backend fails
      * @test
      * @author Daniel Pötzinger
      */
     public function loginWithWrongCredentialsFails() {
         //$this->resetCookiesAndOpenStartPage();
-        $this->backendLogin("username", "unknownpassword");
-        $this->checkText("Wrong username or password");
+        $this->backendLogin('username', 'unknownpassword');
+        $this->checkText('Wrong username or password');
     }
 
     /**
-     * if the login-in to the backend is ok
      * @test
      * @author Daniel Pötzinger
      */
     public function loginWithCorrectCredentialsWorks() {
         //$this->resetCookiesAndOpenStartPage();
-        $this->backendLogin("username", "realpassword");
-        $this->checkText("Wrong username or password");
+        $this->backendLogin('admin', 'password');
+        $this->checkText('THIS IS THE BACKEND');
     }
 
 }

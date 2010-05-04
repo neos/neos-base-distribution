@@ -32,22 +32,19 @@ require_once(__DIR__ . '/../SeleniumTestCase.php');
  */
 class BackendTestCase extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
 
-    /**
-     * does a backend login
-     * 
-     * @param string $username
-     * @param string $password
+	/**
+	 * does a backend login
+	 *
+	 * @param string $username
+	 * @param string $password
 	 * @return void
-     * @author Daniel Pötzinger
-     */
-    protected function backendLogin($username, $password) {
-        $this->open("/typo3");
-        $this->checkText("Username");
-        $this->checkText("Password");
-        $this->type("ext-comp-1004", $username);
-        $this->type("ext-comp-1005", $password);
-        $this->clickLink('ext-gen22');
-    }
-
+	 * @author Daniel Pötzinger
+	 */
+	protected function backendLogin($username, $password) {
+		$this->open("/typo3");
+		$this->type("//input[@name='F3\FLOW3\Security\Authentication\Token\UsernamePassword::username']", $username);
+		$this->type("//input[@name='F3\FLOW3\Security\Authentication\Token\UsernamePassword::password']", $password);
+		$this->clickLink("//button[@type='submit']");
+	}
 }
 ?>

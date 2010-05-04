@@ -32,26 +32,23 @@ require_once(__DIR__ . '/BackendTestCase.php');
  */
 class LoginTest extends \F3\Demo\Tests\Selenium\Backend\BackendTestCase {
 
-    /**
-     * @test
-     * @author Daniel Pötzinger
-     */
-    public function loginWithWrongCredentialsFails() {
-        //$this->resetCookiesAndOpenStartPage();
-        $this->backendLogin('username', 'unknownpassword');
-        $this->checkText('Wrong username or password');
-    }
+	/**
+	 * @test
+	 * @author Daniel Pötzinger
+	 */
+	public function loginWithWrongCredentialsFails() {
+		$this->backendLogin('username', 'unknownpassword');
+		$this->verifyElementPresent("//input[contains(@class, 'x-form-invalid')]");
+	}
 
-    /**
-     * @test
-     * @author Daniel Pötzinger
-     */
-    public function loginWithCorrectCredentialsWorks() {
-        //$this->resetCookiesAndOpenStartPage();
-        $this->backendLogin('admin', 'password');
-        $this->checkText('THIS IS THE BACKEND');
-    }
-
+	/**
+	 * @test
+	 * @author Daniel Pötzinger
+	 */
+	public function loginWithCorrectCredentialsWorks() {
+		$this->backendLogin('admin', 'password');
+		$this->waitForElementPresent('//p');
+		$this->checkText('THIS IS THE BACKEND');
+	}
 }
-
 ?>

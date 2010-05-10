@@ -38,7 +38,7 @@ class LoginTest extends \F3\Demo\Tests\Selenium\Backend\BackendTestCase {
 	 */
 	public function loginWithWrongCredentialsFails() {
 		$this->backendLogin('username', 'unknownpassword');
-		$this->waitForElementPresent("//input[contains(@class, 'x-form-invalid')]");
+		$this->waitForTextPresent("Wrong username or password.");
 	}
 
 	/**
@@ -48,6 +48,22 @@ class LoginTest extends \F3\Demo\Tests\Selenium\Backend\BackendTestCase {
 	public function loginWithCorrectCredentialsWorks() {
 		$this->backendLogin('admin', 'password');
 		$this->waitForTextPresent('THIS IS THE BACKEND');
+	}
+
+	/**
+	 * @test
+	 * @author Christopher Hlubek <hlubek@networkteam.com>
+	 */
+	public function clearingOfUsernameAndPasswordWorks() {
+		$this->open('/typo3/login');
+
+		$this->type('username', 'user');
+		$this->click('clearUsername');
+		$this->assertValue('username', '');
+
+		$this->type('password', 'pass');
+		$this->click('clearPassword');
+		$this->assertValue('password', '');
 	}
 }
 ?>

@@ -32,8 +32,7 @@
 
 	<target name="polish" depends="clean, doc-clean-all" description="Clean in a way that removes all build artifacts"/>
 
-	<target name="build-demo" depends="clean, doc-render, create-archive-bz2"/>
-	<target name="deploy-demo">
+	<target name="deploy-latest">
 		<fail unless="env.BUILD_NUMBER" message="You must set the environment variable BUILD_NUMBER for this task."/>
 		<fail unless="releaseVersion" message="You must set the releaseVersion property for this task."/>
 		<if>
@@ -41,7 +40,35 @@
 				<available file="${project.archivesDirectory}/TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
 			</not>
 			<then>
-				<phingcall target="build-demo"/>
+				<phingcall target="build-latest"/>
+			</then>
+		</if>
+		<exec logoutput="true" checkreturn="true" command="scp ${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2 ${ssh.host.demo}:${path.latest.base}"/>
+
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.latest.base}/Web"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.latest.base}/Packages"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.latest.base}/Configuration"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.latest.base}/Data"/>
+
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} tar -C ${path.latest.base} -xjf ${path.latest.base}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm ${path.latest.base}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} cp ${path.latest.base}favicon.ico ${path.latest.base}Web/"/>
+
+		<php function="file_get_contents">
+			<param value="${url.latest.base}typo3/setup"/>
+		</php>
+	</target>
+	<target name="build-latest" depends="clean, doc-render, create-archive-bz2"/>
+
+	<target name="deploy-sprint">
+		<fail unless="env.BUILD_NUMBER" message="You must set the environment variable BUILD_NUMBER for this task."/>
+		<fail unless="releaseVersion" message="You must set the releaseVersion property for this task."/>
+		<if>
+			<not>
+				<available file="${project.archivesDirectory}/TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
+			</not>
+			<then>
+				<phingcall target="build"/>
 			</then>
 		</if>
 		<exec logoutput="true" checkreturn="true" command="scp ${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2 ${ssh.host.demo}:${path.demo.base}"/>
@@ -60,15 +87,16 @@
 		</php>
 	</target>
 
-	<target name="release" description="Release FLOW3 to SourceForge and flow3.typo3.org">
+	<target name="release-sprint" description="Release Phoenix sprint result to SourceForge and flow3.typo3.org">
 		<fail unless="env.RELEASE_VERSION" message="You must set the environment variable RELEASE_VERSION for this task."/>
 		<property name="releaseVersion" value="${env.RELEASE_VERSION}"/>
 
 		<phingcall target="lint"/>
 		<phingcall target="test"/>
-		<phingcall target="release-tag"/>
+		<!--phingcall target="release-tag"/-->
 		<phingcall target="build"/>
-		<phingcall target="release-publish-archives"/>
+		<!--phingcall target="release-publish-archives"/-->
+		<phingcall target="deploy-sprint"/>
 
 		<phingcall target="doc-publish-api">
 			<property name="packageKey" value="TYPO3"/>
@@ -82,7 +110,6 @@
 		<phingcall target="doc-publish-manual">
 			<property name="packageKey" value="TypoScript"/>
 		</phingcall>
-		<phingcall target="release-publish-on-website"/>
 	</target>
 
 	<target name="release-tag">
@@ -150,24 +177,6 @@
 		<exec logoutput="true" checkreturn="true" command="ssh shell.sourceforge.net shutdown"/>
 
 		<exec logoutput="true" checkreturn="true" command="scp ${project.archivesDirectory}/TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.* frs.sourceforge.net:/home/frs/project/t/ty/typo3/TYPO3\ Phoenix/${releaseVersion}/"/>
-	</target>
-
-	<target name="release-publish-on-website">
-		<fail unless="releaseVersion" message="You must set the releaseVersion property for this task."/>
-
-		<echo file="${project.archivesDirectory}Release-${releaseVersion}.xml" append="true"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
-<release>
-	<build number="${env.BUILD_NUMBER}"/>
-	<version>${releaseVersion}</version>
-	<files>
-		<file md5="${md5.zip}">TYPO3-Phoenix-${releaseVersion}.zip</file>
-		<file md5="${md5.targz}">TYPO3-Phoenix-${releaseVersion}.tar.gz</file>
-		<file md5="${md5.tarbz2}">TYPO3-Phoenix-${releaseVersion}.tar.bz2</file>
-	</files>
-</release>]]>
-		</echo>
-
-		<exec logoutput="true" checkreturn="true" command="scp ${project.archivesDirectory}Release-${releaseVersion}.xml ${ssh.host.website}:${path.fileadmin.website}Releases/"/>
 	</target>
 
 </project>

@@ -89,13 +89,13 @@ class SetPackagesExternalsTask extends SvnBaseTask {
 				list($packageKey, $uri) = explode(' ', $line);
 
 				$newExternals .=
-					str_pad($packageKey, 50) .
-					($this->fixRevision ? str_pad(('-r' . $latestPackageRevisions[$packageKey]), 10) : '') .
-					trim($uri) . chr(10);
+					str_pad($packageKey, 50)
+					. ($this->fixRevision ? str_pad(('-r' . $latestPackageRevisions[$packageKey]), 10) : '')
+					. trim($uri) . chr(10);
 			}
 		}
 		$this->setup('propset');
-		$existingExternals = $this->run(array('svn:externals', escapeshellarg($newExternals), $this->packagesPath));
+		$this->run(array('svn:externals', escapeshellarg($newExternals), $this->packagesPath));
 	}
 
 }

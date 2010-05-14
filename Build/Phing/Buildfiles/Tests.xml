@@ -74,6 +74,16 @@
 	<target name="test-selenium">
 		<mkdir dir="${project.reportsDirectory}"/>
 
+		<echo file="${project.basedir}/Tests/Selenium/settings.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<selenium>
+	<target name="Firefox Testing Phoenix">
+		<browser>*chrome</browser>
+		<host>${seleniumrc.host}</host>
+		<port>${seleniumrc.port}</port>
+		<timeout>30000</timeout>
+	</target>
+	<url>${seleniumrc.url}</url>
+</selenium>]]></echo>
 		<phpunit haltonerror="${fail}" haltonfailure="${fail}" printsummary="true">
 			<formatter todir="${project.reportsDirectory}" outfile="seleniumtests.xml" type="xml"/>
 			<batchtest>

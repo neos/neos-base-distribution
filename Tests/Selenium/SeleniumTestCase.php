@@ -41,36 +41,28 @@ class SeleniumTestCase extends \PHPUnit_Extensions_SeleniumTestCase {
 	protected $backupGlobals = FALSE;
 
 	/**
-	 * Enable or disable the backup and restoration of static attributes.
+	 * Enable the backup and restoration of static attributes.
 	 */
 	protected $backupStaticAttributes = TRUE;
 
     /**
-     * Whether or not this test is running in a separate PHP process.
-     *
-     * @var    boolean
+     * This test is running in a separate PHP process.
      */
     protected $inIsolation = TRUE;
 
 	/**
+	 * Set up testcase from XML file
 	 *
-	 * @var array
+	 * @return void
 	 */
-	public static $browsers = array(
-		array(
-			'name'    => 'Firefox Testing Phoenix',
-			'browser' => '*chrome',
-			'host'    => 'selenium.phoenix.hosting.netlogix.de',
-			'port'    => 4444,
-			'timeout' => 30000,
-		),
-	);
-
 	public function setUp() {
-#		$this->captureScreenshotOnFailure = $configuration ['captureScreenshotOnFailure'];
-#		$this->screenshotPath = $configuration ['screenshotPath'];
-#		$this->screenshotUrl = $configuration ['screenshotUrl'];
-		$this->setBrowserUrl('http://latest.phoenix.demo.typo3.org/');
+		$settings = new \SimpleXMLElement(file_get_contents(__DIR__ . '/settings.xml'));
+
+		$this->setBrowser((string)$settings->target->browser);
+		$this->setHost((string)$settings->target->host);
+		$this->setPort((integer)$settings->target->port);
+		$this->setTimeout((integer)$settings->target->timeout);
+		$this->setBrowserUrl((string)$settings->url);
 	}
 
 	/**

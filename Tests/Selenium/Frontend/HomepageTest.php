@@ -55,7 +55,7 @@ class HomepageTest extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
 	 * @author Karsten Dambekalns <karsten@typo3.org>
 	 */
 	public function anotherPageContainsExpectedText() {
-		$this->open('/hompage/anotherpage');
+		$this->open('/homepage/anotherpage');
 		$this->checkText('This is another page which exists for the solely purpose to demonstrate sub pages in TYPO3 Phoenix.');
 	}
 

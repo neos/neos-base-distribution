@@ -22,48 +22,42 @@ namespace F3\Demo\Tests\Selenium\Backend;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-require_once(__DIR__ . '/BackendTestCase.php');
-
 /**
- * Verify that login to backend works as expected for the Demopackage
+ * Verify that frontend rendering works as expected for the Demopackage
  *
  * @version $Id$
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class LoginTest extends \F3\Demo\Tests\Selenium\Backend\BackendTestCase {
+class HomepageTest extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
 
 	/**
 	 * @test
-	 * @author Daniel Pötzinger
+	 * @author Karsten Dambekalns <karsten@typo3.org>
 	 */
-	public function loginWithWrongCredentialsFails() {
-		$this->backendLogin('username', 'unknownpassword');
-		$this->waitForTextPresent("Wrong username or password.");
+	public function homepageContainsExpectedText() {
+		$this->open('/');
+		$this->assertEquals("Welcome to TYPO3 Phoenix!", $this->getText("//div[@id='header']/h1"));
+		$this->checkText('The fact that you can read these lines means that TYPO3 Phoenix is able to render content.');
 	}
 
 	/**
 	 * @test
-	 * @author Daniel Pötzinger
+	 * @author Karsten Dambekalns <karsten@typo3.org>
 	 */
-	public function loginWithCorrectCredentialsWorks() {
-		$this->backendLogin('admin', 'password');
-		$this->waitForTextPresent('THIS IS THE BACKEND');
+	public function homepageCalledWithNameContainsExpectedText() {
+		$this->open('/homepage.html');
+		$this->assertEquals("Welcome to TYPO3 Phoenix!", $this->getText("//div[@id='header']/h1"));
+		$this->checkText('The fact that you can read these lines means that TYPO3 Phoenix is able to render content.');
 	}
 
 	/**
 	 * @test
-	 * @author Christopher Hlubek <hlubek@networkteam.com>
+	 * @author Karsten Dambekalns <karsten@typo3.org>
 	 */
-	public function clearingOfUsernameAndPasswordWorks() {
-		$this->open('/typo3/login');
-
-		$this->type('username', 'user');
-		$this->click('clearUsername');
-		$this->assertValue('username', '');
-
-		$this->type('password', 'pass');
-		$this->click('clearPassword');
-		$this->assertValue('password', '');
+	public function anotherPageContainsExpectedText() {
+		$this->open('/hompage/anotherpage');
+		$this->checkText('This is another page which exists for the solely purpose to demonstrate sub pages in TYPO3 Phoenix.');
 	}
+
 }
 ?>

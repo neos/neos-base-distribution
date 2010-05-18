@@ -47,7 +47,7 @@ class LoginTest extends \F3\Demo\Tests\Selenium\Backend\BackendTestCase {
 	 */
 	public function loginWithCorrectCredentialsWorks() {
 		$this->backendLogin('admin', 'password');
-		$this->waitForTextPresent('THIS IS THE BACKEND');
+		$this->assertTitle('TYPO3 Backend');
 	}
 
 	/**

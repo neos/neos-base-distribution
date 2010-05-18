@@ -44,7 +44,7 @@ class BackendTestCase extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
 		$this->open("/typo3/login");
 		$this->type("//input[@name='F3\FLOW3\Security\Authentication\Token\UsernamePassword::username']", $username);
 		$this->type("//input[@name='F3\FLOW3\Security\Authentication\Token\UsernamePassword::password']", $password);
-		$this->click("//input[@type='submit']");
+		$this->clickAndWait("//input[@type='submit']");
 	}
 }
 ?>

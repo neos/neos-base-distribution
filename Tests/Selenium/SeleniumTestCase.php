@@ -22,8 +22,7 @@ namespace F3\Demo\Tests\Selenium;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-require_once('PHPUnit/Extensions/SeleniumTestCase.php');
-
+require_once(__DIR__ . '/../../Packages/Framework/Testing/Classes/SeleniumTestCase.php');
 /**
  * Base Testcase for Selenium Test
  *
@@ -33,80 +32,10 @@ require_once('PHPUnit/Extensions/SeleniumTestCase.php');
  * @version $Id$
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class SeleniumTestCase extends \PHPUnit_Extensions_SeleniumTestCase {
-
-	/**
-	 * Disable the backup and restoration of the $GLOBALS array.
-	 */
-	protected $backupGlobals = FALSE;
-
-	/**
-	 * Enable the backup and restoration of static attributes.
-	 */
-	protected $backupStaticAttributes = TRUE;
-
-    /**
-     * This test is running in a separate PHP process.
-     */
-    protected $inIsolation = TRUE;
-
-	/**
-	 * Set up testcase from XML file
-	 *
-	 * @return void
-	 */
-	public function setUp() {
-		$settings = new \SimpleXMLElement(file_get_contents(__DIR__ . '/settings.xml'));
-
-		$this->setBrowser((string)$settings->target->browser);
-		$this->setHost((string)$settings->target->host);
-		$this->setPort((integer)$settings->target->port);
-		$this->setTimeout((integer)$settings->target->timeout);
-		$this->setBrowserUrl((string)$settings->url);
+class SeleniumTestCase extends \F3\Testing\SeleniumTestCase {
+	protected function getSettingsFileName() {
+		return __DIR__ . '/settings.xml';
 	}
-
-	/**
-	 * Quick access to selenium commands - doing a click on a element
-	 *
-	 * @param string $path Selenese selector
-	 * @return void
-	 */
-	protected function clickLink($path) {
-		$this->checkElement($path);
-		$this->clickAndWait($path);
-	}
-
-	/**
-	 * Makes an assert to check the existence of a element
-	 *
-	 * @param string $path Selenese selector
-	 * @return void
-	 */
-	protected function checkElement($path) {
-		$this->assertTrue($this->isElementPresent($path), 'element not found: ' . $path);
-	}
-
-	/**
-	 * Makes an assert to check if a text is present
-	 *
-	 * @param string $text
-	 * @return void
-	 */
-	protected function checkText($text) {
-		$this->assertTrue($this->isTextPresent($text), 'text not found: ' . $text);
-	}
-
-	/**
-	 * Opens the startpage (plain domain) and deletes relevant cookies
-	 *
-	 * @return void
-	 */
-	protected function resetCookiesAndOpenStartPage() {
-		$this->open('/');
-		$this->deleteCookie('fe_typo_user', '');
-		$this->deleteCookie('be_typo_user', '');
-	}
-
 }
 
 ?>

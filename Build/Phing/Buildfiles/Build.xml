@@ -55,7 +55,10 @@
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} cp ${path.latest.base}favicon.ico ${path.latest.base}Web/"/>
 
 		<php function="file_get_contents">
-			<param value="${url.latest.base}typo3/setup"/>
+			<param value="${url.latest.base}typo3/setup/import?packageKey=PhoenixDemoTypo3Org"/>
+		</php>
+		<php function="file_get_contents">
+			<param value="${url.latest.base}typo3/setup/createadministrator?identifier=admin&amp;password=password"/>
 		</php>
 	</target>
 	<target name="build-latest" depends="clean, doc-render, create-archive-bz2"/>
@@ -83,7 +86,7 @@
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} cp ${path.demo.base}favicon.ico ${path.demo.base}Web/"/>
 
 		<php function="file_get_contents">
-			<param value="${url.demo.base}typo3/setup"/>
+			<param value="${url.demo.base}typo3/setup/import?packageKey=PhoenixDemoTypo3Org"/>
 		</php>
 	</target>
 

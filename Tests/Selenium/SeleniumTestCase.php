@@ -26,7 +26,7 @@ require_once(__DIR__ . '/../../Packages/Framework/Testing/Classes/SeleniumTestCa
 /**
  * Base Testcase for Selenium Test
  *
- * Propably later phpunit version have better support to set url and other
+ * Probably later phpunit version have better support to set url and other
  * selenium parameters flexible - for now this is done here
  *
  * @version $Id$

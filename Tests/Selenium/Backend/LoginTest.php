@@ -50,20 +50,5 @@ class LoginTest extends \F3\Demo\Tests\Selenium\Backend\BackendTestCase {
 		$this->assertTitle('TYPO3 Backend');
 	}
 
-	/**
-	 * @test
-	 * @author Christopher Hlubek <hlubek@networkteam.com>
-	 */
-	public function clearingOfUsernameAndPasswordWorks() {
-		$this->open('/typo3/login');
-
-		$this->type('username', 'user');
-		$this->click('clearUsername');
-		$this->assertValue('username', '');
-
-		$this->type('password', 'pass');
-		$this->click('clearPassword');
-		$this->assertValue('password', '');
-	}
 }
 ?>

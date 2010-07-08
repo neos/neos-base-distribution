@@ -55,7 +55,7 @@
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} cp ${path.latest.base}favicon.ico ${path.latest.base}Web/"/>
 
 		<php function="file_get_contents">
-			<param value="${url.latest.base}http://dev.demo.phoenix.rob/typo3/setup/importandcreateadministrator?packageKey=PhoenixDemoTypo3Org&amp;identifier=admin&amp;password=password&amp;person[name][firstName]=George&amp;person[name][lastName]=Hudson"/>
+			<param value="${url.latest.base}typo3/setup/importandcreateadministrator?packageKey=PhoenixDemoTypo3Org&amp;identifier=admin&amp;password=password&amp;person[name][firstName]=George&amp;person[name][lastName]=Hudson"/>
 		</php>
 	</target>
 	<target name="build-latest" depends="clean, doc-render, create-archive-bz2"/>

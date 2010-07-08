@@ -83,7 +83,7 @@
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} cp ${path.demo.base}favicon.ico ${path.demo.base}Web/"/>
 
 		<php function="file_get_contents">
-			<param value="${url.demo.base}typo3/setup/import?packageKey=PhoenixDemoTypo3Org"/>
+			<param value="${url.demo.base}typo3/setup/importandcreateadministrator?packageKey=PhoenixDemoTypo3Org&amp;identifier=admin&amp;password=password&amp;person[name][firstName]=George&amp;person[name][lastName]=Hudson"/>
 		</php>
 	</target>
 

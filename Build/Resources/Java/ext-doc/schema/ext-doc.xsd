@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="sources">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="source" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="source">
+		<xs:complexType>
+			<xs:attribute name="src" type="xs:string" use="required"/>
+			<xs:attribute name="match" type="xs:string"/>
+			<xs:attribute name="skipHidden" type="xs:boolean"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="doc">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="sources"/>
+				<xs:element ref="tags" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="version" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tags">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tag" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tag">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="title" type="xs:string"/>
+			<xs:attribute name="format" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

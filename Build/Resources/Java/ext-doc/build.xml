@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="ext-doc-1.0" default="all">
+
+    <property environment="env"/>    
+    <property file="build.properties"/>
+    <property name="version" value="snapshot"/>
+    <property name="cli" value="commons-cli-1.1.jar"/>
+
+    <path id="classpath.base">
+        <pathelement location="${build.dir}/classes"/>
+        <pathelement location="${lib.dir}/${cli}"/>
+    </path>
+
+    <path id="classpath.test">
+        <pathelement location="${build.dir}/test-classes"/>        
+        <pathelement location="${lib.dir}/junit-4.5.jar"/>
+        <path refid="classpath.base"/>
+    </path>
+
+    <taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+      <classpath>
+        <fileset dir="lib" includes="jaxb-xjc.jar"/>
+      </classpath>
+    </taskdef>
+    
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+        <delete dir="${src.dir}/extdoc/jsdoc/schema"/>
+        <delete dir="${src.dir}/extdoc/jsdoc/tplschema"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${build.dir}/classes"/>
+        <xjc schema="${schema.dir}/ext-doc.xsd" destdir="${src.dir}" package="extdoc.jsdoc.schema"/>
+        <xjc schema="${schema.dir}/template.xsd" destdir="${src.dir}" package="extdoc.jsdoc.tplschema"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}/classes" debug="on" classpathref="classpath.base"/>        
+    </target>
+
+    <target name="compile-test" depends="compile">
+        <mkdir dir="${build.dir}/test-classes"/>
+    	<mkdir dir="${build.dir}/test-reports"/>
+        <javac srcdir="${test.dir}" destdir="${build.dir}/test-classes" debug="on" classpathref="classpath.test"/>
+    </target>
+
+
+    <target name="test" depends="compile-test">
+        <junit haltonfailure="yes">
+            <classpath refid="classpath.test"/>
+            <formatter type="xml"/>            
+            <batchtest todir="${build.dir}/test-reports">
+                <fileset dir="${build.dir}/test-classes" includes="**/*.class"/>
+            </batchtest>            
+        </junit>
+    </target>
+                                                                                
+    <target name="jar" depends="compile">
+        <mkdir dir="${build.dir}/dist"/>
+        <mkdir dir="${build.dir}/dist/ext-doc-${version}"/>        
+        <jar destfile="${build.dir}/dist/ext-doc-${version}/ext-doc.jar">
+            <fileset dir="${build.dir}/classes" includes="**/*.class"/>
+            <manifest>
+                <attribute name="Main-Class" value="extdoc.Main"/>
+                <attribute name="Class-Path" value="lib/${cli}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="dist" depends="jar">
+        <copy todir="${build.dir}/dist/ext-doc-${version}/template">
+            <fileset dir="template"/>
+        </copy>
+        <mkdir dir="${build.dir}/dist/ext-doc-${version}/sample"/>
+        <copy todir="${build.dir}/dist/ext-doc-${version}/sample">
+            <fileset dir="sample" includes="*.*"/>
+        </copy>
+        <mkdir dir="${build.dir}/dist/ext-doc-${version}/lib"/>
+        <copy todir="${build.dir}/dist/ext-doc-${version}/lib">
+            <fileset dir="${lib.dir}" includes="${cli}"/>
+        </copy>
+        <copy todir="${build.dir}/dist/ext-doc-${version}" file="README.txt"/>
+        <zip destfile="${build.dir}/ext-doc-${version}.zip" basedir="${build.dir}/dist"/>        
+    </target>
+
+    <property name="ftp.server" value=""/>
+    <property name="ftp.userid" value=""/>
+    <property name="ftp.password" value=""/>
+    <property name="ftp.remotedir" value=""/>
+
+    <target name="ftp">
+        <ftp server="${ftp.server}" userid="${ftp.userid}" password="${ftp.password}" remotedir="${ftp.remotedir}">
+            <fileset file="${build.dir}/ext-doc-${version}.zip"/>
+        </ftp>
+    </target>
+    
+    <target name="all" depends="clean, compile, test, jar, dist" description="build all"/>
+</project>

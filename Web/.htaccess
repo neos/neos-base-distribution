@@ -1,0 +1,48 @@
+#
+# FLOW3 context setting
+#
+
+# You can specify a default context by activating this option:
+# SetEnv FLOW3_CONTEXT Development
+
+# If the root path is not the parent of the Web directory, FLOW3's root path must be
+# specified manually:
+# SetEnv FLOW3_ROOTPATH /var/www/myapp/
+
+#
+# mod_rewrite configuration
+#
+<IfModule mod_rewrite.c>
+
+	# Enable URL rewriting
+	RewriteEngine On
+
+	# Set flag so we know URL rewriting is available
+	SetEnv FLOW3_REWRITEURLS 1
+
+	# You will have to enable the following option and change the path if you
+	# experience problems while your installation is located in a subdirectory
+	# of the website root.
+#	RewriteBase /
+
+	# Stop rewrite processing no matter if a package resource, robots.txt etc. exists or not
+	RewriteRule ^(_Resources/Packages/|robots\.txt|favicon\.ico) - [L]
+
+	# Stop rewrite process if the path points to a static file anyway
+	RewriteCond %{REQUEST_FILENAME} -f [OR]
+	RewriteCond %{REQUEST_FILENAME} -l [OR]
+	RewriteCond %{REQUEST_FILENAME} -d 
+	RewriteRule .* - [L]
+	
+	# Perform rewriting of persitent resource files
+	RewriteRule ^(_Resources/Persistent/.{40})/.+(\..+) $1$2 [L]
+
+	# Make sure that not existing resources don't execute FLOW3
+	RewriteRule ^_Resources/.* - [L]
+
+	# Continue only if the file/symlink/directory does not exist
+	RewriteRule (.*) index.php
+
+</IfModule>
+
+ErrorDocument 500 "<h1>Application Error</h1><p>The FLOW3 application could not be launched.</p>"

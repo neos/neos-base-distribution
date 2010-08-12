@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="treeTemplate">
+		<xs:complexType>
+			<xs:attribute name="tpl" type="xs:string" use="required"/>
+			<xs:attribute name="targetFile" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="template">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="classTemplate"/>
+				<xs:element ref="treeTemplate"/>
+                <xs:element ref="source"/>
+                <xs:element ref="resources"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="resources">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="copy" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="copy">
+		<xs:complexType>
+			<xs:attribute name="src" type="xs:string" use="required"/>
+			<xs:attribute name="dst" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="classTemplate">
+		<xs:complexType>
+			<xs:attribute name="tpl" type="xs:string" use="required"/>
+			<xs:attribute name="targetDir" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+    <xs:element name="source">
+		<xs:complexType>
+			<xs:attribute name="targetDir" type="xs:string" use="required"/>
+            <xs:attribute name="wrapper" type="xs:string" use="required"/>
+        </xs:complexType>
+	</xs:element>
+</xs:schema>

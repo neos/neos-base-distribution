@@ -42,8 +42,8 @@ class BackendTestCase extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
 	 */
 	protected function backendLogin($username, $password) {
 		$this->open("/typo3/login");
-		$this->type("//input[@name='F3\FLOW3\Security\Authentication\Token\UsernamePassword::username']", $username);
-		$this->type("//input[@name='F3\FLOW3\Security\Authentication\Token\UsernamePassword::password']", $password);
+		$this->type("//input[@name='F3[FLOW3][Security][Authentication][Token][UsernamePassword][password]']", $username);
+		$this->type("//input[@name='F3[FLOW3][Security][Authentication][Token][UsernamePassword][password]']", $password);
 		$this->clickAndWait("//input[@type='submit']");
 	}
 }

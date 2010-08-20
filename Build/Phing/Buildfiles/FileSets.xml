@@ -51,6 +51,7 @@
 		<include name="Data/Temporary/**"/>
 		<include name="Data/Logs/**"/>
 		<include name="Web/_Resources/**"/>
+		<include name="Data/Persistent/EncryptionKey"/>
 	</fileset>
 
 	<fileset dir="." expandsymboliclinks="true" id="files-unittests">

@@ -28,6 +28,9 @@
 [submodule "Packages/Application/TYPO3"]
 	path = Packages/Application/TYPO3
 	url = git://git.typo3.org/FLOW3/Packages/TYPO3.git
+[submodule "Packages/Application/TYPO3CR"]
+	path = Packages/Application/TYPO3CR
+	url = git://git.typo3.org/FLOW3/Packages/TYPO3CR.git
 [submodule "Packages/Application/TypoScript"]
 	path = Packages/Application/TypoScript
 	url = git://git.typo3.org/FLOW3/Packages/TypoScript.git

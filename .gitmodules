@@ -37,3 +37,6 @@
 [submodule "Packages/Sites/PhoenixDemoTypo3Org"]
 	path = Packages/Sites/PhoenixDemoTypo3Org
 	url = git://git.typo3.org/FLOW3/Packages/PhoenixDemoTypo3Org.git
+[submodule "Packages/Application/PHPCR"]
+	path = Packages/Application/PHPCR
+	url = git://git.typo3.org/FLOW3/Packages/PHPCR.git

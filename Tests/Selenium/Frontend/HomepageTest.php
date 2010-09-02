@@ -25,7 +25,6 @@ namespace F3\Demo\Tests\Selenium\Backend;
 /**
  * Verify that frontend rendering works as expected for the Demopackage
  *
- * @version $Id$
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class HomepageTest extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
@@ -56,7 +55,7 @@ class HomepageTest extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
 	 */
 	public function anotherPageContainsExpectedText() {
 		$this->open('/homepage/anotherpage');
-		$this->checkText('This is another page which exists for the solely purpose to demonstrate sub pages in TYPO3 Phoenix.');
+		$this->checkText('This is another page which exists for the sole purpose to demonstrate sub pages in TYPO3 Phoenix.');
 	}
 
 }

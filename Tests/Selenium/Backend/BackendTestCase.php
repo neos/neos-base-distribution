@@ -27,7 +27,6 @@ require_once(__DIR__ . '/../SeleniumTestCase.php');
 /**
  * Common Backend Selenese functions
  *
- * @version $Id$
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class BackendTestCase extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
@@ -42,7 +41,7 @@ class BackendTestCase extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
 	 */
 	protected function backendLogin($username, $password) {
 		$this->open("/typo3/login");
-		$this->type("//input[@name='F3[FLOW3][Security][Authentication][Token][UsernamePassword][password]']", $username);
+		$this->type("//input[@name='F3[FLOW3][Security][Authentication][Token][UsernamePassword][username]']", $username);
 		$this->type("//input[@name='F3[FLOW3][Security][Authentication][Token][UsernamePassword][password]']", $password);
 		$this->clickAndWait("//input[@type='submit']");
 	}

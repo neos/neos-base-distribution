@@ -27,7 +27,6 @@ require_once(__DIR__ . '/BackendTestCase.php');
 /**
  * Verify that login to backend works as expected for the Demopackage
  *
- * @version $Id$
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 class LoginTest extends \F3\Demo\Tests\Selenium\Backend\BackendTestCase {

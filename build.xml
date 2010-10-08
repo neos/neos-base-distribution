@@ -25,9 +25,6 @@ phpdepend - included by phpmd
  pear channel-discover pear.pdepend.org
  pear install pdepend/PHP_Depend-beta
 
-VersionControl_SVN - for SVN related targets
- pear install VersionControl_SVN-alpha
-
 PHP_UML - for API documentation rendering
  pear install PHP_UML
 -->
@@ -58,7 +55,6 @@ PHP_UML - for API documentation rendering
 	<import file="Build/Phing/Buildfiles/Reports.xml"/>
 
 	<import file="Build/Phing/Buildfiles/Documentation.xml"/>
-	<import file="Build/Phing/Buildfiles/Svn.xml"/>
 	<import file="Build/Phing/Buildfiles/Build.xml"/>
 	<import file="Build/Phing/Buildfiles/Publish.xml"/>
 

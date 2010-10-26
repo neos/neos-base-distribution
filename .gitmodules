@@ -16,9 +16,6 @@
 [submodule "Packages/Framework/Party"]
 	path = Packages/Framework/Party
 	url = git://git.typo3.org/FLOW3/Packages/Party.git
-[submodule "Packages/Framework/PHPUnit"]
-	path = Packages/Framework/PHPUnit
-	url = git://git.typo3.org/FLOW3/Packages/PHPUnit.git
 [submodule "Packages/Framework/Testing"]
 	path = Packages/Framework/Testing
 	url = git://git.typo3.org/FLOW3/Packages/Testing.git

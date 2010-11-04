@@ -1,43 +1,72 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
-/*                                                                        *
- * This script belongs to the TYPO3 project.                              *
+ * This script belongs to the TYPO3 build system.                         *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
- * the terms of the GNU General Public License as published by the        *
+ * the terms of the GNU Lesser General Public License as published by the *
  * Free Software Foundation, either version 3 of the License, or (at your *
  * option) any later version.                                             *
  *                                                                        *
  * This script is distributed in the hope that it will be useful, but     *
  * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-    *
- * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
- * Public License for more details.                                       *
+ * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser       *
+ * General Public License for more details.                               *
  *                                                                        *
- * You should have received a copy of the GNU General Public License      *
- * along with the script.                                                 *
- * If not, see http://www.gnu.org/licenses/gpl.html                       *
+ * You should have received a copy of the GNU Lesser General Public       *
+ * License along with the script.                                         *
+ * If not, see http://www.gnu.org/licenses/lgpl.html                      *
  *                                                                        *
  * The TYPO3 project - inspiring people to share!                         *
- *                                                                        */
 -->
 <project name="Build">
 
-	<target name="build" depends="clean, doc-render, createarchives"/>
+	<fileset dir="${project.basedir}" expandsymboliclinks="true" id="files-seleniumtests">
+		<include name="Tests/Selenium/**/*Test.php"/>
+	</fileset>
 
-	<target name="clean">
-		<delete quiet="true" includeemptydirs="true">
-			<fileset refid="files-temporary"/>
-		</delete>
+	<target name="test-selenium">
+		<mkdir dir="${project.reportsDirectory}"/>
+
+		<echo file="${project.basedir}/Tests/Selenium/settings.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<selenium>
+	<target name="Firefox Testing Phoenix">
+		<browser>*chrome</browser>
+		<host>${seleniumrc.host}</host>
+		<port>${seleniumrc.port}</port>
+		<timeout>30000</timeout>
+	</target>
+	<url>${seleniumrc.url}</url>
+</selenium>]]></echo>
+		<phpunit haltonerror="${fail}" haltonfailure="${fail}" printsummary="true">
+			<formatter todir="${project.reportsDirectory}" outfile="SeleniumTests.xml" type="xml"/>
+			<batchtest>
+				<fileset refid="files-seleniumtests"/>
+			</batchtest>
+		</phpunit>
 	</target>
 
-	<target name="polish" depends="clean, doc-clean-all" description="Clean in a way that removes all build artifacts"/>
+	<target name="doc-render-js-api">
+		<!-- building ext-doc if it does not exist -->
+		<if>
+			<not>
+				<available file="${project.buildDirectory}Resources/Java/ext-doc/build/dist/ext-doc-snapshot/ext-doc.jar"/>
+			</not>
+			<then>
+				<exec command="ant" dir="${project.buildDirectory}Resources/Java/ext-doc/" />
+			</then>
+		</if>
+
+		<exec command="java -jar ${project.buildDirectory}Resources/Java/ext-doc/build/dist/ext-doc-snapshot/ext-doc.jar -p ${project.buildDirectory}Resources/JSAPI/ext.xml -o ${project.basedir}/Packages/Application/TYPO3/Documentation/JSAPI -t ${project.buildDirectory}Resources/Java/ext-doc/template/ext/template.xml -verbose" logoutput="true" />
+	</target>
+
+	<target name="build" depends="clean, doc-render, doc-render-js-api, createarchives"/>
 
 	<target name="deploy-latest">
 		<fail unless="env.BUILD_NUMBER" message="You must set the environment variable BUILD_NUMBER for this task."/>
 		<fail unless="releaseVersion" message="You must set the releaseVersion property for this task."/>
 		<if>
 			<not>
-				<available file="${project.archivesDirectory}/TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
+				<available file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
 			</not>
 			<then>
 				<phingcall target="build-latest"/>
@@ -58,14 +87,14 @@
 			<param value="${url.latest.base}typo3/setup/importandcreateadministrator?packageKey=PhoenixDemoTypo3Org&amp;identifier=admin&amp;password=password&amp;person[name][firstName]=George&amp;person[name][lastName]=Hudson"/>
 		</php>
 	</target>
-	<target name="build-latest" depends="clean, doc-render, create-archive-bz2"/>
+	<target name="build-latest" depends="clean, doc-render, doc-render-js-api, create-archive-bz2"/>
 
 	<target name="deploy-sprint">
 		<fail unless="env.BUILD_NUMBER" message="You must set the environment variable BUILD_NUMBER for this task."/>
 		<fail unless="releaseVersion" message="You must set the releaseVersion property for this task."/>
 		<if>
 			<not>
-				<available file="${project.archivesDirectory}/TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
+				<available file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
 			</not>
 			<then>
 				<phingcall target="build"/>
@@ -112,26 +141,18 @@
 		</phingcall>
 	</target>
 
-	<target name="release-tag">
-		<fail unless="releaseVersion" message="You must set the releaseVersion property for this task."/>
-
-		<property name="git.tagDistribution.tag" value="${releaseVersion}"/>
-		<exec logoutput="true" checkreturn="true" command="git tag -f -a -m 'Tag distribution with tag ${git.tagDistribution.tag}' ${git.tagDistribution.tag}" />
-		<exec logoutput="true" checkreturn="true" command="git submodule foreach 'echo Tag distribution with tag ${git.tagDistribution.tag} | git tag -f -a -F - ${git.tagDistribution.tag}'" />
-	</target>
-
 	<target name="createarchives" depends="create-archive-zip,create-archive-gz,create-archive-bz2"/>
 	<target name="create-archive-zip">
 		<fail unless="releaseVersion" message="You must set the releaseVersion property for this task."/>
 
 		<mkdir dir="${project.archivesDirectory}"/>
 
-		<delete file="${project.archivesDirectory}/TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.zip" quiet="true"/>
-		<zip destfile="${project.archivesDirectory}/TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.zip">
+		<delete file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.zip" quiet="true"/>
+		<zip destfile="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.zip">
 			<fileset refid="files-for-release-archive"/>
 		</zip>
 
-		<filehash file="${project.archivesDirectory}/TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.zip" propertyname="md5.zip"/>
+		<filehash file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.zip" propertyname="md5.zip"/>
 		<echo>MD5 hash for the generated archive is:</echo>
 		<echo>${md5.zip} TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.zip</echo>
 	</target>
@@ -140,12 +161,12 @@
 
 		<mkdir dir="${project.archivesDirectory}"/>
 
-		<delete file="${project.archivesDirectory}/TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.gz" quiet="true"/>
-		<tar destfile="${project.archivesDirectory}/TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.gz" compression="gzip">
+		<delete file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.gz" quiet="true"/>
+		<tar destfile="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.gz" compression="gzip">
 			<fileset refid="files-for-release-archive"/>
 		</tar>
 
-		<filehash file="${project.archivesDirectory}/TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.gz" propertyname="md5.targz"/>
+		<filehash file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.gz" propertyname="md5.targz"/>
 		<echo>MD5 hash for the generated archive is:</echo>
 		<echo>${md5.targz} TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.gz</echo>
 	</target>
@@ -154,12 +175,12 @@
 
 		<mkdir dir="${project.archivesDirectory}"/>
 
-		<delete file="${project.archivesDirectory}/TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2" quiet="true"/>
-		<tar destfile="${project.archivesDirectory}/TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2" compression="bzip2">
+		<delete file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2" quiet="true"/>
+		<tar destfile="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2" compression="bzip2">
 			<fileset refid="files-for-release-archive"/>
 		</tar>
 
-		<filehash file="${project.archivesDirectory}/TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2" propertyname="md5.tarbz2"/>
+		<filehash file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2" propertyname="md5.tarbz2"/>
 		<echo>MD5 hash for the generated archive is:</echo>
 		<echo>${md5.tarbz2} TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2</echo>
 	</target>
@@ -175,6 +196,62 @@
 		</copy>
 		<exec logoutput="true" checkreturn="true" command="rsync -avP -e ssh ${project.archivesDirectory}TYPO3\ Phoenix typo3.frs.sourceforge.net:/home/frs/project/t/ty/typo3/"/>
 		<delete dir="${project.archivesDirectory}TYPO3\ Phoenix" quiet="true" includeemptydirs="true"/>
+	</target>
+
+	<target name="doc-publish-api">
+		<fail unless="packageKey" message="You must set the 'packageKey' property to a package key."/>
+
+		<available file="Packages/Framework/${packageKey}/Meta/Package.xml" type="file" property="packagesSubPath" value="Framework"/>
+		<available file="Packages/Application/${packageKey}/Meta/Package.xml" type="file" property="packagesSubPath" value="Application"/>
+		<available file="Packages/Website/${packageKey}/Meta/Package.xml" type="file" property="packagesSubPath" value="Website"/>
+		<if>
+			<not>
+				<available file="Packages/${packagesSubPath}/${packageKey}/Documentation/API/HTML/en/index.html" type="file"/>
+			</not>
+			<then>
+				<phingcall target="doc-render-api">
+					<property name="path.package" value="Packages/${packagesSubPath}/${packageKey}"/>
+				</phingcall>
+			</then>
+		</if>
+
+		<mkdir dir="${project.archivesDirectory}"/>
+		<delete file="${project.archivesDirectory}/${packageKey}-API.zip" quiet="true"/>
+		<zip destfile="${project.archivesDirectory}/${packageKey}-API.zip">
+			<fileset dir="${project.basedir}/Packages/${packagesSubPath}/${packageKey}/Documentation/API/HTML/en">
+				<include name="**"/>
+			</fileset>
+		</zip>
+
+	<!-- sadly the ssh2 pecl extension seems broken and/or dead,
+	     so we use exec instead of SshTask and ScpTask -->
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.website} rm -rf ${path.apiBase.website}${packageKey}*"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.website} mkdir ${path.apiBase.website}${packageKey}"/>
+		<exec logoutput="true" checkreturn="true" command="scp -r ${project.archivesDirectory}/${packageKey}-API.zip ${ssh.host.website}:${path.apiBase.website}"/>
+		<exec logoutput="true" checkreturn="true" dir="Packages/${packagesSubPath}/${packageKey}/Documentation/API/HTML/en" command="scp -r * ${ssh.host.website}:${path.apiBase.website}${packageKey}/"/>
+
+	</target>
+
+	<target name="doc-publish-manual">
+		<fail unless="packageKey" message="You must set the 'packageKey' property to a package key."/>
+
+		<available file="Packages/Framework/${packageKey}/Meta/Package.xml" type="file" property="packagesSubPath" value="Framework"/>
+		<available file="Packages/Application/${packageKey}/Meta/Package.xml" type="file" property="packagesSubPath" value="Application"/>
+		<available file="Packages/Website/${packageKey}/Meta/Package.xml" type="file" property="packagesSubPath" value="Website"/>
+		<if>
+			<not>
+				<available file="Packages/${packagesSubPath}/${packageKey}/Documentation/Manual/HTML/en/index.html" type="file"/>
+			</not>
+			<then>
+				<phingcall target="doc-render-manual">
+					<property name="path.package" value="Packages/${packagesSubPath}/${packageKey}"/>
+				</phingcall>
+			</then>
+		</if>
+
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.website} rm -rf ${path.manualBase.website}${packageKey}"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.website} mkdir -p ${path.manualBase.website}${packageKey}"/>
+		<exec logoutput="true" checkreturn="true" dir="Packages/${packagesSubPath}/${packageKey}/Documentation/Manual/HTML/en" command="scp -r * ${ssh.host.website}:${path.manualBase.website}${packageKey}/"/>
 	</target>
 
 </project>

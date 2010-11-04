@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<phpunit strict="true"
+		bootstrap="FunctionalTestBootstrap.php"
+		convertErrorsToExceptions="true"
+		convertNoticesToExceptions="true"
+		convertWarningsToExceptions="true">
+	<testsuites>
+		<testsuite name="All tests">
+			<directory>../../../Packages/*/*/Tests/Functional</directory>
+		</testsuite>
+	</testsuites>
+	<filter>
+		<whitelist addUncoveredFilesFromWhitelist="true">
+			<directory>../../../Packages/*/*/Classes</directory>
+		</whitelist>
+	</filter>
+	<logging>
+		<log type="junit" target="../../Reports/FunctionalTests.xml" logIncompleteSkipped="false"/>
+		<log type="testdox-text" target="../../Reports/FunctionalTestDox.txt"/>
+	</logging>
+</phpunit>

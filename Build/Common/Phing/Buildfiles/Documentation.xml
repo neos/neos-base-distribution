@@ -1,49 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-/*                                                                        *
- * This script belongs to the TYPO3 project.                              *
+ * This script belongs to the FLOW3 build system.                         *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
- * the terms of the GNU General Public License as published by the        *
+ * the terms of the GNU Lesser General Public License as published by the *
  * Free Software Foundation, either version 3 of the License, or (at your *
  * option) any later version.                                             *
  *                                                                        *
  * This script is distributed in the hope that it will be useful, but     *
  * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-    *
- * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
- * Public License for more details.                                       *
+ * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser       *
+ * General Public License for more details.                               *
  *                                                                        *
- * You should have received a copy of the GNU General Public License      *
- * along with the script.                                                 *
- * If not, see http://www.gnu.org/licenses/gpl.html                       *
+ * You should have received a copy of the GNU Lesser General Public       *
+ * License along with the script.                                         *
+ * If not, see http://www.gnu.org/licenses/lgpl.html                      *
  *                                                                        *
  * The TYPO3 project - inspiring people to share!                         *
- *                                                                        */
 -->
 <project name="Documentation">
 
-	<target name="doc-clean-all" description="Remove all rendered documentation (inside packages)">
-		<foreach param="path.package" target="doc-clean">
+	<target name="doc-clean" description="Remove all rendered documentation inside packages">
+		<foreach param="path.package" target="doc-clean-package">
 			<fileset refid="paths-packages"/>
 		</foreach>
 	</target>
 
-	<target name="doc-render" depends="doc-render-manuals, doc-render-apis,doc-render-js-api"
-		description="Build all documentation (inside packages)"/>
-
-	<target name="doc-render-js-api">
-		<!-- building ext-doc if it does not exist -->
-		<if>
-			<not>
-				<available file="${project.buildDirectory}/Resources/Java/ext-doc/build/dist/ext-doc-snapshot/ext-doc.jar"/>
-			</not>
-			<then>
-				<exec command="ant" dir="${project.buildDirectory}/Resources/Java/ext-doc/" />
-			</then>
-		</if>
-
-		<exec command="java -jar ${project.buildDirectory}Resources/Java/ext-doc/build/dist/ext-doc-snapshot/ext-doc.jar -p ${project.buildDirectory}Resources/JSAPI/ext.xml -o ${project.buildDirectory}../Packages/Application/TYPO3/Documentation/JSAPI -t ${project.buildDirectory}Resources/Java/ext-doc/template/ext/template.xml -verbose" logoutput="true" />
-	</target>
+	<target name="doc-render" depends="doc-render-manuals, doc-render-apis"
+		description="Build all documentation inside packages"/>
 
 	<target name="doc-render-apis">
 		<foreach param="path.package" target="doc-render-api">
@@ -57,7 +41,7 @@
 		</foreach>
 	</target>
 
-	<target name="doc-clean">
+	<target name="doc-clean-package">
 		<fail unless="path.package" message="You must set the 'path.package' property to a package path."/>
 
 		<delete dir="${path.package}/Documentation/API/" quiet="true"/>
@@ -78,7 +62,7 @@
 					input="${path.package}/Classes"
 					output="${path.package}/Documentation/API/HTML/en"
 					title="${package.title}"/>
-				<copy file="${project.buildDirectory}/Resources/API/style.css" tofile="${path.package}/Documentation/API/HTML/en/style.css" overwrite="true"/>
+				<copy file="${project.commonBuildDirectory}/Resources/API/style.css" tofile="${path.package}/Documentation/API/HTML/en/style.css" overwrite="true"/>
 			</then>
 		</if>
 	</target>
@@ -95,9 +79,9 @@
 				<delete dir="${manual.targetDirectory}" quiet="true"/>
 				<mkdir dir="${manual.targetDirectory}"/>
 
-				<copy file="${project.buildDirectory}/Resources/Manual/Css/TheGuide.css" todir="${manual.targetDirectory}"/>
+				<copy file="${project.commonBuildDirectory}/Resources/Manual/Css/TheGuide.css" todir="${manual.targetDirectory}"/>
 				<copy todir="${manual.targetDirectory}/images/">
-					<fileset dir="${project.buildDirectory}/Resources/Manual/Xsl/DocBookXSLNS/images">
+					<fileset dir="${project.commonBuildDirectory}/Resources/Manual/Xsl/DocBookXSLNS/images">
 						<include name="**"/>
 					</fileset>
 				</copy>
@@ -110,20 +94,20 @@
 					</fileset>
 				</copy>
 
-				<delete dir="${project.buildDirectory}/Temporary/DocBookRendering" quiet="true"/>
-				<mkdir dir="${project.buildDirectory}/Temporary/DocBookRendering" />
-				<copy todir="${project.buildDirectory}/Temporary/DocBookRendering">
+				<delete dir="${project.temporaryDirectory}DocBookRendering" quiet="true"/>
+				<mkdir dir="${project.temporaryDirectory}DocBookRendering" />
+				<copy todir="${project.temporaryDirectory}DocBookRendering">
 					<filterchain>
 						<replacetokens begintoken="{" endtoken="}">
-							<token key="DocBookXSLNSPath" value="${project.buildDirectory}Resources/Manual/Xsl/DocBookXSLNS/"/>
+							<token key="DocBookXSLNSPath" value="${project.commonBuildDirectory}Resources/Manual/Xsl/DocBookXSLNS/"/>
 							<token key="outputDirectory" value="${manual.targetDirectory}"/>
 						</replacetokens>
 					</filterchain>
-					<fileset dir="${project.buildDirectory}/Resources/Manual/Xsl">
+					<fileset dir="${project.commonBuildDirectory}/Resources/Manual/Xsl">
 						<include name="html.xsl"/>
 					</fileset>
 				</copy>
-				<copy todir="${project.buildDirectory}/Temporary/DocBookRendering">
+				<copy todir="${project.temporaryDirectory}DocBookRendering">
 					<filterchain>
 						<xincludefilter basedir="${manual.sourceDirectory}"/>
 					</filterchain>
@@ -132,7 +116,7 @@
 					</fileset>
 				</copy>
 				<xslt todir="${manual.targetDirectory}" style="${project.buildDirectory}/Temporary/DocBookRendering/html.xsl">
-					<fileset dir="${project.buildDirectory}/Temporary/DocBookRendering">
+					<fileset dir="${project.temporaryDirectory}DocBookRendering">
 						<include name="Index.xml"/>
 					</fileset>
 				</xslt>

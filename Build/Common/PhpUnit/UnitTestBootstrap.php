@@ -1,6 +1,6 @@
 <?php
 declare(ENCODING = 'utf-8');
-namespace F3\Build;
+namespace F3\FLOW3\Build;
 
 /*                                                                        *
  * This script belongs to the FLOW3 build system.                         *
@@ -22,9 +22,14 @@ namespace F3\Build;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
+@require_once('vfsStream/vfsStream.php');
+if (!class_exists('vfsStreamWrapper')) {
+	exit(PHP_EOL . 'FLOW3 Bootstrap Error: The unit test bootstrap requires vfsStream to be installed (e.g. via PEAR). Please also make sure that it is accessible via the PHP include path.' . PHP_EOL . PHP_EOL);
+}
+
 /**
  * A simple class loader that deals with the Framework classes and is intended
- * for use with PHPUnit.
+ * for use with unit tests executed by PHPUnit.
  *
  * PHPUnit offers the possibility to use a "bootstrap" file with every test.
  *
@@ -44,10 +49,11 @@ namespace F3\Build;
 function loadClassForTesting($className) {
 	$classNameParts = explode('\\', $className);
 	if (is_array($classNameParts) && $classNameParts[0] === 'F3') {
-		$packagesBasePathIterator = new \DirectoryIterator(dirname(__FILE__) . '/../../Packages/');
+		$packagesBasePath = dirname(__FILE__) . '/../../../Packages/';
+		$packagesBasePathIterator = new \DirectoryIterator($packagesBasePath);
 		foreach ($packagesBasePathIterator as $fileInfo) {
 			if ($fileInfo->isDir() && !$fileInfo->isDot()) {
-				$classFilePathAndName = dirname(__FILE__) . '/../../Packages/' . $fileInfo->getFilename() . '/' . $classNameParts[1] . '/Classes/';
+				$classFilePathAndName = $packagesBasePath . $fileInfo->getFilename() . '/' . $classNameParts[1] . '/Classes/';
 				$classFilePathAndName .= implode(array_slice($classNameParts, 2, -1), '/') . '/';
 				$classFilePathAndName .= end($classNameParts) . '.php';
 				if (file_exists($classFilePathAndName)) {
@@ -59,11 +65,10 @@ function loadClassForTesting($className) {
 	}
 }
 
-spl_autoload_register('F3\Build\loadClassForTesting');
-set_include_path(get_include_path() . ':' . dirname(__FILE__) . '/../Resources/PHP');
+spl_autoload_register('F3\FLOW3\Build\loadClassForTesting');
 
-$_SERVER['FLOW3_ROOTPATH'] = dirname(__FILE__) . '/../../';
-$_SERVER['FLOW3_WEBPATH'] = dirname(__FILE__) . '/../../Web/';
+$_SERVER['FLOW3_ROOTPATH'] = dirname(__FILE__) . '/../../../';
+$_SERVER['FLOW3_WEBPATH'] = dirname(__FILE__) . '/../../../Web/';
 \F3\FLOW3\Core\Bootstrap::defineConstants();
 
 ?>

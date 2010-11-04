@@ -2,7 +2,7 @@
 declare(ENCODING = 'utf-8');
 
 /*                                                                        *
- * This script belongs to the FLOW3 project.                              *
+ * This script belongs to the FLOW3 build system.                         *
  *                                                                        *
  * It is free software; you can redistribute it and/or modify it under    *
  * the terms of the GNU Lesser General Public License as published by the *
@@ -22,68 +22,52 @@ declare(ENCODING = 'utf-8');
  *                                                                        */
 
 require_once('phing/Task.php');
-require_once('PHP/UML.php');
 
 /**
- * PHP_UML task for Phing
+ * SetEnvironment task for Phing
  *
- * @version $Id$
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  */
-class PhpUmlTask extends Task {
+class SetEnvironmentTask extends Task {
 
 	/**
 	 * @var string
 	 */
-	protected $input;
+	protected $name;
 
 	/**
 	 * @var string
 	 */
-	protected $output;
+	protected $value;
 
 	/**
-	 * @var string
-	 */
-	protected $title;
-
-	/**
-	 * @param string $path
+	 * @param string $name
 	 * @return void
 	 */
-	public function setInput($path) {
-		$this->input = $path;
+	public function setName($name) {
+		$this->name = $name;
 	}
 
 	/**
-	 * @param string $output
+	 * @param string $value
 	 * @return void
 	 */
-	public function setOutput($output) {
-		$this->output = $output;
+	public function setValue($value) {
+		$this->value = $value;
 	}
 
 	/**
-	 * @param string $title
+	 * Sets the environment variable specified by name and value.
+	 *
 	 * @return void
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
-	}
-
-	/**
-	 * @return void
-	 * @author Karsten Dambekalns <karsten@typo3.org>
+	 * @author Robert Lemke <robert@typo3.org>
 	 */
 	public function main() {
-		$this->log('Calling PHP_UML on ' . $this->input);
-		$renderer = new PHP_UML();
-		$renderer->deploymentView = FALSE;
-		$renderer->onlyApi = TRUE;
-		$renderer->setInput($this->input);
-		$renderer->parse($this->title);
-		$renderer->generateXMI(2.1, 'utf-8');
-		$renderer->export('html', $this->output);
+		$this->log('Calling SetEnvironment (' . $this->name .'=' . $this->value . ')');
+		putenv("$this->name=$this->value");
+
+		$_SERVER[$this->name] = $this->value;
+		$_ENV[$this->name] = $this->value;
 	}
 
 }

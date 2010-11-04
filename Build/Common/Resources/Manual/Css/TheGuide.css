@@ -21,7 +21,7 @@ a:visited {
 }
 
 a:link:hover {
-	color: #FF8700;
+	color: #700016;
 }
 
 img {
@@ -223,7 +223,7 @@ div.toc .section { }
 }
 
 .navheader {
-	background: url('http://typo3.org/fileadmin/templates/images/logo-typo3.gif') no-repeat 100% 0%;
+	background: url('http://flow3.typo3.org/fileadmin/_templates/page_templates/res/f3_logo.gif') no-repeat 100% 0%;
 	border-bottom: 1px solid #b9b9b9 !important;
 }
 

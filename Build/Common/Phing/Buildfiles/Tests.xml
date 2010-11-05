@@ -64,6 +64,7 @@
 	</target>
 
 	<target name="test-functional" description="Run functional tests">
+		<phingcall target="polish"/>
 		<mkdir dir="${project.reportsDirectory}"/>
 		<exec command="phpunit -c &quot;${project.commonBuildDirectory}PhpUnit/FunctionalTests.xml&quot;" passthru="true" returnProperty="phpUnitResult"/>
 

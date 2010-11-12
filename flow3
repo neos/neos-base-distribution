@@ -25,7 +25,6 @@
 #
 # @package FLOW3
 # @author Tobias Liebig <mail_typo3@etobi.de>
-# @version $Id$
 # @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
 #
 
@@ -114,8 +113,8 @@ printUsage () {
 	echo '                                     <package-key> Package for the controller (mandatory)'
 	echo '                                     <model-name> Name of the model the repository is for (mandatory)'
 	echo ''
-	echo '  migrate objectmanagerusage'
-	echo '                                   - migrates use of usage of the object manager and object factory to the new API introduced in 1.0.0 alpha 8'
+	echo '  migrate testnamespaces'
+	echo '                                   - migrates to the new test namespaces for unit tests and functional tests as required since 1.0.0 alpha 13'
 	echo ''
 	exit 1
 }
@@ -200,11 +199,11 @@ while [ $# -ge 1 ]; do
 
 	migrate)
 		shift
-		if [ "$1" = 'objectmanagerusage' ]; then
+		if [ "$1" = 'testnamespaces' ]; then
 			PACKAGE='Foo'
 			CONTROLLER='Bar'
 			ACTION='migrate'
-			BOOTSTRAP='Packages/Framework/FLOW3/Scripts/migrateobjectmanagerusage.php'
+			BOOTSTRAP='Packages/Framework/FLOW3/Scripts/migratetestnamespaces.php'
 		fi
 		;;
 

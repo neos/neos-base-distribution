@@ -4,7 +4,6 @@
 Build/Resources/Java/ext-doc/build/
 Build/Resources/Java/ext-doc/java/src/main/extdoc/jsdoc/schema/
 Build/Resources/Java/ext-doc/java/src/main/extdoc/jsdoc/tplschema/
-/Configuration/PackageStates.yaml
 /Configuration/Production/IncludeCachedConfigurations.php
 /Data/
 /Tests/Selenium/settings.xml

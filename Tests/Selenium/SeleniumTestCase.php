@@ -22,7 +22,7 @@ namespace F3\Demo\Tests\Selenium;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-require_once(__DIR__ . '/../../Packages/Framework/Testing/Classes/SeleniumTestCase.php');
+require_once(__DIR__ . '/../../Packages/Framework/FLOW3/Tests/SeleniumTestCase.php');
 
 /**
  * Base Testcase for Selenium Test
@@ -32,7 +32,7 @@ require_once(__DIR__ . '/../../Packages/Framework/Testing/Classes/SeleniumTestCa
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class SeleniumTestCase extends \F3\Testing\SeleniumTestCase {
+class SeleniumTestCase extends \F3\FLOW3\Tests\SeleniumTestCase {
 	protected function getSettingsFileName() {
 		return __DIR__ . '/settings.xml';
 	}

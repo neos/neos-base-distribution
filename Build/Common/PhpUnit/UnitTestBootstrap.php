@@ -71,4 +71,8 @@ $_SERVER['FLOW3_ROOTPATH'] = dirname(__FILE__) . '/../../../';
 $_SERVER['FLOW3_WEBPATH'] = dirname(__FILE__) . '/../../../Web/';
 \F3\FLOW3\Core\Bootstrap::defineConstants();
 
+require_once(FLOW3_PATH_FLOW3 . 'Tests/BaseTestCase.php');
+require_once(FLOW3_PATH_FLOW3 . 'Tests/UnitTestCase.php');
+require_once(FLOW3_PATH_FLOW3 . 'Tests/LegacyBaseTestCase.php');
+
 ?>

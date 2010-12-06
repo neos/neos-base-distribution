@@ -30,6 +30,6 @@ if (!class_exists('vfsStreamWrapper')) {
 $_SERVER['FLOW3_ROOTPATH'] = dirname(__FILE__) . '/../../../';
 $_SERVER['FLOW3_WEBPATH'] = dirname(__FILE__) . '/../../../Web/';
 
-require_once($_SERVER['FLOW3_ROOTPATH'] . 'Packages/Framework/Testing/Classes/BaseTestCase.php');
-require_once($_SERVER['FLOW3_ROOTPATH'] . 'Packages/Framework/Testing/Classes/FunctionalTestCase.php');
+require_once($_SERVER['FLOW3_ROOTPATH'] . 'Packages/Framework/FLOW3/Tests/BaseTestCase.php');
+require_once($_SERVER['FLOW3_ROOTPATH'] . 'Packages/Framework/FLOW3/Tests/FunctionalTestCase.php');
 ?>

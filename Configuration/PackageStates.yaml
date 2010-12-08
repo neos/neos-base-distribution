@@ -1,24 +1,26 @@
 
 ---
-FLOW3:
+FLOW3: 
   state: active
-TYPO3:
+TYPO3: 
   state: active
-TYPO3CR:
+TYPO3CR: 
   state: active
-TypoScript:
+TypoScript: 
   state: active
-DocumentationBrowser:
+DocumentationBrowser: 
   state: inactive
-ExtJS:
+ExtJS: 
   state: active
-Fluid:
+Fluid: 
   state: active
-Kickstart:
+Kickstart: 
   state: active
-Party:
+Party: 
   state: active
-Testing:
+Testing: 
+  state: active
+PhoenixDemoTypo3Org: 
+  state: active
+Twitter: 
   state: inactive
-PhoenixDemoTypo3Org:
-  state: active

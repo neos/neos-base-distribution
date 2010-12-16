@@ -113,8 +113,8 @@ printUsage () {
 	echo '                                     <package-key> Package for the controller (mandatory)'
 	echo '                                     <model-name> Name of the model the repository is for (mandatory)'
 	echo ''
-	echo '  migrate testnamespaces'
-	echo '                                   - migrates to the new test namespaces for unit tests and functional tests as required since 1.0.0 alpha 13'
+	echo '  migrate resourceobjects'
+	echo '                                   - migrates persisted Resource objects to use ResourcePointer objects introduced in 1.0.0 alpha 14'
 	echo ''
 	exit 1
 }
@@ -199,11 +199,11 @@ while [ $# -ge 1 ]; do
 
 	migrate)
 		shift
-		if [ "$1" = 'testnamespaces' ]; then
+		if [ "$1" = 'resourceobjects' ]; then
 			PACKAGE='Foo'
 			CONTROLLER='Bar'
 			ACTION='migrate'
-			BOOTSTRAP='Packages/Framework/FLOW3/Scripts/migratetestnamespaces.php'
+			BOOTSTRAP='Packages/Framework/FLOW3/Scripts/migratetoresourcepointers.php'
 		fi
 		;;
 

@@ -36,7 +36,7 @@ class HomepageTest extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
 	public function homepageContainsExpectedText() {
 		$this->open('/');
 		$this->assertEquals("TYPO3 Phoenix Demo Site", $this->getText("//div[@id='header']/h1"));
-		$this->checkText('The fact that you can read these lines means that TYPO3 Phoenix is able to render content.');
+		$this->checkText('This is the TYPO3 Phoenix demo website. It\'s there to let you experiment with the features TYPO3 Phoenix already provides in this alpha stage.');
 	}
 
 	/**
@@ -46,7 +46,7 @@ class HomepageTest extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
 	public function homepageCalledWithNameContainsExpectedText() {
 		$this->open('/homepage.html');
 		$this->assertEquals("TYPO3 Phoenix Demo Site", $this->getText("//div[@id='header']/h1"));
-		$this->checkText('The fact that you can read these lines means that TYPO3 Phoenix is able to render content.');
+		$this->checkText('This is the TYPO3 Phoenix demo website. It\'s there to let you experiment with the features TYPO3 Phoenix already provides in this alpha stage.');
 	}
 
 	/**

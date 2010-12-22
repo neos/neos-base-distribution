@@ -71,10 +71,10 @@
 		<fail unless="path.package" message="You must set the 'path.package' property to a package path."/>
 
 		<if>
-			<available file="${path.package}/Documentation/Manual/DocBook/en"/>
+			<available file="${path.package}/Documentation/${manual.folder}/DocBook/en"/>
 			<then>
-				<property name="manual.sourceDirectory" value="${path.package}/Documentation/Manual/DocBook/en"/>
-				<property name="manual.targetDirectory" value="${path.package}/Documentation/Manual/HTML/en"/>
+				<property name="manual.sourceDirectory" value="${path.package}/Documentation/${manual.folder}/DocBook/en"/>
+				<property name="manual.targetDirectory" value="${path.package}/Documentation/${manual.folder}/HTML/en"/>
 
 				<delete dir="${manual.targetDirectory}" quiet="true"/>
 				<mkdir dir="${manual.targetDirectory}"/>
@@ -122,6 +122,62 @@
 				</xslt>
 			</then>
 		</if>
+	</target>
+
+	<target name="doc-publish-api">
+		<fail unless="packageKey" message="You must set the 'packageKey' property to a package key."/>
+
+		<available file="Packages/Framework/${packageKey}/Meta/Package.xml" type="file" property="packagesSubPath" value="Framework"/>
+		<available file="Packages/Application/${packageKey}/Meta/Package.xml" type="file" property="packagesSubPath" value="Application"/>
+		<available file="Packages/Website/${packageKey}/Meta/Package.xml" type="file" property="packagesSubPath" value="Website"/>
+		<if>
+			<not>
+				<available file="Packages/${packagesSubPath}/${packageKey}/Documentation/API/HTML/en/index.html" type="file"/>
+			</not>
+			<then>
+				<phingcall target="doc-render-api">
+					<property name="path.package" value="Packages/${packagesSubPath}/${packageKey}"/>
+				</phingcall>
+			</then>
+		</if>
+
+		<mkdir dir="${project.archivesDirectory}"/>
+		<delete file="${project.archivesDirectory}/${packageKey}-API.zip" quiet="true"/>
+		<zip destfile="${project.archivesDirectory}/${packageKey}-API.zip">
+			<fileset dir="${project.basedir}/Packages/${packagesSubPath}/${packageKey}/Documentation/API/HTML/en">
+				<include name="**"/>
+			</fileset>
+		</zip>
+
+	<!-- sadly the ssh2 pecl extension seems broken and/or dead,
+	     so we use exec instead of SshTask and ScpTask -->
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.website} rm -rf ${path.documentationBase.website}${packageKey}/API"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.website} mkdir -p ${path.documentationBase.website}${packageKey}/API"/>
+		<exec logoutput="true" checkreturn="true" command="scp -r ${project.archivesDirectory}/${packageKey}-API.zip ${ssh.host.website}:${path.documentationBase.website}${packageKey}/"/>
+		<exec logoutput="true" checkreturn="true" dir="Packages/${packagesSubPath}/${packageKey}/Documentation/API/HTML/en" command="scp -r * ${ssh.host.website}:${path.documentationBase.website}${packageKey}/API/"/>
+
+	</target>
+
+	<target name="doc-publish-manual">
+		<fail unless="packageKey" message="You must set the 'packageKey' property to a package key."/>
+
+		<available file="Packages/Framework/${packageKey}/Meta/Package.xml" type="file" property="packagesSubPath" value="Framework"/>
+		<available file="Packages/Application/${packageKey}/Meta/Package.xml" type="file" property="packagesSubPath" value="Application"/>
+		<available file="Packages/Website/${packageKey}/Meta/Package.xml" type="file" property="packagesSubPath" value="Website"/>
+		<if>
+			<not>
+				<available file="Packages/${packagesSubPath}/${packageKey}/Documentation/${manual.folder}/HTML/en/index.html" type="file"/>
+			</not>
+			<then>
+				<phingcall target="doc-render-manual">
+					<property name="path.package" value="Packages/${packagesSubPath}/${packageKey}"/>
+				</phingcall>
+			</then>
+		</if>
+
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.website} rm -rf ${path.documentationBase.website}${packageKey}/${manual.folder}"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.website} mkdir -p ${path.documentationBase.website}${packageKey}/${manual.folder}"/>
+		<exec logoutput="true" checkreturn="true" dir="Packages/${packagesSubPath}/${packageKey}/Documentation/${manual.folder}/HTML/en" command="scp -r * ${ssh.host.website}:${path.documentationBase.website}${packageKey}/${manual.folder}/"/>
 	</target>
 
 </project>

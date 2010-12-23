@@ -90,25 +90,25 @@
 	<target name="build-latest" depends="clean, doc-render, doc-render-js-api, create-archive-bz2"/>
 
 	<target name="deploy-sprint">
-		<fail unless="env.BUILD_NUMBER" message="You must set the environment variable BUILD_NUMBER for this task."/>
+		<fail unless="buildNumber" message="You must set the buildNumber property for this task."/>
 		<fail unless="releaseVersion" message="You must set the releaseVersion property for this task."/>
 		<if>
 			<not>
-				<available file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
+				<available file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${buildNumber}.tar.bz2"/>
 			</not>
 			<then>
-				<phingcall target="build"/>
+				<fail message="No release archive TYPO3-Phoenix-${releaseVersion}-build${buildNumber}.tar.bz2 found"/>
 			</then>
 		</if>
-		<exec logoutput="true" checkreturn="true" command="scp ${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2 ${ssh.host.demo}:${path.demo.base}"/>
+		<exec logoutput="true" checkreturn="true" command="scp ${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${buildNumber}.tar.bz2 ${ssh.host.demo}:${path.demo.base}"/>
 
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Web"/>
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Packages"/>
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Configuration"/>
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Data"/>
 
-		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} tar -C ${path.demo.base} -xjf ${path.demo.base}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
-		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm ${path.demo.base}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} tar -C ${path.demo.base} -xjf ${path.demo.base}TYPO3-Phoenix-${releaseVersion}-build${buildNumber}.tar.bz2"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm ${path.demo.base}TYPO3-Phoenix-${releaseVersion}-build${buildNumber}.tar.bz2"/>
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} cp ${path.demo.base}favicon.ico ${path.demo.base}Web/"/>
 
 		<php function="file_get_contents">
@@ -141,7 +141,9 @@
 			<property name="packageKey" value="TypoScript"/>
 		</phingcall>
 
-		<phingcall target="deploy-sprint"/>
+		<phingcall target="deploy-sprint">
+			<property name="buildNumber" value="${env.BUILD_NUMBER}"/>
+		</phingcall>
 		<phingcall target="release-publish-archives"/>
 	</target>
 

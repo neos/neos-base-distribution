@@ -87,13 +87,6 @@ printUsage () {
 	echo ''
 	echo '  cache flush                      - flush all caches'
 	echo ''
-	echo '  testing <package-key> <output-directory> [<testcase> [<coverage-directory>]] '
-	echo '                                   - run unit tests'
-	echo '                                     <package-key> Package to test (mandatory)'
-	echo '                                     <output-directory> path to write the logfile.xml (mandatory)'
-	echo '                                     <testcase> only run this testcase (optional)'
-	echo '                                     <coverage-directory> path to write the clover.xml (optional)'
-	echo ''
 	echo '  kickstart package <package-key>'
 	echo '                                   - kickstart a new package, including a standard controller'
 	echo '                                     <package-key> Package for the controller (mandatory)'
@@ -160,31 +153,6 @@ while [ $# -ge 1 ]; do
 			shift
 			ACTION="list$1"
 		esac
-		;;
-
-	testing)
-		PACKAGE='Testing'
-		CONTROLLER='Cli'
-		ACTION='run'
-		shift
-		if [ $# -lt 2 ]; then
-			echo 'Please specify a package-key and output-directory'
-			echo
-			printUsage
-		else
-			ARGUMENTS="--package-key=$1"
-			shift
-			ARGUMENTS="$ARGUMENTS --output-directory=$1"
-
-			if [ $# -gt 1 ]; then
-				shift
-				ARGUMENTS="$ARGUMENTS --testcase=$1"
-			fi
-			if [ $# -gt 1 ]; then
-				shift
-				ARGUMENTS="$ARGUMENTS --coverage-directory=$1"
-			fi
-		fi
 		;;
 
 	cache)

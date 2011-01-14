@@ -131,6 +131,10 @@
 		<phingcall target="doc-publish-manual">
 			<property name="packageKey" value="TYPO3"/>
 		</phingcall>
+		<phingcall target="doc-publish-manual">
+			<property name="packageKey" value="TYPO3"/>
+			<property name="manual.folder" value="UserInterfaceDevelopment"/>
+		</phingcall>
 		<phingcall target="doc-publish-api">
 			<property name="packageKey" value="TYPO3CR"/>
 		</phingcall>

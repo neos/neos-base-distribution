@@ -48,4 +48,11 @@
 
 </IfModule>
 
+<IfModule mod_setenvif.c>
+
+	# Redirect authorization header when PHP is running as CGI
+	SetEnvIfNoCase Authorization "Basic ([a-zA-Z0-9\+/=]+)" REMOTE_AUTHORIZATION=$1
+
+</IfModule>
+
 ErrorDocument 500 "<h1>Application Error</h1><p>The FLOW3 application could not be launched.</p>"

@@ -11,7 +11,7 @@
 	</testsuites>
 	<filter>
 		<whitelist addUncoveredFilesFromWhitelist="true">
-			<directory>../../../Packages/*/*/Classes</directory>
+			<directory>../../../Data/Temporary/Testing/Cache/FLOW3_Object_Classes</directory>
 		</whitelist>
 	</filter>
 	<logging>

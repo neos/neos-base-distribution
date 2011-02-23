@@ -38,10 +38,10 @@ FLOW3_CONTEXT=${FLOW3_CONTEXT:="Development"};
 # Getting root path of FLOW3 if not set yet
 CURRENT_PATH="$(pwd)"
 cd "$(dirname $0)"
-FLOW3_ROOTPATH=${FLOW3_ROOTPATH:="$(pwd)"};
+FLOW3_ROOTPATH=${FLOW3_ROOTPATH:="$(pwd)/"};
 cd "${CURRENT_PATH}"
 
-FLOW3_WEBPATH="$FLOW3_ROOTPATH/Web";
+FLOW3_WEBPATH="$FLOW3_ROOTPATH/Web/";
 
 FLOW3_DEBUG=${FLOW3_DEBUG:=false}
 
@@ -66,7 +66,7 @@ printUsage () {
 	echo ''
 	echo '  -h, --help        - print this message'
 	echo '  -p, --production  - execute in production context'
-	echo '  -s, --setup       - execute in setup context'
+	echo '  -t, --testing     - execute in testing context'
 	echo ''
 	echo 'Environment variables used (optional):'
 	echo ''
@@ -77,6 +77,8 @@ printUsage () {
 	echo '  PHP               - the PHP CLI binary to use'
 	echo ''
 	echo 'Available commands:'
+	echo ''
+	echo '  compile                          - compile proxy classes and other static code parts'
 	echo ''
 	echo '  package list available           - list available packages'
 	echo '  package list active              - list active packages'
@@ -106,14 +108,11 @@ printUsage () {
 	echo '                                     <package-key> Package for the controller (mandatory)'
 	echo '                                     <model-name> Name of the model the repository is for (mandatory)'
 	echo ''
-	echo '  migrate resourceobjects'
-	echo '                                   - migrates persisted Resource objects to use ResourcePointer objects introduced in 1.0.0 alpha 14'
-	echo ''
 	exit 1
 }
 
 # check minimum argument count
-if [ $# -lt 2 ]; then
+if [ $# -lt 1 ]; then
 	printUsage
 fi
 
@@ -128,8 +127,8 @@ while [ $# -ge 1 ]; do
 		FLOW3_CONTEXT='Production'
 		;;
 
-	--setup|-s)
-		FLOW3_CONTEXT='Setup'
+	--testing|-t)
+		FLOW3_CONTEXT='Testing'
 		;;
 
 	package)
@@ -165,14 +164,12 @@ while [ $# -ge 1 ]; do
 		fi
 		;;
 
-	migrate)
+	compile)
 		shift
-		if [ "$1" = 'resourceobjects' ]; then
-			PACKAGE='Foo'
-			CONTROLLER='Bar'
-			ACTION='migrate'
-			BOOTSTRAP='Packages/Framework/FLOW3/Scripts/migratetoresourcepointers.php'
-		fi
+		PACKAGE=$FLOW3_CONTEXT
+		CONTROLLER=$FLOW3_ROOTPATH
+		ACTION=$FLOW3_WEBPATH
+		BOOTSTRAP='Packages/Framework/FLOW3/Scripts/compile.php'
 		;;
 
 	kickstart)

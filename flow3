@@ -78,8 +78,6 @@ printUsage () {
 	echo ''
 	echo 'Available commands:'
 	echo ''
-	echo '  compile                          - compile proxy classes and other static code parts'
-	echo ''
 	echo '  package list available           - list available packages'
 	echo '  package list active              - list active packages'
 	echo '  package create <package-key>     - create a new package'
@@ -162,14 +160,6 @@ while [ $# -ge 1 ]; do
 			CONTROLLER='CacheManager'
 			ACTION='flush'
 		fi
-		;;
-
-	compile)
-		shift
-		PACKAGE=$FLOW3_CONTEXT
-		CONTROLLER=$FLOW3_ROOTPATH
-		ACTION=$FLOW3_WEBPATH
-		BOOTSTRAP='Packages/Framework/FLOW3/Scripts/compile.php'
 		;;
 
 	kickstart)

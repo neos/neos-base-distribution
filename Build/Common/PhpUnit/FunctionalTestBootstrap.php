@@ -28,8 +28,9 @@ if (!class_exists('vfsStreamWrapper')) {
 }
 
 $_SERVER['FLOW3_ROOTPATH'] = dirname(__FILE__) . '/../../../';
-$_SERVER['FLOW3_WEBPATH'] = dirname(__FILE__) . '/../../../Web/';
 
-require_once($_SERVER['FLOW3_ROOTPATH'] . 'Packages/Framework/FLOW3/Tests/BaseTestCase.php');
-require_once($_SERVER['FLOW3_ROOTPATH'] . 'Packages/Framework/FLOW3/Tests/FunctionalTestCase.php');
+require_once($_SERVER['FLOW3_ROOTPATH'] . 'Packages/Framework/FLOW3/Classes/Core/Bootstrap.php');
+
+new \F3\FLOW3\Core\Bootstrap('Testing');
+
 ?>

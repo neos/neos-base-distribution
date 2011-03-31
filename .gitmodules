@@ -1,6 +1,3 @@
-[submodule "Packages/Framework/DocumentationBrowser"]
-	path = Packages/Framework/DocumentationBrowser
-	url = git://git.typo3.org/FLOW3/Packages/DocumentationBrowser.git
 [submodule "Packages/Framework/ExtJS"]
 	path = Packages/Framework/ExtJS
 	url = git://git.typo3.org/FLOW3/Packages/ExtJS.git
@@ -16,12 +13,6 @@
 [submodule "Packages/Framework/Party"]
 	path = Packages/Framework/Party
 	url = git://git.typo3.org/FLOW3/Packages/Party.git
-[submodule "Packages/Framework/Testing"]
-	path = Packages/Framework/Testing
-	url = git://git.typo3.org/FLOW3/Packages/Testing.git
-[submodule "Packages/Framework/Welcome"]
-	path = Packages/Framework/Welcome
-	url = git://git.typo3.org/FLOW3/Packages/Welcome.git
 [submodule "Packages/Application/TYPO3"]
 	path = Packages/Application/TYPO3
 	url = git://git.typo3.org/FLOW3/Packages/TYPO3.git

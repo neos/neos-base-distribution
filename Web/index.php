@@ -31,6 +31,11 @@ if ($rootPath === FALSE) {
 	$rootPath .= '/';
 }
 
-require($rootPath . 'Packages/Framework/FLOW3/Scripts/FLOW3.php');
+require($rootPath . 'Packages/Framework/FLOW3/Classes/Core/Bootstrap.php');
+
+$context = getenv('FLOW3_CONTEXT') ?: (getenv('REDIRECT_FLOW3_CONTEXT') ?: 'Production');
+
+$bootstrap = new \F3\FLOW3\Core\Bootstrap($context);
+$bootstrap->run();
 
 ?>

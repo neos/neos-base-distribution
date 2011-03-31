@@ -5,6 +5,7 @@ Build/Resources/Java/ext-doc/build/
 Build/Resources/Java/ext-doc/java/src/main/extdoc/jsdoc/schema/
 Build/Resources/Java/ext-doc/java/src/main/extdoc/jsdoc/tplschema/
 /Configuration/Production/IncludeCachedConfigurations.php
+/Configuration/PackageStates.php
 /Data/
 /Tests/Selenium/settings.xml
 /Tests/Unit/

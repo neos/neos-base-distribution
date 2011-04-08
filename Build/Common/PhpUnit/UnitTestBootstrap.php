@@ -71,6 +71,7 @@ $_SERVER['FLOW3_ROOTPATH'] = dirname(__FILE__) . '/../../../';
 $_SERVER['FLOW3_WEBPATH'] = dirname(__FILE__) . '/../../../Web/';
 new \F3\FLOW3\Core\Bootstrap('Production');
 
+require_once(FLOW3_PATH_FLOW3 . 'Resources/PHP/AutoLoader.php');
 require_once(FLOW3_PATH_FLOW3 . 'Tests/BaseTestCase.php');
 require_once(FLOW3_PATH_FLOW3 . 'Tests/UnitTestCase.php');
 

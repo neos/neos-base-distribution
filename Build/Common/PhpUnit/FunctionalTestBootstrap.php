@@ -31,6 +31,7 @@ $_SERVER['FLOW3_ROOTPATH'] = dirname(__FILE__) . '/../../../';
 
 require_once($_SERVER['FLOW3_ROOTPATH'] . 'Packages/Framework/FLOW3/Classes/Core/Bootstrap.php');
 
-new \F3\FLOW3\Core\Bootstrap('Testing');
+$bootstrap = new \F3\FLOW3\Core\Bootstrap('Testing');
+$bootstrap->run();
 
 ?>

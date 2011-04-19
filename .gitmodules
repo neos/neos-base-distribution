@@ -28,3 +28,6 @@
 [submodule "Packages/Application/Twitter"]
 	path = Packages/Application/Twitter
 	url = git://git.typo3.org/FLOW3/Packages/Twitter.git
+[submodule "Build/Common"]
+	path = Build/Common
+	url = git://git.typo3.org/FLOW3/BuildEssentials.git

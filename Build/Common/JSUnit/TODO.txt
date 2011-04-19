@@ -1,4 +1,0 @@
-- Automatically create the output folder for the JUnitRunner
-- Autodetect the PackageName
-- 'Kickstart' Unit testing?
-- Some other mechanism for dynamically including the tests so we can save the Runners outside of the Package?

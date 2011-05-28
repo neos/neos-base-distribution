@@ -1,6 +1,6 @@
 <?php
 declare(ENCODING = 'utf-8');
-namespace F3\Demo\Tests\Selenium\Frontend;
+namespace F3\Demo\Tests\Selenium\Backend\ContentEditor;
 
 /*                                                                        *
  * This script belongs to the TYPO3 project.                              *
@@ -22,49 +22,35 @@ namespace F3\Demo\Tests\Selenium\Frontend;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-require_once(__DIR__ . '/../SeleniumTestCase.php');
+require_once(__DIR__ . '/../AbstractBackendTestCase.php');
 
 /**
- * Verify that frontend rendering works as expected for the Demopackage
+ * Tests for the Breadcrumb Menu
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class HomepageTest extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
-
+class EditTextContentText extends \F3\Demo\Tests\Selenium\Backend\AbstractBackendTestCase {
 	/**
 	 * @test
-	 * @author Karsten Dambekalns <karsten@typo3.org>
 	 */
-	public function homepageContainsExpectedText() {
-		$this->openAndWait('/');
-		$this->assertHomepageTextPresent();
-	}
+	public function doubleClickInContentAreaSwitchesToEditModeAndDoubleEscapeExitsTheEditMode() {
+		$this->backendLogin();
 
-	/**
-	 * @test
-	 * @author Karsten Dambekalns <karsten@typo3.org>
-	 */
-	public function homepageCalledWithNameContainsExpectedText() {
-		$this->open('/homepage.html');
-		$this->assertHomepageTextPresent();
-	}
+			// Activate edit mode
+		$this->gotoContentFrame();
+		$this->doubleClick('css=.f3-typo3-editable:contains("defaced")');
+		sleep(1);
+		$this->gotoOuterFrame();
+		$this->assertBreadcrumbMenuPathActivated('menu/main/content/children/edit');
 
-	/**
-	 * Helper which checks the homepage text is there.
-	 */
-	protected function assertHomepageTextPresent() {
-		$this->assertEquals("TYPO3 Phoenix Demo Site", $this->getText("css=#header h1"));
-		$this->checkText('This is the TYPO3 Phoenix demo website.');
+			// Deactivate edit mode
+		$this->gotoContentFrame();
+		sleep(1);
+		$this->keyDown('css=body', '\27');
+		$this->keyDown('css=body', '\27');
+		sleep(2);
+		$this->gotoOuterFrame();
+		$this->assertBreadcrumbMenuPathNotActivated('menu/main/content/children/edit');
 	}
-
-	/**
-	 * @test
-	 * @author Karsten Dambekalns <karsten@typo3.org>
-	 */
-	public function anotherPageContainsExpectedText() {
-		$this->open('/homepage/anotherpage');
-		$this->checkText('This is another page which exists for the sole purpose to demonstrate sub pages in TYPO3 Phoenix.');
-	}
-
 }
 ?>

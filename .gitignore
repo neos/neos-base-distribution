@@ -11,3 +11,8 @@ Build/Resources/Java/ext-doc/java/src/main/extdoc/jsdoc/tplschema/
 /Tests/Selenium/settings.xml
 /Tests/Unit/
 /Web/_Resources/
+
+# ignore the downloaded selenium server, and the selenium
+# temporary directory (which starts with a quote, do not ask why...)
+Build/Resources/Java/selenium-server-standalone*
+/"

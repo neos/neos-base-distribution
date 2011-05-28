@@ -19,32 +19,103 @@
  * The TYPO3 project - inspiring people to share!                         *
 -->
 <project name="Build">
+	<target name="test-selenium.help" description="Instructions how to run Selenium tests">
+<echo>
+Initial Setup:
+==============
+1) Generate a test-config file. This contains information about which
+   browser to test, and what URL to use:
+    # Use the following for firefox:
+    phing -Dseleniumrc.url=http://your-phoenix-base-uri/ test-selenium-firefox
+    # Use the following for Chrome:
+    phing -Dseleniumrc.url=http://your-phoenix-base-uri/ test-selenium-chrome
 
-	<fileset dir="${project.basedir}" expandsymboliclinks="true" id="files-seleniumtests">
-		<include name="Tests/Selenium/**/*Test.php"/>
-	</fileset>
+Running Tests
+=============
+1) Start Selenium server with
+    phing selenium-server
+2) Make sure you generated the test-config file. (see "Initial Setup" above)
+3) Run Selenium using the phpunit tool:
+    phpunit Tests/Selenium/
 
-	<target name="test-selenium">
-		<mkdir dir="${project.reportsDirectory}"/>
+Tips and Tricks
+===============
+The standard PHPUnit Command line options can be used; especially helpful
+is to use the "--filter"-option which can be used to run a single test case:
+    phpunit --filter breadcrumbMenuShowsAndHidesNextLevel Tests/Selenium/
+</echo>
+	</target>
 
+	<target name="test-selenium-firefox" description="Run selenium tests in Firefox. For further instructions, run 'phing test-selenium.help'.">
+		<phingcall target="test-selenium.internal">
+			<property name="seleniumrc.browser" value="*chrome" />
+		</phingcall>
+	</target>
+
+	<target name="test-selenium-chrome" description="Run selenium tests in Google Chrome. For further instructions, run 'phing test-selenium.help'.">
+		<phingcall target="test-selenium.internal">
+			<property name="seleniumrc.browser" value="googlechrome" />
+		</phingcall>
+	</target>
+
+	<target name="test-selenium.internal">
 		<echo file="${project.basedir}/Tests/Selenium/settings.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <selenium>
 	<target name="Firefox Testing Phoenix">
-		<browser>*chrome</browser>
+		<browser>${seleniumrc.browser}</browser>
 		<host>${seleniumrc.host}</host>
 		<port>${seleniumrc.port}</port>
 		<timeout>30000</timeout>
 	</target>
 	<url>${seleniumrc.url}</url>
 </selenium>]]></echo>
-		<phpunit haltonerror="${fail}" haltonfailure="${fail}" printsummary="true">
-			<formatter todir="${project.reportsDirectory}" outfile="SeleniumTests.xml" type="xml"/>
-			<batchtest>
-				<fileset refid="files-seleniumtests"/>
-			</batchtest>
-		</phpunit>
-	</target>
+		<echo>
+	Selenium is configured now to the following settings:
+	Browser:                ${seleniumrc.browser}
+	Selenium Host:          ${seleniumrc.host}
+	Selenium Port:          ${seleniumrc.port}
+	TYPO3 Phoenix Base URL: ${seleniumrc.url}
 
+	run "phing test-selenium.help" for further instructions.
+		</echo>
+	</target>
+	<target name="selenium-server" description="Run Selenium Server">
+		<adhoc-task name="downloadFile"><![CDATA[
+			class DownloadFileTask extends Task {
+				protected $sourceUri;
+				protected $targetFile;
+
+				public function setSourceUri($sourceUri) {
+					$this->sourceUri = $sourceUri;
+				}
+				public function setTargetFile(PhingFile $targetFile) {
+					$this->targetFile = $targetFile;
+				}
+				public function main() {
+					if ($this->targetFile->exists()) {
+						$this->log('The Selenium Server was found.', Project::MSG_INFO);
+						return;
+					}
+
+					$this->log('The Selenium Server was not found, starting download...', Project::MSG_INFO);
+					$remoteHandle = fopen($this->sourceUri, 'rb');
+					$fileWriter = new FileWriter($this->targetFile, FALSE);
+
+					while (!feof($remoteHandle)) {
+						$chunk = fread($remoteHandle, 8192);
+						$fileWriter->write($chunk);
+					}
+					$fileWriter->flush();
+					$fileWriter->close();
+					fclose($remoteHandle);
+
+					$this->log('The Selenium Server is now downloaded and ready to use.', Project::MSG_INFO);
+				}
+			}
+		]]></adhoc-task>
+		<downloadFile targetFile="${project.buildDirectory}Resources/Java/selenium-server-standalone-2.0b3.jar" sourceUri="http://selenium.googlecode.com/files/selenium-server-standalone-2.0b3.jar" />
+		<exec command="java -jar ${project.buildDirectory}Resources/Java/selenium-server-standalone-2.0b3.jar -browserSessionReuse -userExtensions ${project.buildDirectory}Resources/Java/user-extensions.js" passthru="true" />
+	</target>
 	<target name="doc-render-js-api">
 		<!-- building ext-doc if it does not exist -->
 		<if>

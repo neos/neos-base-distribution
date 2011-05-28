@@ -1,6 +1,6 @@
 <?php
 declare(ENCODING = 'utf-8');
-namespace F3\Demo\Tests\Selenium\Frontend;
+namespace F3\Demo\Tests\Selenium\Backend\ContentModule;
 
 /*                                                                        *
  * This script belongs to the TYPO3 project.                              *
@@ -22,49 +22,38 @@ namespace F3\Demo\Tests\Selenium\Frontend;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-require_once(__DIR__ . '/../SeleniumTestCase.php');
+require_once(__DIR__ . '/../AbstractBackendTestCase.php');
 
 /**
- * Verify that frontend rendering works as expected for the Demopackage
+ * Tests for the Breadcrumb Menu
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class HomepageTest extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
+class BreadcrumbMenuTest extends \F3\Demo\Tests\Selenium\Backend\AbstractBackendTestCase {
+
 
 	/**
 	 * @test
-	 * @author Karsten Dambekalns <karsten@typo3.org>
 	 */
-	public function homepageContainsExpectedText() {
-		$this->openAndWait('/');
-		$this->assertHomepageTextPresent();
-	}
+	public function breadcrumbMenuShowsAndHidesNextLevel() {
+		$this->backendLogin();
+		$this->activateBreadcrumbMenuPath('menu/main/content/children/edit');
+		$this->assertBreadcrumbMenuPathShown('menu/main/content/children/edit/children/pageProperties');
 
-	/**
-	 * @test
-	 * @author Karsten Dambekalns <karsten@typo3.org>
-	 */
-	public function homepageCalledWithNameContainsExpectedText() {
-		$this->open('/homepage.html');
-		$this->assertHomepageTextPresent();
-	}
-
-	/**
-	 * Helper which checks the homepage text is there.
-	 */
-	protected function assertHomepageTextPresent() {
-		$this->assertEquals("TYPO3 Phoenix Demo Site", $this->getText("css=#header h1"));
-		$this->checkText('This is the TYPO3 Phoenix demo website.');
+		$this->deactivateBreadcrumbMenuPath('menu/main/content/children/edit');
+		$this->assertBreadcrumbMenuPathNotShown('menu/main/content/children/edit/children/pageProperties');
 	}
 
 	/**
 	 * @test
-	 * @author Karsten Dambekalns <karsten@typo3.org>
 	 */
-	public function anotherPageContainsExpectedText() {
-		$this->open('/homepage/anotherpage');
-		$this->checkText('This is another page which exists for the sole purpose to demonstrate sub pages in TYPO3 Phoenix.');
-	}
+	public function breadcrumbMenuHidesChildLevelsRecursively() {
+		$this->backendLogin();
+		$this->activateBreadcrumbMenuPath('menu/main/content/children/edit');
+		$this->activateBreadcrumbMenuPath('menu/main/content/children/edit/children/pageProperties');
+		$this->deactivateBreadcrumbMenuPath('menu/main/content/children/edit');
 
+		$this->assertBreadcrumbMenuPathNotShown('menu/main/content/children/edit/children/pageProperties');
+	}
 }
 ?>

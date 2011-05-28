@@ -1,6 +1,6 @@
 <?php
 declare(ENCODING = 'utf-8');
-namespace F3\Demo\Tests\Selenium\Backend;
+namespace F3\Demo\Tests\Selenium\Backend\ContentModule;
 
 /*                                                                        *
  * This script belongs to the TYPO3 project.                              *
@@ -22,28 +22,30 @@ namespace F3\Demo\Tests\Selenium\Backend;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-require_once(__DIR__ . '/../SeleniumTestCase.php');
+require_once(__DIR__ . '/../AbstractBackendTestCase.php');
 
 /**
- * Common Backend Selenese functions
+ * Tests for the Breadcrumb Menu
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class BackendTestCase extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
+abstract class AbstractPageSelectorTest extends \F3\Demo\Tests\Selenium\Backend\AbstractBackendTestCase {
+	protected function moveTo($titleOfElementToBeMoved, $titleOfAnchor) {
+		$elementToBeMoved = 'css=' . $this->getModuleDialogCssSelector() . ' .x-grid3-row:contains("' . $titleOfElementToBeMoved . '")';
+		$anchor = 'css=' . $this->getModuleDialogCssSelector() . ' .x-grid3-row:contains("' . $titleOfAnchor . '")';
 
-	/**
-	 * does a backend login
-	 *
-	 * @param string $username
-	 * @param string $password
-	 * @return void
-	 * @author Daniel Pötzinger
-	 */
-	protected function backendLogin($username, $password) {
-		$this->open("/typo3/login");
-		$this->type("//input[@name='F3[FLOW3][Security][Authentication][Token][UsernamePassword][username]']", $username);
-		$this->type("//input[@name='F3[FLOW3][Security][Authentication][Token][UsernamePassword][password]']", $password);
-		$this->clickAndWait("//a[@id='f3-typo3-login-button']");
+		$this->mouseDownAt($elementToBeMoved, '3,3');
+		sleep(1);
+		$this->mouseMoveAt($elementToBeMoved, '4,4');
+		sleep(1);
+		$this->mouseMoveAt($anchor, '3,3');
+		sleep(1);
+		$this->mouseUpAt($anchor, '3,3');
+	}
+
+	protected function assertAtPosition($position, $title) {
+		$this->assertTrue($this->isElementPresent('css=' . $this->getModuleDialogCssSelector() . ' .x-grid3-row:nth-child(' . $position . ') :contains("' . $title . '")'),
+			'At position ' . $position . ', the element "' . $title . '" was not found.');
 	}
 }
 ?>

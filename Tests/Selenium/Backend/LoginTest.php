@@ -22,14 +22,14 @@ namespace F3\Demo\Tests\Selenium\Backend;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-require_once(__DIR__ . '/BackendTestCase.php');
+require_once(__DIR__ . '/AbstractBackendTestCase.php');
 
 /**
  * Verify that login to backend works as expected for the Demopackage
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class LoginTest extends \F3\Demo\Tests\Selenium\Backend\BackendTestCase {
+class LoginTest extends \F3\Demo\Tests\Selenium\Backend\AbstractBackendTestCase {
 
 	/**
 	 * @test

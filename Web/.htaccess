@@ -48,6 +48,13 @@
 
 </IfModule>
 
+<IfModule mod_negotiation.c>
+
+	# prevents Apache's automatic file negotiation, it breaks resource URLs
+	Options -MultiViews
+
+</IfModule>
+
 <IfModule mod_setenvif.c>
 
 	# Redirect authorization header when PHP is running as CGI

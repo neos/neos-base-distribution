@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Demo\Tests\Selenium\Backend\ContentEditor;
+namespace TYPO3\Demo\Tests\Selenium\Backend\ContentEditor;
 
 /*                                                                        *
  * This script belongs to the TYPO3 project.                              *
@@ -29,7 +28,7 @@ require_once(__DIR__ . '/../AbstractBackendTestCase.php');
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class EditTextContentText extends \F3\Demo\Tests\Selenium\Backend\AbstractBackendTestCase {
+class EditTextContentText extends \TYPO3\Demo\Tests\Selenium\Backend\AbstractBackendTestCase {
 	/**
 	 * @test
 	 */
@@ -38,7 +37,7 @@ class EditTextContentText extends \F3\Demo\Tests\Selenium\Backend\AbstractBacken
 
 			// Activate edit mode
 		$this->gotoContentFrame();
-		$this->doubleClick('css=.f3-typo3-editable:contains("defaced")');
+		$this->doubleClick('css=.typo3-typo3-editable:contains("defaced")');
 		sleep(1);
 		$this->gotoOuterFrame();
 		$this->assertBreadcrumbMenuPathActivated('menu/main/content/children/edit');

@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Demo\Tests\Selenium;
+namespace TYPO3\Demo\Tests\Selenium;
 
 /*
  * This script belongs to the TYPO3 project.                              *
@@ -22,7 +21,7 @@ namespace F3\Demo\Tests\Selenium;
  * The TYPO3 project - inspiring people to share!                         *
  *                                                                        */
 
-require_once(__DIR__ . '/../../Packages/Framework/FLOW3/Tests/SeleniumTestCase.php');
+require_once(__DIR__ . '/../../Packages/Framework/TYPO3/FLOW3/Tests/SeleniumTestCase.php');
 
 /**
  * Base Testcase for Selenium Test
@@ -32,7 +31,7 @@ require_once(__DIR__ . '/../../Packages/Framework/FLOW3/Tests/SeleniumTestCase.p
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class SeleniumTestCase extends \F3\FLOW3\Tests\SeleniumTestCase {
+class SeleniumTestCase extends \TYPO3\FLOW3\Tests\SeleniumTestCase {
 	protected function getSettingsFileName() {
 		return __DIR__ . '/settings.xml';
 	}

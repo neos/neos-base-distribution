@@ -1,5 +1,4 @@
 <?php
-declare(ENCODING = 'utf-8');
 
 /*                                                                        *
  * This script belongs to the FLOW3 framework.                            *
@@ -31,11 +30,11 @@ if ($rootPath === FALSE) {
 	$rootPath .= '/';
 }
 
-require($rootPath . 'Packages/Framework/FLOW3/Classes/Core/Bootstrap.php');
+require($rootPath . 'Packages/Framework/TYPO3/FLOW3/Classes/Core/Bootstrap.php');
 
 $context = getenv('FLOW3_CONTEXT') ?: (getenv('REDIRECT_FLOW3_CONTEXT') ?: 'Production');
 
-$bootstrap = new \F3\FLOW3\Core\Bootstrap($context);
+$bootstrap = new \TYPO3\FLOW3\Core\Bootstrap($context);
 $bootstrap->run();
 
 ?>

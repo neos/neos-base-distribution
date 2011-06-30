@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Demo\Tests\Selenium\Backend\ContentModule;
+namespace TYPO3\Demo\Tests\Selenium\Backend\ContentModule;
 
 /*                                                                        *
  * This script belongs to the TYPO3 project.                              *
@@ -29,7 +28,7 @@ require_once(__DIR__ . '/AbstractPageSelectorTest.php');
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class MovePageDialogTest extends \F3\Demo\Tests\Selenium\Backend\ContentModule\AbstractPageSelectorTest {
+class MovePageDialogTest extends \TYPO3\Demo\Tests\Selenium\Backend\ContentModule\AbstractPageSelectorTest {
 
 	protected function loginAndGotoMovePageDialog() {
 		$this->backendLogin();

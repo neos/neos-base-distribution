@@ -7,20 +7,6 @@
 # Please refer to the FLOW3 manual for possible configuration options.   #
 #                                                                        #
 
-# $Id$
-
-##
-# Testing routes
-#
--
-  name: 'Testing'
-  uriPattern: 'testing(/{@action})'
-  defaults:
-    '@package': 'Testing'
-    '@controller': 'Standard'
-    '@action': 'index'
-    '@format': 'html'
-
 ##
 # TYPO3 subroutes
 
@@ -29,4 +15,4 @@
   uriPattern: '<TYPO3Subroutes>'
   subRoutes:
     TYPO3Subroutes:
-      package: TYPO3
+      package: TYPO3.TYPO3

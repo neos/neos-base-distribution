@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Demo\Tests\Selenium\Backend;
+namespace TYPO3\Demo\Tests\Selenium\Backend;
 
 /*                                                                        *
  * This script belongs to the TYPO3 project.                              *
@@ -29,7 +28,7 @@ require_once(__DIR__ . '/../SeleniumTestCase.php');
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-abstract class AbstractBackendTestCase extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
+abstract class AbstractBackendTestCase extends \TYPO3\Demo\Tests\Selenium\SeleniumTestCase {
 
 	/**
 	 * does a backend login, by default with "admin/password".
@@ -41,9 +40,9 @@ abstract class AbstractBackendTestCase extends \F3\Demo\Tests\Selenium\SeleniumT
 	 */
 	protected function backendLogin($username = 'admin', $password = 'password') {
 		$this->open("/typo3/login");
-		$this->type("//input[@name='F3[FLOW3][Security][Authentication][Token][UsernamePassword][username]']", $username);
-		$this->type("//input[@name='F3[FLOW3][Security][Authentication][Token][UsernamePassword][password]']", $password);
-		$this->clickAndWait("//a[@id='f3-typo3-login-button']");
+		$this->type("//input[@name='TYPO3[FLOW3][Security][Authentication][Token][UsernamePassword][username]']", $username);
+		$this->type("//input[@name='TYPO3[FLOW3][Security][Authentication][Token][UsernamePassword][password]']", $password);
+		$this->clickAndWait("//a[@id='typo3-typo3-login-button']");
 		sleep(4); // some delay to load the backend fully, and to make sure the content frame is loaded.
 		// Needed in Chrome at least, and makes tests in Firefox more robust.
 	}
@@ -77,7 +76,7 @@ abstract class AbstractBackendTestCase extends \F3\Demo\Tests\Selenium\SeleniumT
 	 */
 	protected function deactivateBreadcrumbMenuPath($menuPath) {
 		$menuPathExpression = '[data-menupath="' . $menuPath .'"]';
-		$activeMenuPathExpression = '.F3-TYPO3-UserInterface-BreadcrumbMenu-MenuItem-active' . $menuPathExpression;
+		$activeMenuPathExpression = '.TYPO3-TYPO3-UserInterface-BreadcrumbMenu-MenuItem-active' . $menuPathExpression;
 
 		$this->assertBreadcrumbMenuPathShown($menuPath);
 		$this->assertBreadcrumbMenuPathActivated($menuPath);
@@ -124,7 +123,7 @@ abstract class AbstractBackendTestCase extends \F3\Demo\Tests\Selenium\SeleniumT
 	 */
 	protected function assertBreadcrumbMenuPathActivated($menuPath) {
 		$menuPathExpression = '[data-menupath="' . $menuPath .'"]';
-		$activeMenuPathExpression = '.F3-TYPO3-UserInterface-BreadcrumbMenu-MenuItem-active' . $menuPathExpression;
+		$activeMenuPathExpression = '.TYPO3-TYPO3-UserInterface-BreadcrumbMenu-MenuItem-active' . $menuPathExpression;
 
 			// Check that menu path is activated now.
 		$this->assertTrue(
@@ -141,7 +140,7 @@ abstract class AbstractBackendTestCase extends \F3\Demo\Tests\Selenium\SeleniumT
 	 */
 	protected function assertBreadcrumbMenuPathNotActivated($menuPath) {
 		$menuPathExpression = '[data-menupath="' . $menuPath .'"]';
-		$activeMenuPathExpression = '.F3-TYPO3-UserInterface-BreadcrumbMenu-MenuItem-active' . $menuPathExpression;
+		$activeMenuPathExpression = '.TYPO3-TYPO3-UserInterface-BreadcrumbMenu-MenuItem-active' . $menuPathExpression;
 
 			// Check that menu path is activated now.
 		$this->assertFalse(
@@ -155,21 +154,21 @@ abstract class AbstractBackendTestCase extends \F3\Demo\Tests\Selenium\SeleniumT
 	 */
 	protected function assertModuleDialogPresent() {
 		$this->assertTrue(
-			$this->isElementPresent('css=.F3-TYPO3-UserInterface-ModuleDialog'),
+			$this->isElementPresent('css=.TYPO3-TYPO3-UserInterface-ModuleDialog'),
 			'The module dialog for page properties is not shown.'
 		);
 	}
 
 	protected function getModuleDialogCssSelector() {
-		return '.F3-TYPO3-UserInterface-ModuleDialog';
+		return '.TYPO3-TYPO3-UserInterface-ModuleDialog';
 	}
 
 	protected function triggerPositiveActionInModuleDialog() {
-		$this->click('css=button.F3-TYPO3-Components-Button-type-positive');
+		$this->click('css=button.TYPO3-TYPO3-Components-Button-type-positive');
 	}
 
 	protected function triggerNegativeActionInModuleDialog() {
-		$this->click('css=button.F3-TYPO3-Components-Button-type-negative');
+		$this->click('css=button.TYPO3-TYPO3-Components-Button-type-negative');
 	}
 
 	/**
@@ -180,7 +179,7 @@ abstract class AbstractBackendTestCase extends \F3\Demo\Tests\Selenium\SeleniumT
 	 * Goto inner content frame
 	 */
 	protected function gotoContentFrame() {
-		$this->selectFrame('css=[id="F3.TYPO3.Module.Content.WebsiteContainer"] iframe');
+		$this->selectFrame('css=[id="TYPO3.TYPO3.Module.Content.WebsiteContainer"] iframe');
 	}
 
 	/**

@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Demo\Tests\Selenium\Frontend;
+namespace TYPO3\Demo\Tests\Selenium\Frontend;
 
 /*                                                                        *
  * This script belongs to the TYPO3 project.                              *
@@ -29,7 +28,7 @@ require_once(__DIR__ . '/../SeleniumTestCase.php');
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class HomepageTest extends \F3\Demo\Tests\Selenium\SeleniumTestCase {
+class HomepageTest extends \TYPO3\Demo\Tests\Selenium\SeleniumTestCase {
 
 	/**
 	 * @test

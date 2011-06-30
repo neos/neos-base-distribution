@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Demo\Tests\Selenium\Backend\ContentModule;
+namespace TYPO3\Demo\Tests\Selenium\Backend\ContentModule;
 
 /*                                                                        *
  * This script belongs to the TYPO3 project.                              *
@@ -29,7 +28,7 @@ require_once(__DIR__ . '/../AbstractBackendTestCase.php');
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-abstract class AbstractPageSelectorTest extends \F3\Demo\Tests\Selenium\Backend\AbstractBackendTestCase {
+abstract class AbstractPageSelectorTest extends \TYPO3\Demo\Tests\Selenium\Backend\AbstractBackendTestCase {
 	protected function moveTo($titleOfElementToBeMoved, $titleOfAnchor) {
 		$elementToBeMoved = 'css=' . $this->getModuleDialogCssSelector() . ' .x-grid3-row:contains("' . $titleOfElementToBeMoved . '")';
 		$anchor = 'css=' . $this->getModuleDialogCssSelector() . ' .x-grid3-row:contains("' . $titleOfAnchor . '")';

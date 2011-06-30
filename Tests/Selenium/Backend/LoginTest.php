@@ -1,6 +1,5 @@
 <?php
-declare(ENCODING = 'utf-8');
-namespace F3\Demo\Tests\Selenium\Backend;
+namespace TYPO3\Demo\Tests\Selenium\Backend;
 
 /*                                                                        *
  * This script belongs to the TYPO3 project.                              *
@@ -29,7 +28,7 @@ require_once(__DIR__ . '/AbstractBackendTestCase.php');
  *
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class LoginTest extends \F3\Demo\Tests\Selenium\Backend\AbstractBackendTestCase {
+class LoginTest extends \TYPO3\Demo\Tests\Selenium\Backend\AbstractBackendTestCase {
 
 	/**
 	 * @test

@@ -8,26 +8,26 @@
 # possible configuration options.                                        #
 #                                                                        #
 
-
-FLOW3:
-  persistence:
-    backendOptions:
-      driver: 'pdo_mysql'
-      dbname: 'phoenix'   # adjust to your database name
-      user: 'root'        # adjust to your database user
-      password: ''        # adjust to your database password
-      host: '127.0.0.1'   # adjust to your database host
-      path: '127.0.0.1'   # adjust to your database host
-      port: 3306
-#    doctrine:
-       # If you have APC, you should consider using it for Production,
-       # also MemcacheCache and XcacheCache exist.
-#      cacheImplementation: 'Doctrine\Common\Cache\ApcCache'
-       # when using MySQL and UTF-8, this should help with connection encoding issues
-#      dbal:
-#        sessionInitialization: 'SET NAMES utf8 COLLATE utf8_unicode_ci'
+TYPO3:
+  FLOW3:
+    persistence:
+      backendOptions:
+        driver: 'pdo_mysql'
+        dbname: 'phoenix'   # adjust to your database name
+        user: 'root'        # adjust to your database user
+        password: ''        # adjust to your database password
+        host: '127.0.0.1'   # adjust to your database host
+        path: '127.0.0.1'   # adjust to your database host
+        port: 3306
+#      doctrine:
+         # If you have APC, you should consider using it for Production,
+         # also MemcacheCache and XcacheCache exist.
+#        cacheImplementation: 'Doctrine\Common\Cache\ApcCache'
+         # when using MySQL and UTF-8, this should help with connection encoding issues
+#        dbal:
+#          sessionInitialization: 'SET NAMES utf8 COLLATE utf8_unicode_ci'
 
 # On Windows, you might need to uncomment the following line and specify
 # the location of the PHP binary manually.
-#  core:
-#    phpBinaryPathAndFilename: 'C:/path/to/php.exe'
+#    core:
+#      phpBinaryPathAndFilename: 'C:/path/to/php.exe'

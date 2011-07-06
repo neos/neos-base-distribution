@@ -3,7 +3,7 @@
 #
 
 # You can specify a default context by activating this option:
-# SetEnv FLOW3_CONTEXT Development
+# SetEnv FLOW3_CONTEXT Production
 
 # If the root path is not the parent of the Web directory, FLOW3's root path must be
 # specified manually:
@@ -31,7 +31,7 @@
 	# Stop rewrite process if the path points to a static file anyway
 	RewriteCond %{REQUEST_FILENAME} -f [OR]
 	RewriteCond %{REQUEST_FILENAME} -l [OR]
-	RewriteCond %{REQUEST_FILENAME} -d 
+	RewriteCond %{REQUEST_FILENAME} -d
 	RewriteRule .* - [L]
 
 	# Perform rewriting of persistent private resources

@@ -1,36 +1,33 @@
 [submodule "Build/Common"]
 	path = Build/Common
 	url = git://git.typo3.org/FLOW3/BuildEssentials.git
-[submodule "Packages/Framework/TYPO3/ExtJS"]
-	path = Packages/Framework/TYPO3/ExtJS
-	url = git://git.typo3.org/FLOW3/Packages/ExtJS.git
-[submodule "Packages/Framework/TYPO3/FLOW3"]
-	path = Packages/Framework/TYPO3/FLOW3
-	url = git://git.typo3.org/FLOW3/Packages/FLOW3.git
-[submodule "Packages/Framework/TYPO3/Fluid"]
-	path = Packages/Framework/TYPO3/Fluid
-	url = git://git.typo3.org/FLOW3/Packages/Fluid.git
-[submodule "Packages/Framework/TYPO3/Kickstart"]
-	path = Packages/Framework/TYPO3/Kickstart
-	url = git://git.typo3.org/FLOW3/Packages/Kickstart.git
-[submodule "Packages/Framework/TYPO3/Party"]
-	path = Packages/Framework/TYPO3/Party
-	url = git://git.typo3.org/FLOW3/Packages/Party.git
-[submodule "Packages/Application/TYPO3/TYPO3"]
-	path = Packages/Application/TYPO3/TYPO3
-	url = git://git.typo3.org/FLOW3/Packages/TYPO3.git
-[submodule "Packages/Application/TYPO3/TYPO3CR"]
-	path = Packages/Application/TYPO3/TYPO3CR
-	url = git://git.typo3.org/FLOW3/Packages/TYPO3CR.git
-[submodule "Packages/Application/TYPO3/Twitter"]
-	path = Packages/Application/TYPO3/Twitter
-	url = git://git.typo3.org/FLOW3/Packages/Twitter.git
-[submodule "Packages/Application/TYPO3/TypoScript"]
-	path = Packages/Application/TYPO3/TypoScript
-	url = git://git.typo3.org/FLOW3/Packages/TypoScript.git
 [submodule "Packages/Framework/Doctrine"]
 	path = Packages/Framework/Doctrine
 	url = git://git.typo3.org/FLOW3/Packages/Doctrine.git
-[submodule "Packages/Sites/TYPO3/PhoenixDemoTypo3Org"]
-	path = Packages/Sites/TYPO3/PhoenixDemoTypo3Org
+[submodule "Packages/Application/TYPO3.TypoScript"]
+	path = Packages/Application/TYPO3.TypoScript
+	url = git://git.typo3.org/FLOW3/Packages/TypoScript.git
+[submodule "Packages/Application/TYPO3.TYPO3CR"]
+	path = Packages/Application/TYPO3.TYPO3CR
+	url = git://git.typo3.org/FLOW3/Packages/TYPO3CR.git
+[submodule "Packages/Application/TYPO3.TYPO3"]
+	path = Packages/Application/TYPO3.TYPO3
+	url = git://git.typo3.org/FLOW3/Packages/TYPO3.git
+[submodule "Packages/Framework/TYPO3.Party"]
+	path = Packages/Framework/TYPO3.Party
+	url = git://git.typo3.org/FLOW3/Packages/Party.git
+[submodule "Packages/Framework/TYPO3.Fluid"]
+	path = Packages/Framework/TYPO3.Fluid
+	url = git://git.typo3.org/FLOW3/Packages/Fluid.git
+[submodule "Packages/Framework/TYPO3.FLOW3"]
+	path = Packages/Framework/TYPO3.FLOW3
+	url = git://git.typo3.org/FLOW3/Packages/FLOW3.git
+[submodule "Packages/Framework/TYPO3.ExtJS"]
+	path = Packages/Framework/TYPO3.ExtJS
+	url = git://git.typo3.org/FLOW3/Packages/ExtJS.git
+[submodule "Packages/Framework/TYPO3.Kickstart"]
+	path = Packages/Framework/TYPO3.Kickstart
+	url = git://git.typo3.org/FLOW3/Packages/Kickstart.git
+[submodule "Packages/Sites/TYPO3.PhoenixDemoTypo3Org"]
+	path = Packages/Sites/TYPO3.PhoenixDemoTypo3Org
 	url = git://git.typo3.org/FLOW3/Packages/PhoenixDemoTypo3Org.git

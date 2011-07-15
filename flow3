@@ -25,6 +25,6 @@
  * Bootstrap for the command line
  */
 
-require(__DIR__ . '/Packages/Framework/TYPO3/FLOW3/Scripts/flow3.php');
+require(__DIR__ . '/Packages/Framework/TYPO3.FLOW3/Scripts/flow3.php');
 
 ?>

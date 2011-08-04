@@ -31,3 +31,6 @@
 [submodule "Packages/Sites/TYPO3.PhoenixDemoTypo3Org"]
 	path = Packages/Sites/TYPO3.PhoenixDemoTypo3Org
 	url = git://git.typo3.org/FLOW3/Packages/PhoenixDemoTypo3Org.git
+[submodule "Packages/Application/Aloha"]
+	path = Packages/Application/Aloha
+	url = git://git.typo3.org/FLOW3/Packages/Aloha.git

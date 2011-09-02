@@ -22,9 +22,6 @@
 [submodule "Packages/Framework/TYPO3.FLOW3"]
 	path = Packages/Framework/TYPO3.FLOW3
 	url = git://git.typo3.org/FLOW3/Packages/FLOW3.git
-[submodule "Packages/Framework/TYPO3.ExtJS"]
-	path = Packages/Framework/TYPO3.ExtJS
-	url = git://git.typo3.org/FLOW3/Packages/ExtJS.git
 [submodule "Packages/Framework/TYPO3.Kickstart"]
 	path = Packages/Framework/TYPO3.Kickstart
 	url = git://git.typo3.org/FLOW3/Packages/Kickstart.git
@@ -34,3 +31,6 @@
 [submodule "Packages/Application/Aloha"]
 	path = Packages/Application/Aloha
 	url = git://git.typo3.org/FLOW3/Packages/Aloha.git
+[submodule "Packages/Application/TYPO3.ExtJS"]
+	path = Packages/Application/TYPO3.ExtJS
+	url = git://git.typo3.org/FLOW3/Packages/ExtJS.git

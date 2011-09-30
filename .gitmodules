@@ -34,3 +34,9 @@
 [submodule "Packages/Application/TYPO3.ExtJS"]
 	path = Packages/Application/TYPO3.ExtJS
 	url = git://git.typo3.org/FLOW3/Packages/ExtJS.git
+[submodule "Packages/Application/Imagine"]
+	path = Packages/Application/Imagine
+	url = git://git.typo3.org/FLOW3/Packages/Imagine.git
+[submodule "Packages/Application/TYPO3.Media"]
+	path = Packages/Application/TYPO3.Media
+	url = git://git.typo3.org/FLOW3/Packages/Media.git

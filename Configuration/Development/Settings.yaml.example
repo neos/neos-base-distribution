@@ -13,9 +13,6 @@ TYPO3:
   FLOW3:
     persistence:
       backendOptions:
-        host: '127.0.0.1'    # adjust to your database host
-
-  # On Windows, you might need to uncomment the following lines and specify
-  # the location of the PHP binary manually.
-  #  core:
-  #    phpBinaryPathAndFilename: 'C:/path/to/php.exe'
+        dbname: 'phoenix'    # adjust to your database name
+        user: ''             # adjust to your database user
+        password: ''         # adjust to your database password

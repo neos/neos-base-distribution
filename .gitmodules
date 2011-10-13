@@ -40,3 +40,6 @@
 [submodule "Packages/Application/TYPO3.Media"]
 	path = Packages/Application/TYPO3.Media
 	url = git://git.typo3.org/FLOW3/Packages/Media.git
+[submodule "Packages/Framework/Symfony.Component.Yaml"]
+	path = Packages/Framework/Symfony.Component.Yaml
+	url = git://git.typo3.org/FLOW3/Packages/Symfony.Component.Yaml.git

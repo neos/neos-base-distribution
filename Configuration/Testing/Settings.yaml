@@ -1,8 +1,8 @@
 #                                                                        #
-# Example Settings                                                       #
+# Testing Settings                                                       #
 #                                                                        #
 # This file contains settings for various parts of the application.      #
-# Copy this file to Settings.yaml, and adjust as necessary.              #
+#                                                                        #
 #                                                                        #
 # Please refer to the default settings file(s) or the manuals for        #
 # possible configuration options.                                        #
@@ -13,9 +13,6 @@ TYPO3:
   FLOW3:
     persistence:
       backendOptions:
-        host: '127.0.0.1'    # adjust to your database host
-
-  # On Windows, you might need to uncomment the following lines and specify
-  # the location of the PHP binary manually.
-  #  core:
-  #    phpBinaryPathAndFilename: 'C:/path/to/php.exe'
+        dbname: 'flow3_functional_testing'     # adjust to your database name
+        user: ''                               # adjust to your database user
+        password: ''                           # adjust to your database password

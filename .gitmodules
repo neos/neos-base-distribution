@@ -12,7 +12,7 @@
 	url = git://git.typo3.org/FLOW3/Packages/TYPO3.Fluid.git
 [submodule "Packages/Framework/TYPO3.Kickstart"]
 	path = Packages/Framework/TYPO3.Kickstart
-	url = git://git.typo3.org/FLOW3/Packages/Kickstart.git
+	url = git://git.typo3.org/FLOW3/Packages/TYPO3.Kickstart.git
 [submodule "Packages/Framework/TYPO3.Party"]
 	path = Packages/Framework/TYPO3.Party
 	url = git://git.typo3.org/FLOW3/Packages/TYPO3.Party.git

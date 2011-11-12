@@ -1,9 +1,15 @@
 [submodule "Build/Common"]
 	path = Build/Common
 	url = git://git.typo3.org/FLOW3/BuildEssentials
-[submodule "Packages/Framework/Doctrine"]
-	path = Packages/Framework/Doctrine
-	url = git://git.typo3.org/FLOW3/Packages/Doctrine.git
+[submodule "Packages/Framework/Doctrine.Common"]
+	path = Packages/Framework/Doctrine.Common
+	url = git://git.typo3.org/FLOW3/Packages/Doctrine.Common.git
+[submodule "Packages/Framework/Doctrine.DBAL"]
+	path = Packages/Framework/Doctrine.DBAL
+	url = git://git.typo3.org/FLOW3/Packages/Doctrine.DBAL.git
+[submodule "Packages/Framework/Doctrine.ORM"]
+	path = Packages/Framework/Doctrine.ORM
+	url = git://git.typo3.org/FLOW3/Packages/Doctrine.ORM.git
 [submodule "Packages/Framework/TYPO3.FLOW3"]
 	path = Packages/Framework/TYPO3.FLOW3
 	url = git://git.typo3.org/FLOW3/Packages/TYPO3.FLOW3.git

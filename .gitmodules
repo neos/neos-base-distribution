@@ -55,3 +55,6 @@
 [submodule "Packages/Sites/TYPO3.PhoenixDemoTypo3Org"]
 	path = Packages/Sites/TYPO3.PhoenixDemoTypo3Org
 	url = git://git.typo3.org/FLOW3/Packages/PhoenixDemoTypo3Org.git
+[submodule "Packages/Application/TYPO3.Eel"]
+	path = Packages/Application/TYPO3.Eel
+	url = git://git.typo3.org/FLOW3/Packages/TYPO3.Eel.git

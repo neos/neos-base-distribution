@@ -20,10 +20,10 @@
 	# Set flag so we know URL rewriting is available
 	SetEnv FLOW3_REWRITEURLS 1
 
-	# You will have to enable the following option and change the path if you
+	# You will have to change the path in the following option if you
 	# experience problems while your installation is located in a subdirectory
 	# of the website root.
-#	RewriteBase /
+	RewriteBase /
 
 	# Stop rewrite processing no matter if a package resource, robots.txt etc. exists or not
 	RewriteRule ^(_Resources/Packages/|robots\.txt|favicon\.ico) - [L]

@@ -58,3 +58,6 @@
 [submodule "Packages/Application/TYPO3.Eel"]
 	path = Packages/Application/TYPO3.Eel
 	url = git://git.typo3.org/FLOW3/Packages/TYPO3.Eel.git
+[submodule "Packages/Framework/Symfony.Component.DomCrawler"]
+	path = Packages/Framework/Symfony.Component.DomCrawler
+	url = git://git.typo3.org/FLOW3/Packages/Symfony.Component.DomCrawler.git

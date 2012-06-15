@@ -7,6 +7,7 @@ Build/Resources/Java/ext-doc/java/src/main/extdoc/jsdoc/tplschema/
 /Configuration/Production/IncludeCachedConfigurations.php
 /Configuration/PackageStates.php
 /Configuration/Settings.yaml
+/Configuration/Development/Settings.yaml
 /Data/
 /Tests/Selenium/settings.xml
 /Tests/Unit/

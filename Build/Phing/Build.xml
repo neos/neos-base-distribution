@@ -19,118 +19,8 @@
  * The TYPO3 project - inspiring people to share!                         *
 -->
 <project name="Build">
-	<target name="test-selenium.help" description="Instructions how to run Selenium tests">
-<echo>
-Initial Setup:
-==============
-1) Generate a test-config file. This contains information about which
-   browser to test, and what URL to use:
-    # Use the following for firefox:
-    phing -Dseleniumrc.url=http://your-phoenix-base-uri/ test-selenium-firefox
-    # Use the following for Chrome:
-    phing -Dseleniumrc.url=http://your-phoenix-base-uri/ test-selenium-chrome
 
-Running Tests
-=============
-1) Start Selenium server with
-    phing selenium-server
-2) Make sure you generated the test-config file. (see "Initial Setup" above)
-3) Run Selenium using the phpunit tool:
-    phpunit Tests/Selenium/
-
-Tips and Tricks
-===============
-The standard PHPUnit Command line options can be used; especially helpful
-is to use the "--filter"-option which can be used to run a single test case:
-    phpunit --filter breadcrumbMenuShowsAndHidesNextLevel Tests/Selenium/
-</echo>
-	</target>
-
-	<target name="test-selenium-firefox" description="Run selenium tests in Firefox. For further instructions, run 'phing test-selenium.help'.">
-		<phingcall target="test-selenium.internal">
-			<property name="seleniumrc.browser" value="*chrome" />
-		</phingcall>
-	</target>
-
-	<target name="test-selenium-chrome" description="Run selenium tests in Google Chrome. For further instructions, run 'phing test-selenium.help'.">
-		<phingcall target="test-selenium.internal">
-			<property name="seleniumrc.browser" value="googlechrome" />
-		</phingcall>
-	</target>
-
-	<target name="test-selenium.internal">
-		<echo file="${project.basedir}/Tests/Selenium/settings.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
-<selenium>
-	<target name="Firefox Testing Phoenix">
-		<browser>${seleniumrc.browser}</browser>
-		<host>${seleniumrc.host}</host>
-		<port>${seleniumrc.port}</port>
-		<timeout>30000</timeout>
-	</target>
-	<url>${seleniumrc.url}</url>
-</selenium>]]></echo>
-		<echo>
-	Selenium is configured now to the following settings:
-	Browser:                ${seleniumrc.browser}
-	Selenium Host:          ${seleniumrc.host}
-	Selenium Port:          ${seleniumrc.port}
-	TYPO3 Phoenix Base URL: ${seleniumrc.url}
-
-	run "phing test-selenium.help" for further instructions.
-		</echo>
-	</target>
-	<target name="selenium-server" description="Run Selenium Server">
-		<adhoc-task name="downloadFile"><![CDATA[
-			class DownloadFileTask extends Task {
-				protected $sourceUri;
-				protected $targetFile;
-
-				public function setSourceUri($sourceUri) {
-					$this->sourceUri = $sourceUri;
-				}
-				public function setTargetFile(PhingFile $targetFile) {
-					$this->targetFile = $targetFile;
-				}
-				public function main() {
-					if ($this->targetFile->exists()) {
-						$this->log('The Selenium Server was found.', Project::MSG_INFO);
-						return;
-					}
-
-					$this->log('The Selenium Server was not found, starting download...', Project::MSG_INFO);
-					$remoteHandle = fopen($this->sourceUri, 'rb');
-					$fileWriter = new FileWriter($this->targetFile, FALSE);
-
-					while (!feof($remoteHandle)) {
-						$chunk = fread($remoteHandle, 8192);
-						$fileWriter->write($chunk);
-					}
-					$fileWriter->flush();
-					$fileWriter->close();
-					fclose($remoteHandle);
-
-					$this->log('The Selenium Server is now downloaded and ready to use.', Project::MSG_INFO);
-				}
-			}
-		]]></adhoc-task>
-		<downloadFile targetFile="${project.buildDirectory}Resources/Java/selenium-server-standalone-2.0b3.jar" sourceUri="http://selenium.googlecode.com/files/selenium-server-standalone-2.0b3.jar" />
-		<exec command="java -jar ${project.buildDirectory}Resources/Java/selenium-server-standalone-2.0b3.jar -browserSessionReuse -userExtensions ${project.buildDirectory}Resources/Java/user-extensions.js" passthru="true" />
-	</target>
-	<target name="doc-render-js-api">
-		<!-- building ext-doc if it does not exist -->
-		<if>
-			<not>
-				<available file="${project.buildDirectory}Resources/Java/ext-doc/build/dist/ext-doc-snapshot/ext-doc.jar"/>
-			</not>
-			<then>
-				<exec command="ant" dir="${project.buildDirectory}Resources/Java/ext-doc/" />
-			</then>
-		</if>
-
-		<exec command="java -jar ${project.buildDirectory}Resources/Java/ext-doc/build/dist/ext-doc-snapshot/ext-doc.jar -p ${project.buildDirectory}Resources/JSAPI/ext.xml -o ${project.basedir}/Packages/Application/TYPO3/Documentation/JSAPI -t ${project.buildDirectory}Resources/Java/ext-doc/template/ext/template.xml -verbose" logoutput="true" />
-	</target>
-
-	<target name="build" depends="clean, doc-render, doc-render-js-api, createarchives"/>
+	<target name="build" depends="clean, createarchives"/>
 
 	<target name="deploy-latest">
 		<fail unless="env.BUILD_NUMBER" message="You must set the environment variable BUILD_NUMBER for this task."/>
@@ -158,7 +48,7 @@ is to use the "--filter"-option which can be used to run a single test case:
 			<param value="${url.latest.base}typo3/setup/importandcreateadministrator?packageKey=PhoenixDemoTypo3Org&amp;identifier=admin&amp;password=password&amp;person[name][firstName]=George&amp;person[name][lastName]=Hudson"/>
 		</php>
 	</target>
-	<target name="build-latest" depends="clean, doc-render, doc-render-js-api, create-archive-bz2"/>
+	<target name="build-latest" depends="clean, create-archive-bz2"/>
 
 	<target name="deploy-sprint">
 		<fail unless="buildNumber" message="You must set the buildNumber property for this task."/>
@@ -191,35 +81,8 @@ is to use the "--filter"-option which can be used to run a single test case:
 		<fail unless="env.RELEASE_VERSION" message="You must set the environment variable RELEASE_VERSION for this task."/>
 		<property name="releaseVersion" value="${env.RELEASE_VERSION}"/>
 
-		<phingcall target="lint"/>
-		<phingcall target="test"/>
-		<phingcall target="release-tag"/>
 		<phingcall target="build"/>
 
-		<phingcall target="doc-publish-api">
-			<property name="packageKey" value="TYPO3"/>
-		</phingcall>
-		<phingcall target="doc-publish-manual">
-			<property name="packageKey" value="TYPO3"/>
-		</phingcall>
-		<phingcall target="doc-publish-manual">
-			<property name="packageKey" value="TYPO3"/>
-			<property name="manual.folder" value="UserInterfaceDevelopment"/>
-		</phingcall>
-		<phingcall target="doc-publish-api">
-			<property name="packageKey" value="TYPO3CR"/>
-		</phingcall>
-		<phingcall target="doc-publish-api">
-			<property name="packageKey" value="TypoScript"/>
-		</phingcall>
-		<phingcall target="doc-publish-manual">
-			<property name="packageKey" value="TypoScript"/>
-		</phingcall>
-
-		<phingcall target="deploy-sprint">
-			<property name="buildNumber" value="${env.BUILD_NUMBER}"/>
-		</phingcall>
-		<phingcall target="release-publish-archives"/>
 	</target>
 
 	<target name="createarchives" depends="create-archive-zip,create-archive-gz,create-archive-bz2"/>
@@ -278,4 +141,22 @@ is to use the "--filter"-option which can be used to run a single test case:
 		<exec logoutput="true" checkreturn="true" command="rsync -avP -e ssh ${project.archivesDirectory}TYPO3\ Phoenix typo3.frs.sourceforge.net:/home/frs/project/t/ty/typo3/"/>
 		<delete dir="${project.archivesDirectory}TYPO3\ Phoenix" quiet="true" includeemptydirs="true"/>
 	</target>
+
+	<fileset dir="${project.basedir}" id="files-for-release-archive">
+		<exclude name="**dir_conflicts.prej"/>
+		<exclude name="**/.git**" />
+		<exclude name="Configuration/Settings.yaml"/>
+		<exclude name="Configuration/Development/Settings.yaml"/>
+		<exclude name="Configuration/PackageStates.php"/>
+		<exclude name="Configuration/Production/IncludeCachedConfigurations.php"/>
+		<exclude name="Data/Temporary**"/>
+		<exclude name="Data/**"/>
+		<exclude name="Web/_Resources**"/>
+
+		<include name="Configuration/**"/>
+		<include name="Packages/**"/>
+		<include name="Web/**"/>
+
+		<include name="flow3**"/>
+	</fileset>
 </project>

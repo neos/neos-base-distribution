@@ -73,3 +73,6 @@
 [submodule "Packages/Application/TYPO3.DocTools"]
 	path = Packages/Application/TYPO3.DocTools
 	url = git://git.typo3.org/FLOW3/Packages/TYPO3.DocTools.git
+[submodule "Packages/Application/TYPO3.SiteKickstarter"]
+	path = Packages/Application/TYPO3.SiteKickstarter
+	url = git://git.typo3.org/FLOW3/Packages/TYPO3.SiteKickstarter.git

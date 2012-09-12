@@ -8,16 +8,6 @@
 #                                                                        #
 
 ##
-# TYPO3.Setup subroutes
-
--
-  name: 'TYPO3.Setup'
-  uriPattern: '<TYPO3SetupSubroutes>'
-  subRoutes:
-    TYPO3SetupSubroutes:
-      package: TYPO3.Setup
-
-##
 # TYPO3 subroutes
 
 -

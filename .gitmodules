@@ -76,3 +76,6 @@
 [submodule "Packages/Application/TYPO3.SiteKickstarter"]
 	path = Packages/Application/TYPO3.SiteKickstarter
 	url = git://git.typo3.org/FLOW3/Packages/TYPO3.SiteKickstarter.git
+[submodule "Packages/Application/TYPO3.Phoenix.ContentTypes"]
+	path = Packages/Application/TYPO3.Phoenix.ContentTypes
+	url = git://git.typo3.org/FLOW3/Packages/TYPO3.Phoenix.ContentTypes.git

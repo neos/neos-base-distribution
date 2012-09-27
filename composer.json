@@ -1,0 +1,28 @@
+{
+    "name": "typo3/phoenix-base-distribution",
+    "description" : "Phoenix Base Distribution",
+    "license": "GPL-3.0+",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://ci.typo3.robertlemke.net/job/composer-packages/ws/repository/"
+        }
+    ],
+    "config": {
+        "vendor-dir": "Packages/Vendor",
+        "bin-dir": "bin"
+    },
+    "require": {
+        "typo3/phoenix": "dev-master",
+        "typo3/phoenixdemotypo3org": "dev-master"
+    },
+    "require-dev": {
+        "typo3/buildessentials": "dev-master",
+        "mikey179/vfsstream": "1.1.*"
+    },
+    "minimum-stability": "dev",
+    "scripts": {
+        "post-update-cmd": "TYPO3\\FLOW3\\Composer\\InstallerScripts::postUpdateAndInstall",
+        "post-install-cmd": "TYPO3\\FLOW3\\Composer\\InstallerScripts::postUpdateAndInstall"
+    }
+}

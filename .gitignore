@@ -1,17 +1,13 @@
-/Build/Archives/
-/Build/Reports/
-/Build/Temporary/
-Build/Resources/Java/ext-doc/build/
-Build/Resources/Java/ext-doc/java/src/main/extdoc/jsdoc/schema/
-Build/Resources/Java/ext-doc/java/src/main/extdoc/jsdoc/tplschema/
-/Configuration/Production/IncludeCachedConfigurations.php
-/Configuration/PackageStates.php
-/Configuration/Settings.yaml
-/Configuration/Development/Settings.yaml
+/Build/
+/Configuration/
 /Data/
+/Packages/
 /Tests/Selenium/settings.xml
-/Tests/Unit/
-/Web/_Resources/
+/Web/
+/Readme.txt
+/Upgrading.txt
+/flow3
+/flow3.bat
 
 # ignore the downloaded selenium server, and the selenium
 # temporary directory (which starts with a quote, do not ask why...)

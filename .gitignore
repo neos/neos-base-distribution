@@ -6,8 +6,8 @@
 /Web/
 /Readme.txt
 /Upgrading.txt
-/flow3
-/flow3.bat
+/flow
+/flow.bat
 
 # ignore the downloaded selenium server, and the selenium
 # temporary directory (which starts with a quote, do not ask why...)

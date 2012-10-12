@@ -1,6 +1,6 @@
 {
-    "name": "typo3/phoenix-base-distribution",
-    "description" : "Phoenix Base Distribution",
+    "name": "typo3/neos-base-distribution",
+    "description" : "TYPO3 Neos Base Distribution",
     "license": "GPL-3.0+",
     "repositories": [
         {
@@ -9,7 +9,7 @@
         }
     ],
     "config": {
-        "vendor-dir": "Packages/Vendor",
+        "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin"
     },
     "require": {

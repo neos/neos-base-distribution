@@ -8,11 +8,11 @@
 #                                                                        #
 
 ##
-# TYPO3 subroutes
+# TYPO3 Neos subroutes
 
 -
-  name: 'TYPO3'
-  uriPattern: '<TYPO3Subroutes>'
+  name: 'TYPO3Neos'
+  uriPattern: '<TYPO3NeosSubroutes>'
   subRoutes:
-    TYPO3Subroutes:
-      package: TYPO3.TYPO3
+    TYPO3NeosSubroutes:
+      package: TYPO3.Neos

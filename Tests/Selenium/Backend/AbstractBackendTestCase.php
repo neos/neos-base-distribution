@@ -42,7 +42,7 @@ abstract class AbstractBackendTestCase extends \TYPO3\Demo\Tests\Selenium\Seleni
 		$this->open("/typo3/login");
 		$this->type("//input[@name='TYPO3[FLOW3][Security][Authentication][Token][UsernamePassword][username]']", $username);
 		$this->type("//input[@name='TYPO3[FLOW3][Security][Authentication][Token][UsernamePassword][password]']", $password);
-		$this->clickAndWait("//a[@id='typo3-typo3-login-button']");
+		$this->clickAndWait("//a[@id='typo3-neos-login-button']");
 		sleep(4); // some delay to load the backend fully, and to make sure the content frame is loaded.
 		// Needed in Chrome at least, and makes tests in Firefox more robust.
 	}

@@ -37,7 +37,7 @@ class EditTextContentText extends \TYPO3\Demo\Tests\Selenium\Backend\AbstractBac
 
 			// Activate edit mode
 		$this->gotoContentFrame();
-		$this->doubleClick('css=.typo3-typo3-editable:contains("defaced")');
+		$this->doubleClick('css=.typo3-neos-editable:contains("defaced")');
 		sleep(1);
 		$this->gotoOuterFrame();
 		$this->assertBreadcrumbMenuPathActivated('menu/main/content/children/edit');

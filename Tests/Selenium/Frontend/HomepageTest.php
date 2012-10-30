@@ -52,8 +52,8 @@ class HomepageTest extends \TYPO3\Demo\Tests\Selenium\SeleniumTestCase {
 	 * Helper which checks the homepage text is there.
 	 */
 	protected function assertHomepageTextPresent() {
-		$this->assertEquals("TYPO3 Phoenix Demo Site", $this->getText("css=#header h1"));
-		$this->checkText('This is the TYPO3 Phoenix demo website.');
+		$this->assertEquals("TYPO3 Neos Demo Site", $this->getText("css=#header h1"));
+		$this->checkText('This is the TYPO3 Neos demo website.');
 	}
 
 	/**
@@ -62,7 +62,7 @@ class HomepageTest extends \TYPO3\Demo\Tests\Selenium\SeleniumTestCase {
 	 */
 	public function anotherPageContainsExpectedText() {
 		$this->open('/homepage/anotherpage');
-		$this->checkText('This is another page which exists for the sole purpose to demonstrate sub pages in TYPO3 Phoenix.');
+		$this->checkText('This is another page which exists for the sole purpose to demonstrate sub pages in TYPO3 Neos.');
 	}
 
 }

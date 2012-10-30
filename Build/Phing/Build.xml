@@ -27,25 +27,25 @@
 		<fail unless="releaseVersion" message="You must set the releaseVersion property for this task."/>
 		<if>
 			<not>
-				<available file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
+				<available file="${project.archivesDirectory}TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
 			</not>
 			<then>
 				<phingcall target="build-latest"/>
 			</then>
 		</if>
-		<exec logoutput="true" checkreturn="true" command="scp ${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2 ${ssh.host.demo}:${path.latest.base}"/>
+		<exec logoutput="true" checkreturn="true" command="scp ${project.archivesDirectory}TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2 ${ssh.host.demo}:${path.latest.base}"/>
 
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.latest.base}/Web"/>
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.latest.base}/Packages"/>
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.latest.base}/Configuration"/>
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.latest.base}/Data"/>
 
-		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} tar -C ${path.latest.base} -xjf ${path.latest.base}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
-		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm ${path.latest.base}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} tar -C ${path.latest.base} -xjf ${path.latest.base}TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm ${path.latest.base}TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2"/>
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} cp ${path.latest.base}favicon.ico ${path.latest.base}Web/"/>
 
 		<php function="file_get_contents">
-			<param value="${url.latest.base}typo3/setup/importandcreateadministrator?packageKey=PhoenixDemoTypo3Org&amp;identifier=admin&amp;password=password&amp;person[name][firstName]=George&amp;person[name][lastName]=Hudson"/>
+			<param value="${url.latest.base}typo3/setup/importandcreateadministrator?packageKey=NeosDemoTypo3Org&amp;identifier=admin&amp;password=password&amp;person[name][firstName]=George&amp;person[name][lastName]=Hudson"/>
 		</php>
 	</target>
 	<target name="build-latest" depends="clean, create-archive-bz2"/>
@@ -55,29 +55,29 @@
 		<fail unless="releaseVersion" message="You must set the releaseVersion property for this task."/>
 		<if>
 			<not>
-				<available file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${buildNumber}.tar.bz2"/>
+				<available file="${project.archivesDirectory}TYPO3-Neos-${releaseVersion}-build${buildNumber}.tar.bz2"/>
 			</not>
 			<then>
-				<fail message="No release archive TYPO3-Phoenix-${releaseVersion}-build${buildNumber}.tar.bz2 found"/>
+				<fail message="No release archive TYPO3-Neos-${releaseVersion}-build${buildNumber}.tar.bz2 found"/>
 			</then>
 		</if>
-		<exec logoutput="true" checkreturn="true" command="scp ${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${buildNumber}.tar.bz2 ${ssh.host.demo}:${path.demo.base}"/>
+		<exec logoutput="true" checkreturn="true" command="scp ${project.archivesDirectory}TYPO3-Neos-${releaseVersion}-build${buildNumber}.tar.bz2 ${ssh.host.demo}:${path.demo.base}"/>
 
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Web"/>
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Packages"/>
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Configuration"/>
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm -rf ${path.demo.base}/Data"/>
 
-		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} tar -C ${path.demo.base} -xjf ${path.demo.base}TYPO3-Phoenix-${releaseVersion}-build${buildNumber}.tar.bz2"/>
-		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm ${path.demo.base}TYPO3-Phoenix-${releaseVersion}-build${buildNumber}.tar.bz2"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} tar -C ${path.demo.base} -xjf ${path.demo.base}TYPO3-Neos-${releaseVersion}-build${buildNumber}.tar.bz2"/>
+		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} rm ${path.demo.base}TYPO3-Neos-${releaseVersion}-build${buildNumber}.tar.bz2"/>
 		<exec logoutput="true" checkreturn="true" command="ssh ${ssh.host.demo} cp ${path.demo.base}favicon.ico ${path.demo.base}Web/"/>
 
 		<php function="file_get_contents">
-			<param value="${url.demo.base}typo3/setup/importandcreateadministrator?packageKey=PhoenixDemoTypo3Org&amp;identifier=admin&amp;password=password&amp;person[name][firstName]=George&amp;person[name][lastName]=Hudson"/>
+			<param value="${url.demo.base}typo3/setup/importandcreateadministrator?packageKey=NeosDemoTypo3Org&amp;identifier=admin&amp;password=password&amp;person[name][firstName]=George&amp;person[name][lastName]=Hudson"/>
 		</php>
 	</target>
 
-	<target name="release-sprint" description="Release Phoenix sprint result to SourceForge and flow3.typo3.org">
+	<target name="release-sprint" description="Release Neos sprint result to SourceForge and flow3.typo3.org">
 		<fail unless="env.RELEASE_VERSION" message="You must set the environment variable RELEASE_VERSION for this task."/>
 		<property name="releaseVersion" value="${env.RELEASE_VERSION}"/>
 
@@ -91,55 +91,55 @@
 
 		<mkdir dir="${project.archivesDirectory}"/>
 
-		<delete file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.zip" quiet="true"/>
-		<zip destfile="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.zip">
+		<delete file="${project.archivesDirectory}TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.zip" quiet="true"/>
+		<zip destfile="${project.archivesDirectory}TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.zip">
 			<fileset refid="files-for-release-archive"/>
 		</zip>
 
-		<filehash file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.zip" propertyname="md5.zip"/>
+		<filehash file="${project.archivesDirectory}TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.zip" propertyname="md5.zip"/>
 		<echo>MD5 hash for the generated archive is:</echo>
-		<echo>${md5.zip} TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.zip</echo>
+		<echo>${md5.zip} TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.zip</echo>
 	</target>
 	<target name="create-archive-gz">
 		<fail unless="releaseVersion" message="You must set the releaseVersion property for this task."/>
 
 		<mkdir dir="${project.archivesDirectory}"/>
 
-		<delete file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.gz" quiet="true"/>
-		<tar destfile="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.gz" compression="gzip">
+		<delete file="${project.archivesDirectory}TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.tar.gz" quiet="true"/>
+		<tar destfile="${project.archivesDirectory}TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.tar.gz" compression="gzip">
 			<fileset refid="files-for-release-archive"/>
 		</tar>
 
-		<filehash file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.gz" propertyname="md5.targz"/>
+		<filehash file="${project.archivesDirectory}TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.tar.gz" propertyname="md5.targz"/>
 		<echo>MD5 hash for the generated archive is:</echo>
-		<echo>${md5.targz} TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.gz</echo>
+		<echo>${md5.targz} TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.tar.gz</echo>
 	</target>
 	<target name="create-archive-bz2">
 		<fail unless="releaseVersion" message="You must set the releaseVersion property for this task."/>
 
 		<mkdir dir="${project.archivesDirectory}"/>
 
-		<delete file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2" quiet="true"/>
-		<tar destfile="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2" compression="bzip2">
+		<delete file="${project.archivesDirectory}TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2" quiet="true"/>
+		<tar destfile="${project.archivesDirectory}TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2" compression="bzip2">
 			<fileset refid="files-for-release-archive"/>
 		</tar>
 
-		<filehash file="${project.archivesDirectory}TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2" propertyname="md5.tarbz2"/>
+		<filehash file="${project.archivesDirectory}TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2" propertyname="md5.tarbz2"/>
 		<echo>MD5 hash for the generated archive is:</echo>
-		<echo>${md5.tarbz2} TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2</echo>
+		<echo>${md5.tarbz2} TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.tar.bz2</echo>
 	</target>
 
 	<target name="release-publish-archives">
 		<fail unless="releaseVersion" message="You must set the releaseVersion property for this task."/>
 
-		<mkdir dir="${project.archivesDirectory}TYPO3 Phoenix/${releaseVersion}"/>
-		<copy todir="${project.archivesDirectory}TYPO3 Phoenix/${releaseVersion}">
+		<mkdir dir="${project.archivesDirectory}TYPO3 Neos/${releaseVersion}"/>
+		<copy todir="${project.archivesDirectory}TYPO3 Neos/${releaseVersion}">
 			<fileset dir="${project.archivesDirectory}">
-				<include name="TYPO3-Phoenix-${releaseVersion}-build${env.BUILD_NUMBER}.*"/>
+				<include name="TYPO3-Neos-${releaseVersion}-build${env.BUILD_NUMBER}.*"/>
 			</fileset>
 		</copy>
-		<exec logoutput="true" checkreturn="true" command="rsync -avP -e ssh ${project.archivesDirectory}TYPO3\ Phoenix typo3.frs.sourceforge.net:/home/frs/project/t/ty/typo3/"/>
-		<delete dir="${project.archivesDirectory}TYPO3\ Phoenix" quiet="true" includeemptydirs="true"/>
+		<exec logoutput="true" checkreturn="true" command="rsync -avP -e ssh ${project.archivesDirectory}TYPO3\ Neos typo3.frs.sourceforge.net:/home/frs/project/t/ty/typo3/"/>
+		<delete dir="${project.archivesDirectory}TYPO3\ Neos" quiet="true" includeemptydirs="true"/>
 	</target>
 
 	<fileset dir="${project.basedir}" id="files-for-release-archive">

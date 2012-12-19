@@ -367,18 +367,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console",
-                "reference": "92cd0e84022f31287337ab17842bbfff47d2fc79"
+                "reference": "388ea8dbc1b3e1f96721e2799eb2d037e411a281"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/Console/archive/92cd0e84022f31287337ab17842bbfff47d2fc79.zip",
-                "reference": "92cd0e84022f31287337ab17842bbfff47d2fc79",
+                "url": "https://github.com/symfony/Console/archive/388ea8dbc1b3e1f96721e2799eb2d037e411a281.zip",
+                "reference": "388ea8dbc1b3e1f96721e2799eb2d037e411a281",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "2012-12-14 09:43:16",
+            "time": "2012-12-19 07:09:49",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -415,12 +415,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/DomCrawler",
-                "reference": "b186c987f56375ebb1be9a7dd6686352db1ce096"
+                "reference": "60d8c908a24ccab2beddc64d7624730fc84957bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/DomCrawler/archive/b186c987f56375ebb1be9a7dd6686352db1ce096.zip",
-                "reference": "b186c987f56375ebb1be9a7dd6686352db1ce096",
+                "url": "https://github.com/symfony/DomCrawler/archive/60d8c908a24ccab2beddc64d7624730fc84957bd.zip",
+                "reference": "60d8c908a24ccab2beddc64d7624730fc84957bd",
                 "shasum": ""
             },
             "require": {
@@ -432,7 +432,7 @@
             "suggest": {
                 "symfony/css-selector": "2.2.*"
             },
-            "time": "2012-11-29 10:32:45",
+            "time": "2012-12-19 07:09:49",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -469,18 +469,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml",
-                "reference": "69f09b9a989c54a6c3dcb1b88c981f10fde40d62"
+                "reference": "365b4df7802b9bb93084d2cc9a51fe88b488f956"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/Yaml/archive/69f09b9a989c54a6c3dcb1b88c981f10fde40d62.zip",
-                "reference": "69f09b9a989c54a6c3dcb1b88c981f10fde40d62",
+                "url": "https://github.com/symfony/Yaml/archive/365b4df7802b9bb93084d2cc9a51fe88b488f956.zip",
+                "reference": "365b4df7802b9bb93084d2cc9a51fe88b488f956",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "2012-12-15 13:02:34",
+            "time": "2012-12-19 07:09:49",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -579,7 +579,7 @@
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/FLOW3/Packages/TYPO3.FLOW3.git",
-                "reference": "5183f3c7a7f1e55ad9a9d3420f415a372feb62b9"
+                "reference": "6d825e960679dab83d0d53f505e183a399b9b442"
             },
             "require": {
                 "php": ">=5.3.2",
@@ -596,7 +596,7 @@
                 "symfony/dom-crawler": "~2.2",
                 "typo3/flow-composer-installers": "*"
             },
-            "time": "2012-12-18 16:34:04",
+            "time": "2012-12-19 09:40:46",
             "type": "typo3-flow-framework",
             "installation-source": "source",
             "autoload": {
@@ -616,15 +616,15 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/christianjul/installers.git",
-                "reference": "213c8b97655abd139b74bb0c22da211fa3a9ef5b"
+                "reference": "bf887890333e8c73a93701ffb09f71c914b8be35"
             },
             "replace": {
                 "shama/baton": "*"
             },
             "require-dev": {
-                "composer/composer": "1.0.*"
+                "composer/composer": "1.0.*@dev"
             },
-            "time": "2012-12-06 20:19:56",
+            "time": "2012-12-19 10:08:40",
             "type": "composer-installer",
             "extra": {
                 "class": "Composer\\Installers\\Installer"
@@ -654,6 +654,7 @@
                 "kohana",
                 "li3",
                 "lithium",
+                "mako",
                 "fuelphp",
                 "codeigniter",
                 "symfony",
@@ -664,7 +665,9 @@
                 "drupal",
                 "zend",
                 "silverstripe",
-                "TYPO3 Flow"
+                "agl",
+                "TYPO3 Flow",
+                "TYPO3 Neos"
             ]
         },
         {
@@ -786,7 +789,7 @@
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/FLOW3/Packages/TYPO3.TYPO3.git",
-                "reference": "2e8a464a19f869afb15c02b8c04efaf5eb88ec75"
+                "reference": "2b70bb0cee4ef22d857e10a09708c3269038f446"
             },
             "require": {
                 "typo3/flow": "*",
@@ -800,7 +803,7 @@
                 "typo3/typoscript": "*",
                 "typo3/sitekickstarter": "*"
             },
-            "time": "2012-12-18 16:35:45",
+            "time": "2012-12-18 21:03:32",
             "type": "typo3-flow-package",
             "installation-source": "source",
             "autoload": {

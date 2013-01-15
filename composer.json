@@ -2,12 +2,6 @@
     "name": "typo3/neos-base-distribution",
     "description" : "TYPO3 Neos Base Distribution",
     "license": "GPL-3.0+",
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "http://ci.typo3.robertlemke.net/job/composer-packages/ws/repository/"
-        }
-    ],
     "config": {
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin"

@@ -8,7 +8,8 @@
     },
     "require": {
         "typo3/neos": "dev-master",
-        "typo3/neosdemotypo3org": "dev-master"
+        "typo3/neosdemotypo3org": "dev-master",
+        "typo3/sitekickstarter": "dev-master"
     },
     "require-dev": {
         "typo3/buildessentials": "dev-master",

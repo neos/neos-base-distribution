@@ -13,7 +13,8 @@
     },
     "require-dev": {
         "typo3/buildessentials": "dev-master",
-        "mikey179/vfsstream": "1.1.*"
+        "mikey179/vfsstream": "1.1.*",
+        "flowpack/behat": "dev-master"
     },
     "minimum-stability": "dev",
     "scripts": {

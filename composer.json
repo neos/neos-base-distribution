@@ -14,6 +14,7 @@
     "require-dev": {
         "typo3/buildessentials": "dev-master",
         "mikey179/vfsstream": "1.1.*",
+        "phpunit/phpunit": "3.7.*",
         "flowpack/behat": "dev-master"
     },
     "minimum-stability": "dev",

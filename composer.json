@@ -7,9 +7,9 @@
         "bin-dir": "bin"
     },
     "require": {
-        "typo3/neos": "master.*",
-        "typo3/neosdemotypo3org": "master.*",
-        "typo3/sitekickstarter": "dev-master"
+        "typo3/neos": "1.0.0-alpha5",
+        "typo3/neosdemotypo3org": "1.0.0-alpha5",
+        "typo3/sitekickstarter": "1.0.0-alpha5"
     },
     "require-dev": {
         "typo3/buildessentials": "dev-master",

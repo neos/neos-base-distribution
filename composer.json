@@ -9,7 +9,15 @@
     "require": {
         "typo3/neos": "1.0.0-alpha5",
         "typo3/neosdemotypo3org": "1.0.0-alpha5",
-        "typo3/sitekickstarter": "1.0.0-alpha5"
+        "typo3/sitekickstarter": "1.0.0-alpha5",
+        "typo3/extjs": "1.0.0-alpha5",
+        "typo3/aloha": "1.0.0-alpha5",
+        "typo3/media": "1.0.0-alpha5",
+        "typo3/neos-nodetypes": "1.0.0-alpha5",
+        "typo3/setup": "1.0.0-alpha5",
+        "typo3/twitter-bootstrap": "1.0.0-alpha5",
+        "typo3/typo3cr": "1.0.0-alpha5",
+        "typo3/typoscript": "1.0.0-alpha5"
     },
     "require-dev": {
         "typo3/buildessentials": "dev-master",

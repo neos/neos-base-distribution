@@ -7,8 +7,8 @@
         "bin-dir": "bin"
     },
     "require": {
-        "typo3/neos": "dev-master",
-        "typo3/neosdemotypo3org": "dev-master",
+        "typo3/neos": "master.*",
+        "typo3/neosdemotypo3org": "master.*",
         "typo3/sitekickstarter": "dev-master"
     },
     "require-dev": {

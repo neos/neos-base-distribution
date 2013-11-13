@@ -9,19 +9,13 @@
     "require": {
         "typo3/neos": "dev-master",
         "typo3/neosdemotypo3org": "dev-master",
-        "typo3/sitekickstarter": "dev-master",
-        "typo3/eel": "@beta",
-        "typo3/fluid": "@beta",
-        "typo3/party": "@beta",
-        "typo3/flow": "1.0.0-beta1",
-        "typo3/welcome": "1.0.0-beta1"
+        "typo3/sitekickstarter": "dev-master"
     },
     "require-dev": {
-        "typo3/buildessentials": "1.0.0-beta1",
+        "typo3/buildessentials": "dev-master",
         "mikey179/vfsstream": "1.2.*",
         "phpunit/phpunit": "3.7.*",
-        "flowpack/behat": "dev-master",
-        "typo3/kickstart": "1.0.0-beta1"
+        "flowpack/behat": "dev-master"
     },
     "minimum-stability": "dev",
     "scripts": {

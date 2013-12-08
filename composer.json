@@ -8,6 +8,7 @@
     },
     "require": {
         "typo3/neos": "dev-master",
+        "typo3/neos-nodetypes": "dev-master",
         "typo3/neosdemotypo3org": "dev-master",
         "typo3/sitekickstarter": "dev-master"
     },
@@ -18,6 +19,9 @@
         "flowpack/behat": "dev-master"
     },
     "minimum-stability": "dev",
+    "suggest": {
+        "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
+    },
     "scripts": {
         "post-update-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-install-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",

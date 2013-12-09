@@ -10,20 +10,30 @@
         "typo3/neos": "1.0.*@dev",
         "typo3/neos-nodetypes": "1.0.*@dev",
         "typo3/neosdemotypo3org": "1.0.*@dev",
-        "typo3/neos-kickstarter": "dev-master",
+        "typo3/neos-kickstarter": "1.0.*@dev",
+
+        "doctrine/migrations": "@dev",
+
         "typo3/typoscript": "@dev",
         "typo3/typo3cr": "@dev",
-        "typo3/sitekickstarter": "1.0.*@dev"
+        "typo3/setup": "@RC",
+        "typo3/media": "@RC",
+
+        "typo3/flow": "@RC",
+        "typo3/eel": "@RC",
+        "typo3/fluid": "@RC",
+        "typo3/kickstart": "@RC",
+        "typo3/party": "@RC"
     },
     "require-dev": {
-        "typo3/buildessentials": "dev-master",
+        "typo3/buildessentials": "@RC",
         "mikey179/vfsstream": "1.2.*",
         "phpunit/phpunit": "3.7.*",
         "flowpack/behat": "dev-master"
     },
-    "minimum-stability": "dev",
     "suggest": {
-        "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
+        "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required",
+        "typo3/neos-nodetypes": "Standard nodetypes of TYPO3 Neos"
     },
     "scripts": {
         "post-update-cmd": "TYPO3\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",

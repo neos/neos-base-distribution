@@ -20,7 +20,7 @@
         "typo3/media": "@RC",
 
         "typo3/flow": "@RC",
-        "typo3/eel": "@RC",
+        "typo3/eel": "2.1.x-dev as 2.1.0RC1",
         "typo3/fluid": "@RC",
         "typo3/kickstart": "@RC",
         "typo3/party": "@RC"

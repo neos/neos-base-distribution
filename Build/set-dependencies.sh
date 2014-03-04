@@ -57,14 +57,14 @@ fi
 php "${COMPOSER_PHAR}" require --no-update "typo3/neos:${VERSION}"
 php "${COMPOSER_PHAR}" require --no-update "typo3/neos-nodetypes:${VERSION}"
 php "${COMPOSER_PHAR}" require --no-update "typo3/neosdemotypo3org:${VERSION}"
-php "${COMPOSER_PHAR}" require --no-update "typo3/sitekickstarter:${VERSION}"
+php "${COMPOSER_PHAR}" require --no-update "typo3/neos-kickstarter:${VERSION}"
 commit_manifest_update ${BRANCH} "${BUILD_URL}"
 
 php "${COMPOSER_PHAR}" --working-dir=Packages/Application/TYPO3.Neos require --no-update "typo3/typo3cr:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Application/TYPO3.Neos require --no-update "typo3/typoscript:${VERSION}"
 commit_manifest_update ${BRANCH} "${BUILD_URL}" "Packages/Application/TYPO3.Neos"
 
-for PACKAGE in TYPO3.Neos.NodeTypes TYPO3.SiteKickstarter ; do
+for PACKAGE in TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter ; do
 	php "${COMPOSER_PHAR}" --working-dir=Packages/Application/${PACKAGE} require --no-update "typo3/neos:${VERSION}"
 	commit_manifest_update ${BRANCH} "${BUILD_URL}" "Packages/Application/${PACKAGE}"
 done

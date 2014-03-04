@@ -35,7 +35,7 @@ git log --pretty=format:"%s
 
 " --no-merges ${PREVIOUS_VERSION}.. >> "${TARGET}"
 
-for PACKAGE in TYPO3.Neos TYPO3.Neos.NodeTypes TYPO3.SiteKickstarter TYPO3.TYPO3CR TYPO3.TypoScript ; do
+for PACKAGE in TYPO3.Neos TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter TYPO3.TYPO3CR TYPO3.TypoScript ; do
 	cd "${WORKSPACE}/Packages/Application/${PACKAGE}"
 	echo -e "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n${PACKAGE}\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" >> "${TARGET}"
 	git log --pretty=format:"%s

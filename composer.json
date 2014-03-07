@@ -7,10 +7,12 @@
         "bin-dir": "bin"
     },
     "require": {
-        "typo3/neos": "dev-master",
-        "typo3/neos-nodetypes": "dev-master",
-        "typo3/neosdemotypo3org": "dev-master",
-        "typo3/neos-kickstarter": "dev-master"
+        "typo3/neos": "1.1.*@dev",
+        "typo3/neos-nodetypes": "1.1.*@dev",
+        "typo3/neosdemotypo3org": "1.1.*@dev",
+        "typo3/neos-kickstarter": "1.1.*@dev",
+        "typo3/typoscript": "@dev",
+        "typo3/typo3cr": "@dev"
     },
     "require-dev": {
         "typo3/buildessentials": "dev-master",

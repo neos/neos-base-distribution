@@ -15,7 +15,7 @@
         "typo3/typo3cr": "@dev"
     },
     "require-dev": {
-        "typo3/buildessentials": "dev-master",
+        "typo3/buildessentials": "2.2.*",
         "mikey179/vfsstream": "1.2.*",
         "phpunit/phpunit": "3.7.*",
         "flowpack/behat": "dev-master"

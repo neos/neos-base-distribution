@@ -5,7 +5,7 @@
 #
 # - TYPO3.Neos
 # - TYPO3.Neos.NodeTypes
-# - TYPO3.SiteKickstarter
+# - TYPO3.Neos.Kickstarter
 # - TYPO3.TYPO3CR
 # - TYPO3.TypoScript
 # - TYPO3.NeosDemoTypo3Org

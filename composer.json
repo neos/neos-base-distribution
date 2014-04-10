@@ -7,12 +7,12 @@
         "bin-dir": "bin"
     },
     "require": {
-        "typo3/neos": "1.1.*@dev",
-        "typo3/neos-nodetypes": "1.1.*@dev",
-        "typo3/neosdemotypo3org": "1.1.*@dev",
-        "typo3/neos-kickstarter": "1.1.*@dev",
-        "typo3/typoscript": "@dev",
-        "typo3/typo3cr": "@dev"
+        "typo3/neos": "1.1.0-beta1",
+        "typo3/neos-nodetypes": "1.1.0-beta1",
+        "typo3/neosdemotypo3org": "1.1.0-beta1",
+        "typo3/neos-kickstarter": "1.1.0-beta1",
+        "typo3/typoscript": "@beta",
+        "typo3/typo3cr": "@beta"
     },
     "require-dev": {
         "typo3/buildessentials": "2.2.*",

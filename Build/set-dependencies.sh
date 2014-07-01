@@ -62,6 +62,7 @@ commit_manifest_update ${BRANCH} "${BUILD_URL}"
 
 php "${COMPOSER_PHAR}" --working-dir=Packages/Application/TYPO3.Neos require --no-update "typo3/typo3cr:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Application/TYPO3.Neos require --no-update "typo3/typoscript:${VERSION}"
+php "${COMPOSER_PHAR}" --working-dir=Packages/Application/TYPO3.Neos require --no-update "typo3/media:${VERSION}"
 commit_manifest_update ${BRANCH} "${BUILD_URL}" "Packages/Application/TYPO3.Neos"
 
 for PACKAGE in TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter ; do

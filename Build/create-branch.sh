@@ -9,6 +9,7 @@
 # - TYPO3.TYPO3CR
 # - TYPO3.TypoScript
 # - TYPO3.NeosDemoTypo3Org
+# - TYPO3.Media
 #
 # Needs the following arguments
 #
@@ -34,7 +35,7 @@ BUILD_URL="$2"
 git checkout -b ${BRANCH} origin/master
 
 # branch packages
-for PACKAGE in TYPO3.Neos TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter TYPO3.TYPO3CR TYPO3.TypoScript ; do
+for PACKAGE in TYPO3.Neos TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter TYPO3.TYPO3CR TYPO3.TypoScript TYPO3.Media ; do
 	git --git-dir "Packages/Application/${PACKAGE}/.git" --work-tree "Packages/Application/${PACKAGE}" checkout -b ${BRANCH} origin/master
 done
 cd Packages/Sites/TYPO3.NeosDemoTypo3Org && git checkout -b ${BRANCH} origin/master ; cd -
@@ -42,7 +43,7 @@ cd Packages/Sites/TYPO3.NeosDemoTypo3Org && git checkout -b ${BRANCH} origin/mas
 $(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.*@dev" ${BRANCH} "${BUILD_URL}"
 
 push_branch ${BRANCH}
-for PACKAGE in TYPO3.Neos TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter TYPO3.TYPO3CR TYPO3.TypoScript ; do
+for PACKAGE in TYPO3.Neos TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter TYPO3.TYPO3CR TYPO3.TypoScript TYPO3.Media ; do
 	push_branch ${BRANCH} "Packages/Application/${PACKAGE}"
 done
 push_branch ${BRANCH} "Packages/Sites/TYPO3.NeosDemoTypo3Org"

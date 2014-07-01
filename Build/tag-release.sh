@@ -42,7 +42,7 @@ tag_version ${VERSION} ${BRANCH} "${BUILD_URL}" "Packages/Sites/TYPO3.NeosDemoTy
 push_branch ${BRANCH} "Packages/Sites/TYPO3.NeosDemoTypo3Org"
 push_tag ${VERSION} "Packages/Sites/TYPO3.NeosDemoTypo3Org"
 
-for PACKAGE in TYPO3.Neos TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter TYPO3.TYPO3CR TYPO3.TypoScript ; do
+for PACKAGE in TYPO3.Neos TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter TYPO3.TYPO3CR TYPO3.TypoScript TYPO3.Media ; do
 	tag_version ${VERSION} ${BRANCH} "${BUILD_URL}" "Packages/Application/${PACKAGE}"
 	push_branch ${BRANCH} "Packages/Application/${PACKAGE}"
 	push_tag ${VERSION} "Packages/Application/${PACKAGE}"

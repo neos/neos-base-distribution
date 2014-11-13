@@ -11,17 +11,23 @@
         "typo3/neos-nodetypes": "1.2.*@dev",
         "typo3/neosdemotypo3org": "1.2.*@dev",
         "typo3/neos-kickstarter": "1.2.*@dev",
+        "doctrine/migrations": "@dev",
         "typo3/typoscript": "@dev",
-        "typo3/typo3cr": "@dev"
+        "typo3/typo3cr": "@dev",
+        "typo3/media": "@dev",
+        "typo3/flow": "2.3.*-dev",
+        "typo3/fluid": "@dev",
+        "typo3/eel": "@dev",
+        "typo3/party": "@dev",
+        "typo3/kickstart": "@dev"
     },
     "require-dev": {
-        "typo3/buildessentials": "dev-master",
-        "mikey179/vfsstream": "1.2.*",
-        "phpunit/phpunit": "4.0.*",
+        "typo3/buildessentials": "2.3.*@dev",
+        "mikey179/vfsstream": "1.4.*",
+        "phpunit/phpunit": "4.3.*",
         "flowpack/behat": "dev-master",
         "typo3-ci/typo3flow": "dev-master"
     },
-    "minimum-stability": "dev",
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
     },

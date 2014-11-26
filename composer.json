@@ -7,10 +7,10 @@
         "bin-dir": "bin"
     },
     "require": {
-        "typo3/neos": "1.2.0-beta1",
-        "typo3/neos-nodetypes": "1.2.0-beta1",
-        "typo3/neosdemotypo3org": "1.2.0-beta1",
-        "typo3/neos-kickstarter": "1.2.0-beta1",
+        "typo3/neos": "1.2.0-beta2",
+        "typo3/neos-nodetypes": "1.2.0-beta2",
+        "typo3/neosdemotypo3org": "1.2.0-beta2",
+        "typo3/neos-kickstarter": "1.2.0-beta2",
         "doctrine/migrations": "@dev",
         "typo3/typoscript": "@beta",
         "typo3/typo3cr": "@beta",

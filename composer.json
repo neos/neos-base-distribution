@@ -12,10 +12,10 @@
         "typo3/neosdemotypo3org": "1.2.*",
         "typo3/neos-kickstarter": "1.2.*",
         "doctrine/migrations": "@dev",
-        "typo3/flow": "2.3.*@beta"
+        "typo3/flow": "2.3.*"
     },
     "require-dev": {
-        "typo3/buildessentials": "2.3.*@beta",
+        "typo3/buildessentials": "2.3.*",
         "mikey179/vfsstream": "1.4.*",
         "phpunit/phpunit": "4.3.*",
         "flowpack/behat": "dev-master",

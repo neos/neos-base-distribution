@@ -14,10 +14,10 @@
         "bin-dir": "bin"
     },
     "require": {
-        "typo3/neos": "1.2.*",
-        "typo3/neos-nodetypes": "1.2.*",
-        "typo3/neosdemotypo3org": "1.2.*",
-        "typo3/neos-kickstarter": "1.2.*",
+        "typo3/neos": "1.2.x-dev",
+        "typo3/neos-nodetypes": "1.2.x-dev",
+        "typo3/neosdemotypo3org": "1.2.x-dev",
+        "typo3/neos-kickstarter": "1.2.x-dev",
         "doctrine/migrations": "@dev",
         "typo3/typo3cr": "1.2.x-dev",
         "typo3/typoscript": "1.2.x-dev",

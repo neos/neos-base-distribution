@@ -7,19 +7,19 @@
         "bin-dir": "bin"
     },
     "require": {
-        "typo3/neos": "1.2.x-dev",
-        "typo3/neos-nodetypes": "1.2.x-dev",
-        "typo3/neosdemotypo3org": "1.2.x-dev",
-        "typo3/neos-kickstarter": "1.2.x-dev",
+        "typo3/neos": "1.2.*",
+        "typo3/neos-nodetypes": "1.2.*",
+        "typo3/neosdemotypo3org": "1.2.*",
+        "typo3/neos-kickstarter": "1.2.*",
         "doctrine/migrations": "@dev",
         "typo3/typo3cr": "1.2.x-dev",
         "typo3/typoscript": "1.2.x-dev",
-		"typo3/media": "1.2.x-dev",
-		"typo3/flow": "2.3.x-dev",
-		"typo3/fluid": "2.3.x-dev",
-		"typo3/eel": "2.3.x-dev",
-		"typo3/party": "2.3.x-dev",
-		"typo3/kickstart": "2.3.x-dev"
+        "typo3/media": "1.2.x-dev",
+        "typo3/flow": "2.3.x-dev",
+        "typo3/fluid": "2.3.x-dev",
+        "typo3/eel": "2.3.x-dev",
+        "typo3/party": "2.3.x-dev",
+        "typo3/kickstart": "2.3.x-dev"
     },
     "require-dev": {
         "typo3/buildessentials": "2.3.*",

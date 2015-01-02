@@ -20,12 +20,11 @@
 # BUILD_URL        used in commit message
 #
 
-TARGET="${WORKSPACE}/Packages/Application/TYPO3.Neos/Documentation/Appendixes/ChangeLogs/`echo ${VERSION} | tr -d .`.rst"
-
 cd "${WORKSPACE}"
-export TARGET
+export TARGET="${WORKSPACE}/Packages/Application/TYPO3.Neos/Documentation/Appendixes/ChangeLogs/`echo ${VERSION} | tr -d .`.rst"
+export DATE="$(date +%Y-%m-%d)"
 
-echo -e "====================\n${VERSION}\n====================\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nBase Distribution\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" > "${TARGET}"
+echo -e "==================\n${VERSION} (${DATE})\n==================\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nBase Distribution\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" > "${TARGET}"
 git log --pretty=format:"%s
 -----------------------------------------------------------------------------------------
 

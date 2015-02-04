@@ -2,6 +2,13 @@
     "name": "typo3/neos-base-distribution",
     "description" : "TYPO3 Neos Base Distribution",
     "license": "GPL-3.0+",
+    "support": {
+        "email": "neos@typo3.org",
+        "irc": "irc://irc.freenode.org/typo3-neos",
+        "forum": "http://forum.typo3.org/index.php/f/121/",
+        "issues": "https://jira.typo3.org/",
+        "source": "https://git.typo3.org/"
+    },
     "config": {
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin"

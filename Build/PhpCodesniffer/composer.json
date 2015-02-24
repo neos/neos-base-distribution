@@ -1,0 +1,8 @@
+{
+	"require": {
+		"typo3-ci/typo3flow": "dev-master"
+	},
+	"config": {
+		"bin-dir": "../../bin/"
+	}
+}

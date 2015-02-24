@@ -1,0 +1,265 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "8c27b196e87d2cea2c247fcf1d34d34a",
+    "packages": [
+        {
+            "name": "simplyadmire/composer-plugins",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SimplyAdmire/ComposerPlugins.git",
+                "reference": "15ba187d9dd973ddefeb32ee0619d74a3dff51a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SimplyAdmire/ComposerPlugins/zipball/15ba187d9dd973ddefeb32ee0619d74a3dff51a9",
+                "reference": "15ba187d9dd973ddefeb32ee0619d74a3dff51a9",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "1.0.0",
+                "squizlabs/php_codesniffer": "*"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": [
+                    "SimplyAdmire\\ComposerPlugins\\PhpCodesnifferStandardInstallerPlugin"
+                ]
+            },
+            "autoload": {
+                "psr-0": {
+                    "SimplyAdmire\\ComposerPlugins": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Rens Admiraal",
+                    "email": "rens@simplyadmire.com",
+                    "role": "lead"
+                }
+            ],
+            "description": "Composer plugin for installing PHP_CodeSniffer standards",
+            "keywords": [
+                "PHP_CodeSniffer",
+                "TYPO3 CMS",
+                "TYPO3 Flow",
+                "TYPO3 Neos",
+                "phpcs",
+                "standards",
+                "typo3"
+            ],
+            "time": "2015-02-24 19:19:41"
+        },
+        {
+            "name": "squizlabs/php_codesniffer",
+            "version": "1.5.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "reference": "6f3e42d311b882b25b4d409d23a289f4d3b803d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6f3e42d311b882b25b4d409d23a289f4d3b803d5",
+                "reference": "6f3e42d311b882b25b4d409d23a289f4d3b803d5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "php": ">=5.1.2"
+            },
+            "suggest": {
+                "phpunit/php-timer": "dev-master"
+            },
+            "bin": [
+                "scripts/phpcs"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-phpcs-fixer": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "CodeSniffer.php",
+                    "CodeSniffer/CLI.php",
+                    "CodeSniffer/Exception.php",
+                    "CodeSniffer/File.php",
+                    "CodeSniffer/Report.php",
+                    "CodeSniffer/Reporting.php",
+                    "CodeSniffer/Sniff.php",
+                    "CodeSniffer/Tokens.php",
+                    "CodeSniffer/Reports/",
+                    "CodeSniffer/CommentParser/",
+                    "CodeSniffer/Tokenizers/",
+                    "CodeSniffer/DocGenerators/",
+                    "CodeSniffer/Standards/AbstractPatternSniff.php",
+                    "CodeSniffer/Standards/AbstractScopeSniff.php",
+                    "CodeSniffer/Standards/AbstractVariableSniff.php",
+                    "CodeSniffer/Standards/IncorrectPatternException.php",
+                    "CodeSniffer/Standards/Generic/Sniffs/",
+                    "CodeSniffer/Standards/MySource/Sniffs/",
+                    "CodeSniffer/Standards/PEAR/Sniffs/",
+                    "CodeSniffer/Standards/PSR1/Sniffs/",
+                    "CodeSniffer/Standards/PSR2/Sniffs/",
+                    "CodeSniffer/Standards/Squiz/Sniffs/",
+                    "CodeSniffer/Standards/Zend/Sniffs/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenises PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "http://www.squizlabs.com/php-codesniffer",
+            "keywords": [
+                "phpcs",
+                "standards"
+            ],
+            "time": "2014-12-04 22:32:15"
+        },
+        {
+            "name": "typo3-ci/typo3flow",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/typo3-ci/TYPO3Flow.git",
+                "reference": "07f0c4fdd55ac274cb1ff190c7a6d1d6778586dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/typo3-ci/TYPO3Flow/zipball/07f0c4fdd55ac274cb1ff190c7a6d1d6778586dc",
+                "reference": "07f0c4fdd55ac274cb1ff190c7a6d1d6778586dc",
+                "shasum": ""
+            },
+            "require": {
+                "typo3-ci/typo3sniffpool": ">=1.0.0"
+            },
+            "suggest": {
+                "typo3-ci/typo3cms": ">=6.2.0"
+            },
+            "type": "phpcodesniffer-standard",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Stefano Kowalke",
+                    "email": "blueduck@gmx.net",
+                    "role": "lead"
+                },
+                {
+                    "name": "Andy Grunwald",
+                    "email": "andygrunwald@gmail.com",
+                    "role": "lead"
+                }
+            ],
+            "description": "This package contains a selection of sniffs which implements the Coding Guidelines for TYPO3 FLOW which was former known as FLOW3.",
+            "homepage": "https://github.com/typo3-ci/TYPO3Flow",
+            "keywords": [
+                "codesniffer",
+                "coding guidelines",
+                "flow",
+                "phpcs",
+                "quality assurance",
+                "standards",
+                "typo3"
+            ],
+            "time": "2014-09-13 20:39:46"
+        },
+        {
+            "name": "typo3-ci/typo3sniffpool",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/typo3-ci/TYPO3SniffPool.git",
+                "reference": "ac6fc11578b98f6b52c247a93facf8c1e5a22b1e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/typo3-ci/TYPO3SniffPool/zipball/ac6fc11578b98f6b52c247a93facf8c1e5a22b1e",
+                "reference": "ac6fc11578b98f6b52c247a93facf8c1e5a22b1e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.1",
+                "simplyadmire/composer-plugins": "~1.0",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "replace": {
+                "typo3/codesniffer": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.1.*"
+            },
+            "suggest": {
+                "typo3-ci/typo3cms": "The coding standard for TYPO3 CMS",
+                "typo3-ci/typo3flow": "The coding standard for TYPO3 Flow"
+            },
+            "type": "phpcodesniffer-standard",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "Sniffs/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Stefano Kowalke",
+                    "email": "blueduck@gmx.net",
+                    "role": "lead"
+                },
+                {
+                    "name": "Andy Grunwald",
+                    "email": "andygrunwald@gmail.com",
+                    "role": "lead"
+                }
+            ],
+            "description": "This repository contains custom sniffs which are compatible with the PHP_CodeSniffer. Understand this package as a sniff pool. It contains all custom sniffs for the TYPO3 project.",
+            "homepage": "https://github.com/typo3-ci/TYPO3SniffPool",
+            "keywords": [
+                "codesniffer",
+                "coding guidelines",
+                "phpcs",
+                "quality assurance",
+                "standards",
+                "typo3"
+            ],
+            "time": "2015-01-23 16:24:57"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "typo3-ci/typo3flow": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

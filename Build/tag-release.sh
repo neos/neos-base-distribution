@@ -35,6 +35,7 @@ BUILD_URL=$3
 $(dirname ${BASH_SOURCE[0]})/set-dependencies.sh ${VERSION} ${BRANCH} "${BUILD_URL}" || exit 1
 
 tag_version ${VERSION} ${BRANCH} "${BUILD_URL}"
+commit_manifest_revert ${BRANCH} "${BUILD_URL}"
 push_branch ${BRANCH}
 push_tag ${VERSION}
 

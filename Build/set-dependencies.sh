@@ -48,24 +48,41 @@ if [ -z "$3" ] ; then
 fi
 BUILD_URL="$3"
 
+# Allow unstable versions of sub dependency packages or remove those if releasing a stable version
 if [[ ${STABILITY_FLAG} ]] ; then
-	php "${COMPOSER_PHAR}" require --no-update "typo3/typoscript:@${STABILITY_FLAG}"
 	php "${COMPOSER_PHAR}" require --no-update "typo3/typo3cr:@${STABILITY_FLAG}"
+	php "${COMPOSER_PHAR}" require --no-update "typo3/typoscript:@${STABILITY_FLAG}"
+	php "${COMPOSER_PHAR}" require --no-update "typo3/media:@${STABILITY_FLAG}"
 else
 	php $(dirname ${BASH_SOURCE[0]})/BuildEssentials/FilterStabilityFlags.php
 fi
+
+# Require exact versions of the main packages
 php "${COMPOSER_PHAR}" require --no-update "typo3/neos:${VERSION}"
 php "${COMPOSER_PHAR}" require --no-update "typo3/neos-nodetypes:${VERSION}"
 php "${COMPOSER_PHAR}" require --no-update "typo3/neosdemotypo3org:${VERSION}"
 php "${COMPOSER_PHAR}" require --no-update "typo3/neos-kickstarter:${VERSION}"
-commit_manifest_update ${BRANCH} "${BUILD_URL}"
+
+# Remove requirements for development version of sub dependency packages
+php "${COMPOSER_PHAR}" remove --no-update "typo3/typo3cr"
+php "${COMPOSER_PHAR}" remove --no-update "typo3/typoscript"
+php "${COMPOSER_PHAR}" remove --no-update "typo3/media"
+php "${COMPOSER_PHAR}" remove --no-update "typo3/fluid"
+php "${COMPOSER_PHAR}" remove --no-update "typo3/eel"
+php "${COMPOSER_PHAR}" remove --no-update "typo3/party"
+php "${COMPOSER_PHAR}" remove --no-update "typo3/kickstart"
+
+# Require stable version of "typo3/flow"
+sed -i 's/x-dev/*/g' composer.json
+
+commit_manifest_update ${BRANCH} "${BUILD_URL}" ${VERSION}
 
 php "${COMPOSER_PHAR}" --working-dir=Packages/Application/TYPO3.Neos require --no-update "typo3/typo3cr:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Application/TYPO3.Neos require --no-update "typo3/typoscript:${VERSION}"
 php "${COMPOSER_PHAR}" --working-dir=Packages/Application/TYPO3.Neos require --no-update "typo3/media:${VERSION}"
-commit_manifest_update ${BRANCH} "${BUILD_URL}" "Packages/Application/TYPO3.Neos"
+commit_manifest_update ${BRANCH} "${BUILD_URL}" ${VERSION} "Packages/Application/TYPO3.Neos"
 
 for PACKAGE in TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter ; do
 	php "${COMPOSER_PHAR}" --working-dir=Packages/Application/${PACKAGE} require --no-update "typo3/neos:${VERSION}"
-	commit_manifest_update ${BRANCH} "${BUILD_URL}" "Packages/Application/${PACKAGE}"
+	commit_manifest_update ${BRANCH} "${BUILD_URL}" ${VERSION} "Packages/Application/${PACKAGE}"
 done

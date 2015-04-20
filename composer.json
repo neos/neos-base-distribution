@@ -30,8 +30,8 @@
     },
     "require-dev": {
         "typo3/buildessentials": "dev-master",
-        "mikey179/vfsstream": "1.4.*",
-        "phpunit/phpunit": "4.5.*",
+        "mikey179/vfsstream": "1.5.*",
+        "phpunit/phpunit": "4.6.*",
         "flowpack/behat": "dev-master"
     },
     "suggest": {

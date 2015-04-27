@@ -33,7 +33,8 @@
         "typo3/form": "@dev",
         "typo3/setup": "@dev",
         "typo3/typo3cr": "@dev",
-        "typo3/typoscript": "@dev"
+        "typo3/typoscript": "@dev",
+        "flowpack/neos-frontendlogin": "@dev"
     },
     "require-dev": {
         "typo3/buildessentials": "dev-master",

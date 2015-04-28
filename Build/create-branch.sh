@@ -40,7 +40,7 @@ for PACKAGE in TYPO3.Neos TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter TYPO3.TYPO
 done
 cd Packages/Sites/TYPO3.NeosDemoTypo3Org && git checkout -b ${BRANCH} origin/master ; cd -
 
-$(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.*@dev" ${BRANCH} "${BUILD_URL}"
+$(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.x-dev" ${BRANCH} "${BUILD_URL}"
 
 push_branch ${BRANCH}
 for PACKAGE in TYPO3.Neos TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter TYPO3.TYPO3CR TYPO3.TypoScript TYPO3.Media ; do

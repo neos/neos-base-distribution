@@ -35,7 +35,6 @@ BUILD_URL=$3
 $(dirname ${BASH_SOURCE[0]})/set-dependencies.sh ${VERSION} ${BRANCH} "${BUILD_URL}" || exit 1
 
 tag_version ${VERSION} ${BRANCH} "${BUILD_URL}"
-commit_manifest_revert ${BRANCH} "${BUILD_URL}"
 push_branch ${BRANCH}
 push_tag ${VERSION}
 
@@ -48,3 +47,8 @@ for PACKAGE in TYPO3.Neos TYPO3.Neos.NodeTypes TYPO3.Neos.Kickstarter TYPO3.TYPO
 	push_branch ${BRANCH} "Packages/Application/${PACKAGE}"
 	push_tag ${VERSION} "Packages/Application/${PACKAGE}"
 done
+
+# and now back to x-dev for the branch
+$(dirname ${BASH_SOURCE[0]})/set-dependencies.sh "${BRANCH}.x-dev" ${BRANCH} "${BUILD_URL}" || exit 1
+push_branch ${BRANCH}
+push_tag ${VERSION}

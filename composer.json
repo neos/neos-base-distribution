@@ -21,11 +21,11 @@
 
         "doctrine/migrations": "dev-master",
 
-        "typo3/neos-seo": "@dev",
-        "typo3/imagine": "@dev",
-        "typo3/twitter-bootstrap": "@dev",
-        "typo3/form": "@dev",
-        "typo3/setup": "@dev",
+        "typo3/neos-seo": "~1.0",
+        "typo3/imagine": "~2.0",
+        "typo3/twitter-bootstrap": "~2.0",
+        "typo3/form": "~2.0",
+        "typo3/setup": "~2.0",
 
         "typo3/typo3cr": "2.0.x-dev",
         "typo3/typoscript": "2.0.x-dev",
@@ -38,7 +38,7 @@
         "typo3/kickstart": "3.0.x-dev"
     },
     "require-dev": {
-        "typo3/buildessentials": "dev-master",
+        "typo3/buildessentials": "3.0.x-dev",
         "mikey179/vfsstream": "1.5.*",
         "phpunit/phpunit": "4.6.*",
         "flowpack/behat": "dev-master"

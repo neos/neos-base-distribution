@@ -19,7 +19,7 @@
         "typo3/neosdemotypo3org": "dev-master",
         "typo3/neos-kickstarter": "dev-master",
 
-        "doctrine/migrations": "@dev",
+        "doctrine/migrations": "@rc",
 
         "typo3/eel": "@dev",
         "typo3/flow": "@dev",

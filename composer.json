@@ -31,14 +31,14 @@
         "typo3/typoscript": "2.0.x-dev",
         "typo3/media": "2.0.x-dev",
 
-        "typo3/flow": "3.0.*@beta",
-        "typo3/fluid": "3.0.*@beta",
-        "typo3/eel": "3.0.*@beta",
-        "typo3/party": "3.0.*@beta",
-        "typo3/kickstart": "3.0.*@beta"
+        "typo3/flow": "3.0.x-dev",
+        "typo3/fluid": "3.0.x-dev",
+        "typo3/eel": "3.0.x-dev",
+        "typo3/party": "3.0.x-dev",
+        "typo3/kickstart": "3.0.x-dev"
     },
     "require-dev": {
-        "typo3/buildessentials": "3.0.*@beta",
+        "typo3/buildessentials": "3.0.x-dev",
         "mikey179/vfsstream": "1.5.*",
         "phpunit/phpunit": "4.6.*",
         "flowpack/behat": "dev-master"

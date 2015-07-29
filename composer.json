@@ -1,12 +1,13 @@
 {
     "name": "typo3/neos-base-distribution",
-    "description" : "TYPO3 Neos Base Distribution",
+    "description" : "Neos Base Distribution",
     "license": "GPL-3.0+",
     "support": {
-        "email": "neos@typo3.org",
+        "email": "hello@neos.io",
+        "slack": "http://slack.neos.io/",
         "irc": "irc://irc.freenode.org/typo3-neos",
-        "forum": "http://forum.typo3.org/index.php/f/121/",
-        "issues": "https://jira.typo3.org/",
+        "forum": "https://discuss.neos.io/",
+        "issues": "https://jira.neos.io/",
         "source": "https://git.typo3.org/"
     },
     "config": {

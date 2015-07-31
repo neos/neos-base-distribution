@@ -20,8 +20,6 @@
         "typo3/neosdemotypo3org": "2.0.x-dev",
         "typo3/neos-kickstarter": "2.0.x-dev",
 
-        "doctrine/migrations": "@rc",
-
         "typo3/neos-seo": "~1.0",
         "typo3/imagine": "~2.0",
         "typo3/twitter-bootstrap": "~2.0",

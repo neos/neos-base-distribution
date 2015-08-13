@@ -39,7 +39,7 @@
         "typo3/buildessentials": "2.2.*@dev",
         "mikey179/vfsstream": "1.4.*",
         "phpunit/phpunit": "4.4.*",
-        "flowpack/behat": "dev-master"
+        "flowpack/behat": "2.4.0"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"

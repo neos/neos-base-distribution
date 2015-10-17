@@ -15,19 +15,16 @@
         "bin-dir": "bin"
     },
     "require": {
-        "typo3/neos": "2.0.x-dev",
-        "typo3/neos-nodetypes": "2.0.x-dev",
-        "typo3/neosdemotypo3org": "2.0.x-dev",
-        "typo3/neos-kickstarter": "2.0.x-dev",
+        "typo3/neos": "~2.0.0",
+        "typo3/neos-nodetypes": "~2.0.0",
+        "typo3/neosdemotypo3org": "~2.0.0",
+        "typo3/neos-kickstarter": "~2.0.0",
 
         "typo3/neos-seo": "~1.0",
         "typo3/imagine": "~2.0",
         "typo3/twitter-bootstrap": "~2.0",
         "typo3/form": "~2.0",
-        "typo3/setup": "~2.0",
-        "typo3/typo3cr": "2.0.x-dev",
-        "typo3/typoscript": "2.0.x-dev",
-        "typo3/media": "2.0.x-dev"
+        "typo3/setup": "~2.0"
     },
     "require-dev": {
         "typo3/buildessentials": "~3.0.0",

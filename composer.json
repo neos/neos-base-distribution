@@ -22,7 +22,7 @@
         "doctrine/migrations": "1.0.0-alpha3"
     },
     "require-dev": {
-        "typo3/buildessentials": "2.3.x-dev",
+        "typo3/buildessentials": "~2.3.0",
         "mikey179/vfsstream": "1.5.*",
         "phpunit/phpunit": "4.6.*",
         "flowpack/behat": "dev-master"

@@ -5,10 +5,11 @@
     "support": {
         "email": "hello@neos.io",
         "slack": "http://slack.neos.io/",
-        "irc": "irc://irc.freenode.org/typo3-neos",
         "forum": "https://discuss.neos.io/",
-        "issues": "https://jira.neos.io/",
-        "source": "https://git.typo3.org/"
+        "wiki": "https://discuss.neos.io/c/the-neos-project/project-documentation",
+        "issues": "https://jira.neos.io/browse/NEOS",
+        "docs": "http://neos.readthedocs.org/",
+        "source": "https://github.com/neos/neos-base-distribution"
     },
     "config": {
         "vendor-dir": "Packages/Libraries",

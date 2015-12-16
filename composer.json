@@ -21,6 +21,7 @@
         "typo3/neosdemotypo3org": "dev-master",
         "typo3/neos-kickstarter": "dev-master",
 
+        "neos/diff": "@dev",
         "typo3/eel": "@dev",
         "typo3/flow": "@dev",
         "typo3/fluid": "@dev",

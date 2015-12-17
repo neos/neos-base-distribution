@@ -16,17 +16,17 @@
         "bin-dir": "bin"
     },
     "require": {
-        "typo3/neos": "dev-master",
-        "typo3/neos-nodetypes": "dev-master",
-        "typo3/neosdemotypo3org": "dev-master",
-        "typo3/neos-kickstarter": "dev-master",
+        "typo3/neos": "2.1.x-dev",
+        "typo3/neos-nodetypes": "2.1.x-dev",
+        "typo3/neosdemotypo3org": "2.1.x-dev",
+        "typo3/neos-kickstarter": "2.1.x-dev",
 
         "neos/diff": "@dev",
-        "typo3/eel": "@dev",
-        "typo3/flow": "@dev",
-        "typo3/fluid": "@dev",
+        "typo3/flow": "3.1.x-dev",
+        "typo3/eel": "3.1.x-dev",
+        "typo3/fluid": "3.1.x-dev",
         "typo3/party": "@dev",
-        "typo3/kickstart": "@dev",
+        "typo3/kickstart": "3.1.x-dev",
         "typo3/neos-seo": "@dev",
         "typo3/imagine": "@dev",
         "typo3/media": "@dev",
@@ -38,7 +38,7 @@
         "flowpack/neos-frontendlogin": "@dev"
     },
     "require-dev": {
-        "typo3/buildessentials": "dev-master",
+        "typo3/buildessentials": "3.1.x-dev",
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~4.8 || ~5.0",
         "flowpack/behat": "dev-master"

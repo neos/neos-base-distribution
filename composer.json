@@ -16,25 +16,15 @@
         "bin-dir": "bin"
     },
     "require": {
-        "typo3/neos": "2.1.x-dev",
-        "typo3/neos-nodetypes": "2.1.x-dev",
-        "typo3/neosdemotypo3org": "2.1.x-dev",
-        "typo3/neos-kickstarter": "2.1.x-dev",
-
-        "neos/diff": "@dev",
-        "typo3/flow": "3.1.x-dev",
-        "typo3/eel": "3.1.x-dev",
-        "typo3/fluid": "3.1.x-dev",
-        "typo3/party": "@dev",
-        "typo3/kickstart": "3.1.x-dev",
+        "typo3/neos": "~2.1.0",
+        "typo3/neos-nodetypes": "~2.1.0",
+        "typo3/neosdemotypo3org": "~2.1.0",
+        "typo3/neos-kickstarter": "~2.1.0",
         "typo3/neos-seo": "@dev",
         "typo3/imagine": "@dev",
-        "typo3/media": "@dev",
         "typo3/twitter-bootstrap": "@dev",
         "typo3/form": "@dev",
         "typo3/setup": "@dev",
-        "typo3/typo3cr": "@dev",
-        "typo3/typoscript": "@dev",
         "flowpack/neos-frontendlogin": "@dev"
     },
     "require-dev": {

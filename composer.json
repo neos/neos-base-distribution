@@ -33,7 +33,7 @@
         "neos/utility-opcodecache": "@dev",
         "neos/utility-pdo": "@dev",
         "neos/utility-schema": "@dev",
-        "neos/utility-unicode": "@dev"
+        "neos/utility-unicode": "@dev",
         "typo3/party": "@dev",
         "typo3/kickstart": "@dev",
         "typo3/neos-seo": "@dev",

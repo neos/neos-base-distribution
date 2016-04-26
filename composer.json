@@ -18,7 +18,7 @@
     "require": {
         "typo3/neos": "dev-master",
         "typo3/neos-nodetypes": "dev-master",
-        "typo3/neosdemotypo3org": "dev-master",
+        "neos/demo": "dev-master",
         "typo3/neos-kickstarter": "dev-master",
 
         "neos/diff": "@dev",

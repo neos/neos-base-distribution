@@ -25,6 +25,7 @@
         "typo3/eel": "@dev",
         "typo3/flow": "@dev",
         "typo3/fluid": "@dev",
+        "neos/error-messages": "@dev",
         "neos/utility-arrays": "@dev",
         "neos/utility-files": "@dev",
         "neos/utility-lock": "@dev",

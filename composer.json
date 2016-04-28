@@ -1,5 +1,5 @@
 {
-    "name": "typo3/neos-base-distribution",
+    "name": "neos/neos-base-distribution",
     "description": "Neos Base Distribution",
     "license": "GPL-3.0+",
     "support": {
@@ -51,6 +51,9 @@
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~4.8 || ~5.2.0",
         "flowpack/behat": "dev-master"
+    },
+    "replace": {
+        "typo3/neos-base-distribution": "self.version"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"

@@ -20,6 +20,8 @@
         "typo3/neos-nodetypes": "dev-master",
         "neos/demo": "dev-master",
         "typo3/neos-kickstarter": "dev-master",
+        "neos/redirecthandler-neosadapter": "dev-master",
+        "neos/redirecthandler-databasestorage": "dev-master",
 
         "neos/diff": "@dev",
         "typo3/eel": "@dev",
@@ -45,7 +47,8 @@
         "typo3/setup": "@dev",
         "typo3/typo3cr": "@dev",
         "typo3/typoscript": "@dev",
-        "flowpack/neos-frontendlogin": "@dev"
+        "flowpack/neos-frontendlogin": "@dev",
+        "neos/redirecthandler": "@dev"
     },
     "require-dev": {
         "typo3/buildessentials": "dev-master",

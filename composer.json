@@ -20,12 +20,13 @@
         "typo3/neos-nodetypes": "~2.1.0",
         "typo3/neosdemotypo3org": "~2.1.0",
         "typo3/neos-kickstarter": "~2.1.0",
-        "typo3/neos-seo": "@dev",
-        "typo3/imagine": "@dev",
-        "typo3/twitter-bootstrap": "@dev",
-        "typo3/form": "@dev",
-        "typo3/setup": "@dev",
-        "flowpack/neos-frontendlogin": "@dev"
+
+        "typo3/neos-seo": "~1.0",
+        "typo3/imagine": "~2.0",
+        "typo3/twitter-bootstrap": "~2.0",
+        "typo3/form": "~2.0",
+        "typo3/setup": "~2.0",
+        "flowpack/neos-frontendlogin": "~2.0"
     },
     "require-dev": {
         "typo3/buildessentials": "3.1.x-dev",

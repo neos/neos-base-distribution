@@ -48,8 +48,7 @@
         "typo3/typo3cr": "2.2.x-dev",
         "typo3/typoscript": "2.2.x-dev",
         "flowpack/neos-frontendlogin": "@dev",
-        "neos/redirecthandler": "@dev",
-        "typo3/neosdemotypo3org": "2.2.x-dev"
+        "neos/redirecthandler": "@dev"
     },
     "require-dev": {
         "typo3/buildessentials": "dev-master",

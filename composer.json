@@ -22,9 +22,6 @@
         "typo3/neos-kickstarter": "~2.0.0",
 
         "typo3/neos-seo": "~1.0",
-        "typo3/imagine": "~2.0",
-        "typo3/twitter-bootstrap": "~2.0",
-        "typo3/form": "~2.0",
         "typo3/setup": "~2.0"
     },
     "require-dev": {

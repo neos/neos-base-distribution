@@ -16,37 +16,16 @@
         "bin-dir": "bin"
     },
     "require": {
-        "typo3/neos": "2.2.x-dev",
-        "typo3/neos-nodetypes": "2.2.x-dev",
-        "neos/demo": "2.2.x-dev",
-        "typo3/neos-kickstarter": "2.2.x-dev",
+        "typo3/neos": "~2.2.0",
+        "typo3/neos-nodetypes": "~2.2.0",
+        "neos/demo": "~2.2.0",
+        "typo3/neos-kickstarter": "~2.2.0",
 
         "typo3/neos-seo": "~1.0",
         "typo3/setup": "~2.0",
         "flowpack/neos-frontendlogin": "~2.0",
         "neos/redirecthandler-neosadapter": "~1.0",
-        "neos/redirecthandler-databasestorage": "~1.0",
-
-        "neos/diff": "@dev",
-        "typo3/eel": "@dev",
-        "typo3/flow": "@dev",
-        "typo3/fluid": "@dev",
-        "neos/error-messages": "@dev",
-        "neos/utility-arrays": "@dev",
-        "neos/utility-files": "@dev",
-        "neos/utility-lock": "@dev",
-        "neos/utility-mediatypes": "@dev",
-        "neos/utility-objecthandling": "@dev",
-        "neos/utility-opcodecache": "@dev",
-        "neos/utility-pdo": "@dev",
-        "neos/utility-schema": "@dev",
-        "neos/utility-unicode": "@dev",
-        "typo3/party": "@dev",
-        "typo3/kickstart": "@dev",
-        "typo3/media": "@dev",
-        "typo3/typo3cr": "@dev",
-        "typo3/typoscript": "@dev",
-        "neos/redirecthandler": "@dev"
+        "neos/redirecthandler-databasestorage": "~1.0"
     },
     "require-dev": {
         "typo3/buildessentials": "3.2.x-dev",

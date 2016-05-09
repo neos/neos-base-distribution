@@ -26,7 +26,8 @@
         "typo3/buildessentials": "~2.3.0",
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~4.8 || ~5.2.0",
-        "flowpack/behat": "dev-master"
+        "flowpack/behat": "dev-master",
+        "symfony/css-selector": "~2.0"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"

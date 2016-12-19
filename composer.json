@@ -7,7 +7,7 @@
         "slack": "http://slack.neos.io/",
         "forum": "https://discuss.neos.io/",
         "wiki": "https://discuss.neos.io/c/the-neos-project/project-documentation",
-        "issues": "https://jira.neos.io/browse/NEOS",
+        "issues": "https://github.com/neos/neos-development-collection/issues",
         "docs": "http://neos.readthedocs.org/",
         "source": "https://github.com/neos/neos-base-distribution"
     },

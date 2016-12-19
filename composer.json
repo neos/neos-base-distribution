@@ -16,23 +16,23 @@
         "bin-dir": "bin"
     },
     "require": {
-        "typo3/neos": "~2.2.0",
-        "typo3/neos-nodetypes": "~2.2.0",
-        "neos/demo": "~2.2.0",
-        "typo3/neos-kickstarter": "~2.2.0",
+        "neos/neos": "~3.0.0",
+        "neos/nodetypes": "~3.0.0",
+        "neos/demo": "~3.0.0",
+        "neos/site-kickstarter": "~3.0.0",
 
-        "typo3/neos-seo": "~1.0",
-        "typo3/setup": "~2.0",
-        "flowpack/neos-frontendlogin": "~2.0",
-        "neos/redirecthandler-neosadapter": "~1.0",
-        "neos/redirecthandler-databasestorage": "~1.0"
+        "neos/seo": "~2.0",
+        "neos/setup": "~3.0",
+        "flowpack/neos-frontendlogin": "~3.0",
+        "neos/redirecthandler-neosadapter": "~2.0",
+        "neos/redirecthandler-databasestorage": "~2.0"
     },
     "require-dev": {
-        "typo3/buildessentials": "3.2.x-dev",
+        "neos/buildessentials": "3.3.x-dev",
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~4.8 || ~5.4.0",
         "symfony/css-selector": "~2.0",
-        "flowpack/behat": "dev-master"
+        "neos/behat": "dev-master"
     },
     "replace": {
         "typo3/neos-base-distribution": "self.version"

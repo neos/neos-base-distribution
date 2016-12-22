@@ -16,11 +16,7 @@
         "bin-dir": "bin"
     },
     "require": {
-        "typo3/neos": "~2.2.0",
-        "typo3/neos-nodetypes": "~2.2.0",
-        "neos/demo": "3.0.x-dev",
-        "typo3/neos-kickstarter": "~2.2.0",
-
+        "neos/demo": "3.0.x-dev",      
         "typo3/neos-seo": "~1.0",
         "typo3/setup": "~2.0",
         "flowpack/neos-frontendlogin": "~2.0",

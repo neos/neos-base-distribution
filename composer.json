@@ -54,9 +54,9 @@
         "neos/utility-unicode": "4.0.x-dev"
     },
     "require-dev": {
-        "typo3/buildessentials": "3.3.x-dev",
+        "neos/buildessentials": "~4.0.0",
         "mikey179/vfsstream": "~1.6",
-        "phpunit/phpunit": "~4.8 || ~5.4.0",
+        "phpunit/phpunit": "~5.4.0",
         "symfony/css-selector": "~2.0",
         "neos/behat": "dev-master"
     },

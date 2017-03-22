@@ -30,7 +30,7 @@
     "require-dev": {
         "neos/buildessentials": "~4.0.0",
         "mikey179/vfsstream": "~1.6",
-        "phpunit/phpunit": "~5.4.0",
+        "phpunit/phpunit": "~6.0.0",
         "symfony/css-selector": "~2.0",
         "neos/behat": "dev-master"
     },

@@ -33,7 +33,7 @@
         "neos/diff": "3.1.x-dev"
     },
     "require-dev": {
-        "neos/buildessentials": "~4.0.0",
+        "neos/buildessentials": "~4.1.0",
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~6.0.0",
         "symfony/css-selector": "~2.0",

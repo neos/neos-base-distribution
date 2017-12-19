@@ -21,8 +21,8 @@
         "neos/demo": "3.3.x-dev",
         "neos/site-kickstarter": "3.3.x-dev",
 
-        "neos/neos-ui": "1.0.*@beta",
-        "neos/neos-ui-compiled": "1.0.*@beta",
+        "neos/neos-ui": "~1.0",
+        "neos/neos-ui-compiled": "~1.0",
 
         "neos/seo": "~2.0",
         "neos/setup": "~4.0",

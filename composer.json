@@ -16,10 +16,10 @@
         "bin-dir": "bin"
     },
     "require": {
-        "neos/neos": "~3.0",
-        "neos/nodetypes": "~3.0",
-        "neos/demo": "~3.0",
-        "neos/site-kickstarter": "~3.0",
+        "neos/neos": "3.3.x-dev",
+        "neos/nodetypes": "3.3.x-dev",
+        "neos/demo": "3.3.x-dev",
+        "neos/site-kickstarter": "3.3.x-dev",
 
         "neos/neos-ui": "1.0.*@beta",
         "neos/neos-ui-compiled": "1.0.*@beta",
@@ -28,7 +28,12 @@
         "neos/setup": "~4.0",
         "flowpack/neos-frontendlogin": "~3.0",
         "neos/redirecthandler-neosadapter": "~2.0",
-        "neos/redirecthandler-databasestorage": "~2.0"
+        "neos/redirecthandler-databasestorage": "~2.0",
+        "neos/content-repository": "3.3.x-dev",
+        "neos/fusion": "3.3.x-dev",
+        "neos/media": "3.3.x-dev",
+        "neos/media-browser": "3.3.x-dev",
+        "neos/diff": "3.3.x-dev"
     },
     "require-dev": {
         "neos/buildessentials": "~4.1.0",

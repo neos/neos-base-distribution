@@ -20,10 +20,8 @@
         "neos/nodetypes": "~4.0.0",
         "neos/demo": "~4.0.0",
         "neos/site-kickstarter": "~4.0.0",
-
-        "neos/neos-ui": "1.0.*@beta",
-        "neos/neos-ui-compiled": "1.0.*@beta",
-
+        "neos/neos-ui": "^1.0",	
+        "neos/neos-ui-compiled": "^1.0",
         "neos/seo": "~2.0",
         "neos/setup": "~4.0",
         "flowpack/neos-frontendlogin": "~3.0",

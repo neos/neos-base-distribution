@@ -21,8 +21,8 @@
         "neos/demo": "~4.1.0",
         "neos/site-kickstarter": "~4.1.0",
 
-        "neos/neos-ui": "1.0.*@beta",
-        "neos/neos-ui-compiled": "1.0.*@beta",
+        "neos/neos-ui": "^1.3",
+        "neos/neos-ui-compiled": "^1.3",
 
         "neos/seo": "~2.0",
         "neos/setup": "~4.0",
@@ -31,9 +31,9 @@
         "neos/redirecthandler-databasestorage": "~2.0"
     },
     "require-dev": {
-        "neos/buildessentials": "~4.1.0",
-        "mikey179/vfsstream": "~1.6",
-        "phpunit/phpunit": "~6.0.0",
+        "neos/buildessentials": "^5.0",
+        "mikey179/vfsstream": "^1.6",
+        "phpunit/phpunit": "^7.0",
         "symfony/css-selector": "~2.0",
         "neos/behat": "dev-master"
     },

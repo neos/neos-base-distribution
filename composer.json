@@ -23,8 +23,8 @@
         "neos/setup": "~4.0",
         "neos/redirecthandler-neosadapter": "~2.0",
         "neos/redirecthandler-databasestorage": "~2.0",
-        "neos/neos-ui": "~1.1.0",
-        "neos/neos-ui-compiled": "~1.1.0",
+        "neos/neos-ui": "^1.1",
+        "neos/neos-ui-compiled": "^1.1",
 
         "neos/demo": "~4.0.0"
     },

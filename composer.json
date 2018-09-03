@@ -26,7 +26,6 @@
 
         "neos/seo": "~2.0",
         "neos/setup": "~4.0",
-        "flowpack/neos-frontendlogin": "~3.0",
         "neos/redirecthandler-neosadapter": "~2.0",
         "neos/redirecthandler-databasestorage": "~2.0"
     },

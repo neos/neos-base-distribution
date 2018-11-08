@@ -37,6 +37,12 @@
         "symfony/css-selector": "~2.0",
         "neos/behat": "dev-master"
     },
+    "repositories": {
+        "distributionPackages": {
+            "type": "path",
+            "url": "./DistributionPackages/*"
+        }
+    },
     "replace": {
         "typo3/neos-base-distribution": "self.version"
     },

@@ -16,26 +16,29 @@
         "bin-dir": "bin"
     },
     "require": {
-        "neos/neos": "~3.0",
-        "neos/nodetypes": "~3.0",
-        "neos/demo": "~3.0",
-        "neos/site-kickstarter": "~3.0",
+        "neos/neos": "@dev",
+        "neos/nodetypes": "@dev",
+        "neos/demo": "@dev",
+        "neos/site-kickstarter": "@dev",
 
-        "neos/neos-ui": "1.0.*@beta",
-        "neos/neos-ui-compiled": "1.0.*@beta",
+        "neos/neos-ui": "@dev",
 
-        "neos/seo": "~2.0",
-        "neos/setup": "~4.0",
-        "flowpack/neos-frontendlogin": "~3.0",
-        "neos/redirecthandler-neosadapter": "~2.0",
-        "neos/redirecthandler-databasestorage": "~2.0"
+        "neos/seo": "@dev",
+        "neos/setup": "@dev",
+        "neos/redirecthandler-neosadapter": "@dev",
+        "neos/redirecthandler-databasestorage": "@dev",
+        "neos/content-repository": "@dev",
+        "neos/fusion": "@dev",
+        "neos/media": "@dev",
+        "neos/media-browser": "@dev",
+        "neos/diff": "@dev"
     },
     "require-dev": {
-        "neos/buildessentials": "~4.1.0",
-        "mikey179/vfsstream": "~1.6",
-        "phpunit/phpunit": "~6.0.0",
+        "neos/buildessentials": "@dev",
+        "mikey179/vfsstream": "^1.6",
+        "phpunit/phpunit": "^7.0",
         "symfony/css-selector": "~2.0",
-        "neos/behat": "dev-master"
+        "neos/behat": "@dev"
     },
     "repositories": {
         "distributionPackages": {
@@ -44,7 +47,7 @@
         }
     },
     "replace": {
-        "typo3/neos-base-distribution": "self.version"
+        "neos/neos-base-distribution": "self.version"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"

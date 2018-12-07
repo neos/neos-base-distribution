@@ -18,7 +18,7 @@
     "require": {
         "neos/neos": "4.2.x-dev",
         "neos/nodetypes": "4.2.x-dev",
-        "neos/demo": "4.2.x-dev",
+        "neos/demo": "~4.2.0",
         "neos/site-kickstarter": "4.2.x-dev",
 
         "neos/neos-ui": "^1.3",
@@ -27,12 +27,7 @@
         "neos/seo": "~2.0",
         "neos/setup": "~4.0",
         "neos/redirecthandler-neosadapter": "~2.0",
-        "neos/redirecthandler-databasestorage": "~2.0",
-        "neos/content-repository": "4.2.x-dev",
-        "neos/fusion": "4.2.x-dev",
-        "neos/media": "4.2.x-dev",
-        "neos/media-browser": "4.2.x-dev",
-        "neos/diff": "4.2.x-dev"
+        "neos/redirecthandler-databasestorage": "~2.0"
     },
     "require-dev": {
         "neos/buildessentials": "^5.0",

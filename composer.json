@@ -23,10 +23,10 @@
         "neos/demo": "~5.0.0",
         "neos/neos-ui": "^3.3",
         "neos/seo": "~2.1",
+        "neos/redirecthandler-neosadapter": "~3.0.0",
+        "neos/redirecthandler-databasestorage": "~3.0.0",
 
         "neos/setup": "@dev",
-        "neos/redirecthandler-neosadapter": "@dev",
-        "neos/redirecthandler-databasestorage": "@dev",
         "neos/content-repository": "4.3.x-dev",
         "neos/fusion": "4.3.x-dev",
         "neos/media": "4.3.x-dev",
@@ -46,6 +46,7 @@
             "url": "./DistributionPackages/*"
         }
     },
+    "minimum-stability": "dev",
     "replace": {
         "neos/neos-base-distribution": "self.version"
     },

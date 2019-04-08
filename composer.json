@@ -18,15 +18,15 @@
     "require": {
         "neos/neos": "4.3.x-dev",
         "neos/nodetypes": "4.3.x-dev",
-        "neos/demo": "@dev",
         "neos/site-kickstarter": "4.3.x-dev",
 
-        "neos/neos-ui": "@dev",
+        "neos/demo": "~5.0.0",
+        "neos/neos-ui": "~3.3",
+        "neos/seo": "~2.1",
+        "neos/redirecthandler-neosadapter": "~3.0",
+        "neos/redirecthandler-databasestorage": "~3.0",
 
-        "neos/seo": "@dev",
         "neos/setup": "@dev",
-        "neos/redirecthandler-neosadapter": "@dev",
-        "neos/redirecthandler-databasestorage": "@dev",
         "neos/content-repository": "4.3.x-dev",
         "neos/fusion": "4.3.x-dev",
         "neos/media": "4.3.x-dev",
@@ -46,6 +46,7 @@
             "url": "./DistributionPackages/*"
         }
     },
+    "minimum-stability": "dev",
     "replace": {
         "neos/neos-base-distribution": "self.version"
     },

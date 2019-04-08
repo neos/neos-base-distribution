@@ -21,10 +21,10 @@
         "neos/site-kickstarter": "4.3.x-dev",
 
         "neos/demo": "~5.0.0",
-        "neos/neos-ui": "^3.3",
+        "neos/neos-ui": "~3.3",
         "neos/seo": "~2.1",
-        "neos/redirecthandler-neosadapter": "~3.0.0",
-        "neos/redirecthandler-databasestorage": "~3.0.0",
+        "neos/redirecthandler-neosadapter": "~3.0",
+        "neos/redirecthandler-databasestorage": "~3.0",
 
         "neos/setup": "@dev",
         "neos/content-repository": "4.3.x-dev",

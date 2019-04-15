@@ -16,9 +16,9 @@
         "bin-dir": "bin"
     },
     "require": {
-        "neos/neos": "4.3.x-dev",
-        "neos/nodetypes": "4.3.x-dev",
-        "neos/site-kickstarter": "4.3.x-dev",
+        "neos/neos": "~4.3.0",
+        "neos/nodetypes": "~4.3.0",
+        "neos/site-kickstarter": "~4.3.0",
 
         "neos/demo": "~5.0.1",
         "neos/neos-ui": "~3.3",
@@ -27,12 +27,7 @@
         "neos/redirecthandler-neosadapter": "~3.0",
         "neos/redirecthandler-databasestorage": "~3.0",
 
-        "neos/setup": "@dev",
-        "neos/content-repository": "4.3.x-dev",
-        "neos/fusion": "4.3.x-dev",
-        "neos/media": "4.3.x-dev",
-        "neos/media-browser": "4.3.x-dev",
-        "neos/diff": "4.3.x-dev"
+        "neos/setup": "@dev"
     },
     "require-dev": {
         "neos/buildessentials": "@dev",

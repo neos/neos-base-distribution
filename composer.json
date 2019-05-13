@@ -26,7 +26,7 @@
         "neos/fusion-afx": "~1.2",
         "neos/redirecthandler-neosadapter": "~3.0",
         "neos/redirecthandler-databasestorage": "~3.0",
-
+        
         "neos/setup": "@dev"
     },
     "require-dev": {

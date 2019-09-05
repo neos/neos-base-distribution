@@ -17,7 +17,6 @@
     },
     "require": {
         "neos/neos": "~4.3.0",
-        "neos/nodetypes": "~4.3.0",
         "neos/site-kickstarter": "~4.3.0",
 
         "neos/demo": "~5.0.1",

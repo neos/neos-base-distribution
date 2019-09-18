@@ -23,8 +23,9 @@
         "neos/neos-ui": "~5.0",
         "neos/seo": "~3.0",
         "neos/fusion-afx": "~1.3",
-        "neos/redirecthandler-neosadapter": "~3.0",
-        "neos/redirecthandler-databasestorage": "~3.0",
+        "neos/redirecthandler-neosadapter": "~4.0",
+        "neos/redirecthandler-databasestorage": "~4.0",
+        "neos/redirecthandler-ui": "~2.0",
         
         "neos/setup": "@dev",
         "neos/neos-setup": "@dev",

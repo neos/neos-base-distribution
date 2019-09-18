@@ -19,7 +19,7 @@
         "neos/neos": "5.0.x-dev",
         "neos/site-kickstarter": "5.0.x-dev",
 
-        "neos/demo": "~5.0.1",
+        "neos/demo": "~6.0",
         "neos/neos-ui": "~5.0",
         "neos/seo": "~3.0",
         "neos/fusion-afx": "~1.3",

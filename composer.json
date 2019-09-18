@@ -22,7 +22,7 @@
         "neos/demo": "~5.0.1",
         "neos/neos-ui": "~3.3",
         "neos/seo": "~3.0",
-        "neos/fusion-afx": "~1.2",
+        "neos/fusion-afx": "~1.3",
         "neos/redirecthandler-neosadapter": "~3.0",
         "neos/redirecthandler-databasestorage": "~3.0",
         

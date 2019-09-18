@@ -20,13 +20,13 @@
         "neos/site-kickstarter": "5.0.x-dev",
 
         "neos/demo": "~5.0.1",
-        "neos/neos-ui": "~3.3",
+        "neos/neos-ui": "~5.0",
         "neos/seo": "~3.0",
-        "neos/fusion-afx": "~1.2",
+        "neos/fusion-afx": "~1.3",
         "neos/redirecthandler-neosadapter": "~4.0",
         "neos/redirecthandler-databasestorage": "~4.0",
         "neos/redirecthandler-ui": "~2.0",
-
+        
         "neos/setup": "@dev",
         "neos/neos-setup": "@dev",
         "neos/nodetypes": "5.0.x-dev",

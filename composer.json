@@ -27,10 +27,10 @@
         "neos/redirecthandler-neosadapter": "~3.0",
         "neos/redirecthandler-databasestorage": "~3.0",
         
-        "neos/setup": "@dev"
+        "neos/setup": "~4.0"
     },
     "require-dev": {
-        "neos/buildessentials": "@dev",
+        "neos/buildessentials": "^5.0",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^7.0",
         "symfony/css-selector": "~2.0",

@@ -29,7 +29,6 @@
         
         "neos/setup": "@dev",
         "neos/neos-setup": "@dev",
-        "neos/nodetypes": "5.0.x-dev",
         "neos/content-repository": "5.0.x-dev",
         "neos/fusion": "5.0.x-dev",
         "neos/media": "5.0.x-dev",

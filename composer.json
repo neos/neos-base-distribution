@@ -18,8 +18,7 @@
     "require": {
         "neos/neos": "@dev",
         "neos/site-kickstarter": "@dev",
-
-        "neos/demo": "@dev",
+        
         "neos/neos-ui": "@dev",
         "neos/seo": "@dev",
         "neos/fusion-afx": "@dev",
@@ -42,6 +41,11 @@
             "url": "./DistributionPackages/*"
         }
     },
+    "autoload": {
+        "psr-4": {
+            "Neos\\BaseDistribution\\": "Build/Classes/"
+        }
+    },
     "replace": {
         "neos/neos-base-distribution": "self.version"
     },
@@ -52,6 +56,7 @@
         "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
-        "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
+        "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
+        "post-create-project-cmd": "Neos\\BaseDistribution\\Composer\\InstallSitePackage::setupDistribution"
     }
 }

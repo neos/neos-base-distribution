@@ -2,47 +2,27 @@
 namespace Neos\BaseDistribution\Composer;
 
 use Composer\Console\Application;
-use Composer\DependencyResolver\Operation\InstallOperation;
-use Composer\DependencyResolver\Operation\UpdateOperation;
-use Composer\Composer;
-use Composer\Factory;
-use Composer\Json\JsonFile;
-use Composer\Package\Version\VersionParser;
-use Composer\Repository\CompositeRepository;
-use Composer\Repository\PlatformRepository;
 use Composer\Script\Event;
-use Composer\Installer\PackageEvent;
-use Composer\Util\Silencer;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
-use Symfony\Component\Yaml\Yaml;
-use Neos\Utility\Files;
-use Neos\Utility\Arrays;
 use Neos\Splash\DistributionBuilder\Service\PackageService;
 use Neos\Splash\DistributionBuilder\Service\JsonFileService;
 use Neos\Splash\DistributionBuilder\Domain\ValueObjects\PackageRequirement;
 
 /**
- *
+ * A comopser post-create-project script to allow a choice of adding the demo site (and possible other things in the future)
  */
 class InstallSitePackage
 {
-    const LOCAL_SRC_PATH = 'DistributionPackages';
-
     /**
      * Setup the neos distribution
      *
      * @param Event $event
      * @throws \Neos\Utility\Exception\FilesException
+     * @throws \Exception
      */
     public static function setupDistribution(Event $event)
     {
-        if (!defined('FLOW_PATH_ROOT')) {
-            define('FLOW_PATH_ROOT', Files::getUnixStylePath(getcwd()) . '/');
-        }
-        $composer = $event->getComposer();
-        $io = $event->getIO();
-
         $distributionReadyMessagesBase = [
             '',
             'Your Neos was prepared successfully.',
@@ -52,6 +32,7 @@ class InstallSitePackage
             '2. Migrate database "./flow doctrine:migrate"',
         ];
 
+        $io = $event->getIO();
         $io->write([
             '',
             'Welcome to Neos',

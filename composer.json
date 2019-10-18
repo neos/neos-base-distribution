@@ -1,6 +1,7 @@
 {
     "name": "neos/neos-base-distribution",
     "description": "Neos Base Distribution",
+    "type": "project",
     "license": "GPL-3.0+",
     "support": {
         "email": "hello@neos.io",
@@ -18,7 +19,7 @@
     "require": {
         "neos/neos": "@dev",
         "neos/site-kickstarter": "@dev",
-        
+
         "neos/neos-ui": "@dev",
         "neos/seo": "@dev",
         "neos/fusion-afx": "@dev",

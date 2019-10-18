@@ -16,16 +16,16 @@
         "bin-dir": "bin"
     },
     "require": {
-        "neos/neos": "~4.3.0",
-        "neos/site-kickstarter": "~4.3.0",
+        "neos/neos": "@dev",
+        "neos/site-kickstarter": "@dev",
 
-        "neos/demo": "~5.0.1",
-        "neos/neos-ui": "~3.3",
-        "neos/seo": "~3.0",
-        "neos/fusion-afx": "~1.2",
-        "neos/redirecthandler-neosadapter": "~3.0",
-        "neos/redirecthandler-databasestorage": "~3.0",
-        
+        "neos/demo": "@dev",
+        "neos/neos-ui": "@dev",
+        "neos/seo": "@dev",
+        "neos/fusion-afx": "@dev",
+        "neos/redirecthandler-neosadapter": "@dev",
+        "neos/redirecthandler-databasestorage": "@dev",
+
         "neos/setup": "@dev",
         "neos/neos-setup": "@dev"
     },

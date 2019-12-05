@@ -22,8 +22,6 @@
         "neos/demo": "@dev",
         "neos/neos-ui": "@dev",
         "neos/seo": "@dev",
-        "neos/fusion-afx": "@dev",
-        "neos/fusion-form": "@dev",
         "neos/redirecthandler-neosadapter": "@dev",
         "neos/redirecthandler-databasestorage": "@dev",
 

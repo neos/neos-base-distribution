@@ -21,13 +21,14 @@
 
         "neos/demo": "@dev",
         "neos/neos-ui": "@dev",
-        "neos/seo": "@dev",
-        "neos/redirecthandler-neosadapter": "@dev",
-        "neos/redirecthandler-databasestorage": "@dev",
+        "neos/seo": "~3.0",
+        "neos/fusion-afx": "~1.3",
+        "neos/redirecthandler-neosadapter": "~4.0",
+        "neos/redirecthandler-databasestorage": "~4.0",
+        "neos/redirecthandler-ui": "~2.0",
 
         "neos/setup": "@dev",
         "neos/neos-setup": "@dev",
-        "neos/nodetypes": "5.1.x-dev",
         "neos/content-repository": "5.1.x-dev",
         "neos/fusion": "5.1.x-dev",
         "neos/media": "5.1.x-dev",

@@ -16,8 +16,8 @@
         "bin-dir": "bin"
     },
     "require": {
-        "neos/neos": "5.1.x-dev",
-        "neos/site-kickstarter": "5.1.x-dev",
+        "neos/neos": "~5.1.0",
+        "neos/site-kickstarter": "~5.1.0",
 
         "neos/demo": "~6.1",
         "neos/neos-ui": "~5.1",
@@ -28,11 +28,7 @@
 
         "neos/setup": "@dev",
         "neos/neos-setup": "@dev",
-        "neos/content-repository": "5.1.x-dev",
-        "neos/fusion": "5.1.x-dev",
-        "neos/media": "5.1.x-dev",
-        "neos/media-browser": "5.1.x-dev",
-        "neos/diff": "5.1.x-dev"
+        "neos/nodetypes": "~5.1.0"
     },
     "require-dev": {
         "neos/buildessentials": "@dev",

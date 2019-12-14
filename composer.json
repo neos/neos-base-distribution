@@ -20,7 +20,7 @@
         "neos/site-kickstarter": "5.1.x-dev",
 
         "neos/demo": "~6.1",
-        "neos/neos-ui": "@dev",
+        "neos/neos-ui": "~5.1",
         "neos/seo": "~3.0",
         "neos/redirecthandler-neosadapter": "~4.0",
         "neos/redirecthandler-databasestorage": "~4.0",

@@ -27,8 +27,7 @@
         "neos/redirecthandler-ui": "~2.0",
 
         "neos/setup": "@dev",
-        "neos/neos-setup": "@dev",
-        "neos/nodetypes": "~5.1.0"
+        "neos/neos-setup": "@dev"
     },
     "require-dev": {
         "neos/buildessentials": "@dev",

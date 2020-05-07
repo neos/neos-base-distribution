@@ -1,6 +1,7 @@
 {
     "name": "neos/neos-base-distribution",
     "description": "Neos Base Distribution",
+    "type": "project",
     "license": "GPL-3.0+",
     "support": {
         "email": "hello@neos.io",
@@ -19,7 +20,6 @@
         "neos/neos": "~5.2.0",
         "neos/site-kickstarter": "~5.2.0",
 
-        "neos/demo": "@dev",
         "neos/neos-ui": "@dev",
         "neos/seo": "~3.0",
         "neos/redirecthandler-neosadapter": "~4.0",
@@ -42,6 +42,11 @@
             "url": "./DistributionPackages/*"
         }
     },
+    "autoload": {
+        "psr-4": {
+            "Neos\\BaseDistribution\\": "Build/Classes/"
+        }
+    },
     "replace": {
         "neos/neos-base-distribution": "self.version"
     },
@@ -52,6 +57,7 @@
         "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
-        "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
+        "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
+        "post-create-project-cmd": "Neos\\BaseDistribution\\Composer\\InstallSitePackage::setupDistribution"
     }
 }

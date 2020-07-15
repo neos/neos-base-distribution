@@ -21,7 +21,7 @@
         "neos/site-kickstarter": "~4.3.0",
 
         "neos/demo": "~5.0.1",
-        "neos/neos-ui": "~3.3",
+        "neos/neos-ui": "~4.0",
         "neos/seo": "~3.0",
         "neos/fusion-afx": "~1.2",
         "neos/redirecthandler-neosadapter": "~3.0",

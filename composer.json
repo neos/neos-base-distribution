@@ -26,8 +26,8 @@
         "neos/redirecthandler-databasestorage": "~4.0",
         "neos/redirecthandler-ui": "~2.0",
 
-        "neos/setup": "@dev",
-        "neos/neos-setup": "@dev"
+        "neos/setup": "^4.1",
+        "neos/neos-setup": "^1.0"
     },
     "require-dev": {
         "neos/buildessentials": "@dev",

@@ -19,15 +19,15 @@
         "neos/neos": "~5.2.0",
         "neos/site-kickstarter": "~5.2.0",
 
-        "neos/demo": "@dev",
-        "neos/neos-ui": "@dev",
+        "neos/demo": "~6.1",
+        "neos/neos-ui": "~5.2",
         "neos/seo": "~3.0",
         "neos/redirecthandler-neosadapter": "~4.0",
         "neos/redirecthandler-databasestorage": "~4.0",
         "neos/redirecthandler-ui": "~2.0",
 
-        "neos/setup": "@dev",
-        "neos/neos-setup": "@dev"
+        "neos/setup": "^4.1",
+        "neos/neos-setup": "^1.0"
     },
     "require-dev": {
         "neos/buildessentials": "@dev",

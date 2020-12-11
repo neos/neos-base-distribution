@@ -19,12 +19,12 @@
         "neos/neos": "~7.0.0",
         "neos/site-kickstarter": "~7.0.0",
 
-        "neos/demo": "~6.3.0 || 7.0.x-dev",
-        "neos/neos-ui": "~7.0",
-        "neos/seo": "~3.0",
-        "neos/redirecthandler-neosadapter": "~4.2",
-        "neos/redirecthandler-databasestorage": "~5.0",
-        "neos/redirecthandler-ui": "~2.4",
+        "neos/demo": "^6.3",
+        "neos/neos-ui": "^7.0",
+        "neos/seo": "^3.0",
+        "neos/redirecthandler-neosadapter": "^4.2",
+        "neos/redirecthandler-databasestorage": "^5.0",
+        "neos/redirecthandler-ui": "^2.4",
 
         "neos/setup": "^5.0",
         "neos/neos-setup": "^1.1"
@@ -33,7 +33,7 @@
         "neos/buildessentials": "^7.0",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.0",
-        "symfony/css-selector": "~2.0",
+        "symfony/css-selector": "^2.0",
         "neos/behat": "^6.1"
     },
     "repositories": {

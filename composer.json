@@ -19,7 +19,7 @@
         "neos/neos": "~7.0.0",
         "neos/site-kickstarter": "~7.0.0",
 
-        "neos/demo": "^6.3",
+        "neos/demo": "^7.0",
         "neos/neos-ui": "^7.0",
         "neos/seo": "^3.0",
         "neos/redirecthandler-neosadapter": "^4.2",

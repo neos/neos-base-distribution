@@ -22,10 +22,9 @@
         "neos/demo": "^7.0",
         "neos/neos-ui": "^7.0",
         "neos/seo": "^3.0",
-        "neos/redirecthandler-neosadapter": "^4.2",
+        "neos/redirecthandler-neosadapter": "^4.3",
         "neos/redirecthandler-databasestorage": "^5.0",
         "neos/redirecthandler-ui": "^2.4",
-
         "neos/setup": "^5.0",
         "neos/neos-setup": "^1.1"
     },

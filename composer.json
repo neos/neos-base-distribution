@@ -1,7 +1,8 @@
 {
     "name": "neos/neos-base-distribution",
+    "type": "project",
     "description": "Neos Base Distribution",
-    "license": "GPL-3.0+",
+    "license": "GPL-3.0-or-later",
     "support": {
         "email": "hello@neos.io",
         "slack": "http://slack.neos.io/",

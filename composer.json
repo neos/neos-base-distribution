@@ -20,15 +20,14 @@
         "neos/neos": "7.1.x-dev",
         "neos/site-kickstarter": "7.1.x-dev",
 
-        "neos/demo": "@dev",
-        "neos/neos-ui": "@dev",
-        "neos/seo": "~3.0",
-        "neos/redirecthandler-neosadapter": "~4.0",
-        "neos/redirecthandler-databasestorage": "~4.0",
-        "neos/redirecthandler-ui": "~2.0",
-
-        "neos/setup": "@dev",
-        "neos/neos-setup": "@dev",
+        "neos/demo": "^7.1",
+        "neos/neos-ui": "^7.1",
+        "neos/seo": "^3.0",
+        "neos/redirecthandler-neosadapter": "^4.3",
+        "neos/redirecthandler-databasestorage": "^5.0",
+        "neos/redirecthandler-ui": "^2.4",
+        "neos/setup": "^5.0",
+        "neos/neos-setup": "^1.1",
         "neos/content-repository": "7.1.x-dev",
         "neos/fusion": "7.1.x-dev",
         "neos/media": "7.1.x-dev",
@@ -36,11 +35,11 @@
         "neos/diff": "7.1.x-dev"
     },
     "require-dev": {
-        "neos/buildessentials": "@dev",
+        "neos/buildessentials": "^7.1",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.0",
-        "symfony/css-selector": "~2.0",
-        "neos/behat": "@dev"
+        "symfony/css-selector": "^2.0",
+        "neos/behat": "^7.1"
     },
     "repositories": {
         "distributionPackages": {

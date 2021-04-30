@@ -35,7 +35,7 @@
         "neos/diff": "7.1.x-dev"
     },
     "require-dev": {
-        "neos/buildessentials": "^7.0",
+        "neos/buildessentials": "^7.1",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.0",
         "symfony/css-selector": "^2.0",

@@ -17,8 +17,8 @@
         "bin-dir": "bin"
     },
     "require": {
-        "neos/neos": "7.1.x-dev",
-        "neos/site-kickstarter": "7.1.x-dev",
+        "neos/neos": "~7.1.0",
+        "neos/site-kickstarter": "~7.1.0",
 
         "neos/demo": "^7.1",
         "neos/neos-ui": "^7.1",
@@ -27,12 +27,7 @@
         "neos/redirecthandler-databasestorage": "^5.0",
         "neos/redirecthandler-ui": "^2.4",
         "neos/setup": "^5.0",
-        "neos/neos-setup": "^1.1",
-        "neos/content-repository": "7.1.x-dev",
-        "neos/fusion": "7.1.x-dev",
-        "neos/media": "7.1.x-dev",
-        "neos/media-browser": "7.1.x-dev",
-        "neos/diff": "7.1.x-dev"
+        "neos/neos-setup": "^1.1"
     },
     "require-dev": {
         "neos/buildessentials": "^7.1",

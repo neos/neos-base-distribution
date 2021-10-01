@@ -21,14 +21,14 @@
         "neos/site-kickstarter": "~7.2.0",
 
         "neos/demo": "~7.2.0",
-        "neos/neos-ui": "@dev",
+        "neos/neos-ui": "~7.2.0",
         "neos/seo": "~3.0",
-        "neos/redirecthandler-neosadapter": "~4.0",
-        "neos/redirecthandler-databasestorage": "~4.0",
-        "neos/redirecthandler-ui": "~2.0",
+        "neos/redirecthandler-neosadapter": "~4.2",
+        "neos/redirecthandler-databasestorage": "~5.0",
+        "neos/redirecthandler-ui": "~2.4",
 
-        "neos/setup": "@dev",
-        "neos/neos-setup": "@dev"
+        "neos/setup": "^5.0",
+        "neos/neos-setup": "^1.1"
     },
     "require-dev": {
         "neos/buildessentials": "~7.2.0",

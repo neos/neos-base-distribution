@@ -24,9 +24,10 @@
         "neos/neos-ui": "@dev",
         "neos/seo": "~3.0",
         "neos/redirecthandler-neosadapter": "~4.0",
-        "neos/redirecthandler-databasestorage": "~4.0",
+        "neos/redirecthandler-databasestorage": "~5.0",
         "neos/redirecthandler-ui": "~2.0",
 
+        "neos/cli-setup": "@dev",
         "neos/setup": "@dev",
         "neos/neos-setup": "@dev"
     },
@@ -50,6 +51,7 @@
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
     },
     "scripts": {
+        "post-create-project-cmd": "./flow welcome",
         "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",

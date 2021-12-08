@@ -17,31 +17,26 @@
         "bin-dir": "bin"
     },
     "require": {
-        "neos/neos": "7.3.x-dev",
-        "neos/site-kickstarter": "7.3.x-dev",
+        "neos/neos": "~7.3.0",
+        "neos/site-kickstarter": "~7.3.0",
 
-        "neos/demo": "7.3.x-dev",
+        "neos/demo": "~7.3.0",
         "neos/neos-ui": "~7.3.0",
         "neos/seo": "~3.0",
         "neos/redirecthandler-neosadapter": "~4.2",
         "neos/redirecthandler-databasestorage": "~5.0",
         "neos/redirecthandler-ui": "~2.4",
 
-        "neos/cli-setup": "7.3.x-dev",
+        "neos/cli-setup": "~7.3.0",
         "neos/setup": "^5.0",
-        "neos/neos-setup": "^1.1",
-        "neos/content-repository": "7.3.x-dev",
-        "neos/fusion": "7.3.x-dev",
-        "neos/media": "7.3.x-dev",
-        "neos/media-browser": "7.3.x-dev",
-        "neos/diff": "7.3.x-dev"
+        "neos/neos-setup": "^1.1"
     },
     "require-dev": {
-        "neos/buildessentials": "7.3.x-dev",
+        "neos/buildessentials": "~7.3.0",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.0",
         "symfony/css-selector": "~2.0",
-        "neos/behat": "7.3.x-dev"
+        "neos/behat": "~7.3.0"
     },
     "repositories": {
         "distributionPackages": {

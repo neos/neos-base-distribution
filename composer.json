@@ -44,7 +44,7 @@
         }
     },
     "replace": {
-        "neos/neos-base-distribution": "self.version"
+        "typo3/neos-base-distribution": "self.version"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"

@@ -48,6 +48,10 @@
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
     },
+    "allow-plugins": {
+        "neos/composer-plugin": true,
+        "composer/package-versions-deprecated": true
+    },
     "scripts": {
         "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",

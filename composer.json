@@ -17,26 +17,26 @@
         "bin-dir": "bin"
     },
     "require": {
-        "neos/neos": "@dev",
-        "neos/site-kickstarter": "@dev",
+        "neos/neos": "~7.3.0",
+        "neos/site-kickstarter": "~7.3.0",
 
-        "neos/demo": "@dev",
-        "neos/neos-ui": "@dev",
+        "neos/demo": "~7.3.0",
+        "neos/neos-ui": "~7.3.0",
         "neos/seo": "~3.0",
-        "neos/redirecthandler-neosadapter": "~4.0",
+        "neos/redirecthandler-neosadapter": "~4.2",
         "neos/redirecthandler-databasestorage": "~5.0",
-        "neos/redirecthandler-ui": "~2.0",
+        "neos/redirecthandler-ui": "~2.4",
 
-        "neos/cli-setup": "@dev",
-        "neos/setup": "@dev",
-        "neos/neos-setup": "@dev"
+        "neos/cli-setup": "~7.3.0",
+        "neos/setup": "^5.0",
+        "neos/neos-setup": "^1.1"
     },
     "require-dev": {
-        "neos/buildessentials": "@dev",
+        "neos/buildessentials": "~7.3.0",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.0",
         "symfony/css-selector": "~2.0",
-        "neos/behat": "@dev"
+        "neos/behat": "~7.3.0"
     },
     "repositories": {
         "distributionPackages": {
@@ -49,6 +49,10 @@
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
+    },
+    "allow-plugins": {
+        "neos/composer-plugin": true,
+        "composer/package-versions-deprecated": true
     },
     "scripts": {
         "post-create-project-cmd": "./flow welcome",

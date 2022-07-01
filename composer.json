@@ -13,7 +13,10 @@
     },
     "config": {
         "vendor-dir": "Packages/Libraries",
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "allow-plugins": {
+            "neos/composer-plugin": true
+        }
     },
     "require": {
         "neos/neos": "~5.3.0",
@@ -47,10 +50,6 @@
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
-    },
-    "allow-plugins": {
-        "neos/composer-plugin": true,
-        "composer/package-versions-deprecated": true
     },
     "scripts": {
         "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",

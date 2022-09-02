@@ -20,31 +20,26 @@
         }
     },
     "require": {
-        "neos/neos": "8.1.x-dev",
-        "neos/site-kickstarter": "8.1.x-dev",
+        "neos/neos": "~8.1.0",
+        "neos/site-kickstarter": "~8.1.0",
 
-        "neos/demo": "8.1.x-dev",
+        "neos/demo": "~8.1.0",
         "neos/neos-ui": "8.1.x-dev",
         "neos/seo": "~3.0",
         "neos/redirecthandler-neosadapter": "~4.2",
         "neos/redirecthandler-databasestorage": "~5.0",
         "neos/redirecthandler-ui": "~2.4",
 
-        "neos/cli-setup": "8.1.x-dev",
+        "neos/cli-setup": "~8.1.0",
         "neos/setup": "@dev",
-        "neos/neos-setup": "@dev",
-        "neos/content-repository": "8.1.x-dev",
-        "neos/fusion": "8.1.x-dev",
-        "neos/media": "8.1.x-dev",
-        "neos/media-browser": "8.1.x-dev",
-        "neos/diff": "8.1.x-dev"
+        "neos/neos-setup": "@dev"
     },
     "require-dev": {
-        "neos/buildessentials": "8.1.x-dev",
+        "neos/buildessentials": "~8.1.0",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.0",
         "symfony/css-selector": "~2.0",
-        "neos/behat": "8.1.x-dev"
+        "neos/behat": "~8.1.0"
     },
     "repositories": {
         "distributionPackages": {

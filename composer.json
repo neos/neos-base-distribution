@@ -24,15 +24,15 @@
         "neos/site-kickstarter": "~8.1.0",
 
         "neos/demo": "~8.1.0",
-        "neos/neos-ui": "8.1.x-dev",
+        "neos/neos-ui": "~8.1.0",
         "neos/seo": "~3.0",
         "neos/redirecthandler-neosadapter": "~4.2",
         "neos/redirecthandler-databasestorage": "~5.0",
         "neos/redirecthandler-ui": "~2.4",
 
         "neos/cli-setup": "~8.1.0",
-        "neos/setup": "@dev",
-        "neos/neos-setup": "@dev"
+        "neos/setup": "^5.0",
+        "neos/neos-setup": "~1.1.7"
     },
     "require-dev": {
         "neos/buildessentials": "~8.1.0",

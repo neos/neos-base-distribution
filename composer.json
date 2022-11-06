@@ -38,7 +38,7 @@
         "neos/buildessentials": "@dev",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.0",
-        "symfony/css-selector": "~2.0",
+        "symfony/css-selector": "^5.0",
         "neos/behat": "@dev"
     },
     "repositories": {

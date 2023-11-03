@@ -24,9 +24,10 @@
         "neos/neos-ui": "9.0.x-dev",
         "neos/site-kickstarter": "9.0.x-dev",
         "neos/demo": "9.0.x-dev",
-
-        "neos/cli-setup": "9.0.x-dev",
         "neos/seo": "~4.0",
+
+        "neos/setup": "^6.0",
+        "neos/neos-setup": "^4.0.x-dev",
 
         "neos/cache": "@dev",
         "neos/contentrepositoryregistry": "@dev",
@@ -43,7 +44,6 @@
         "neos/fusion": "@dev",
         "neos/fusion-afx": "@dev",
         "neos/http-factories": "@dev",
-        "neos/neos-setup": "@dev",
         "neos/neos-ui-compiled": "@dev",
         "neos/kickstarter": "@dev",
         "neos/media": "@dev",
@@ -53,7 +53,6 @@
         "neos/nodetypes-contentreferences": "@dev",
         "neos/nodetypes-html": "@dev",
         "neos/nodetypes-navigation": "@dev",
-        "neos/setup": "@dev",
         "neos/utility-arrays": "@dev",
         "neos/utility-files": "@dev",
         "neos/utility-mediatypes": "@dev",
@@ -67,7 +66,6 @@
         "neos/buildessentials": "9.0.x-dev",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.0",
-        "symfony/css-selector": "~2.0",
         "neos/behat": "9.0.x-dev"
     },
     "repositories": {

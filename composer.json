@@ -24,21 +24,19 @@
         "neos/site-kickstarter": "~8.3.0",
 
         "neos/demo": "~8.3.0",
-        "neos/neos-ui": "@dev",
+        "neos/neos-ui": "~8.3.0",
         "neos/seo": "~3.0",
         "neos/redirecthandler-neosadapter": "~4.2",
         "neos/redirecthandler-databasestorage": "~5.0",
         "neos/redirecthandler-ui": "~2.4",
 
-        "neos/cli-setup": "~8.3.0",
-        "neos/setup": "@dev",
-        "neos/neos-setup": "@dev"
+        "neos/setup": "^6.0",
+        "neos/neos-setup": "^3.0"
     },
     "require-dev": {
         "neos/buildessentials": "~8.3.0",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.0",
-        "symfony/css-selector": "~2.0",
         "neos/behat": "~8.3.0"
     },
     "repositories": {

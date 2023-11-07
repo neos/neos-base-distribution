@@ -27,7 +27,7 @@
         "neos/site-kickstarter": "9.0.0-beta4",
         "neos/demo": "9.0.0-beta4",
         "neos/seo": "~4.1",
-        "neos/contentgraph-doctrinedbaladapter": "~9.0.0",
+        "neos/contentrepositoryregistry-doctrinedbalclient": "~9.0.0",
         "neos/neos-setup": "^4.0.x-dev",
         "neos/fusion": "9.0.0-beta4",
         "neos/media": "9.0.0-beta4",

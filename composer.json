@@ -19,14 +19,15 @@
             "neos/composer-plugin": true
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "neos/neos": "9.0.x-dev",
         "neos/neos-ui": "9.0.x-dev",
         "neos/site-kickstarter": "9.0.x-dev",
         "neos/demo": "9.0.x-dev",
-        "neos/seo": "~4.0",
+        "neos/seo": "~4.1",
 
-        "neos/setup": "^6.0",
         "neos/neos-setup": "^4.0.x-dev",
 
         "neos/cache": "@dev",

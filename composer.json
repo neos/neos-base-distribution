@@ -31,7 +31,8 @@
         "neos/redirecthandler-ui": "~2.4",
 
         "neos/setup": "^6.0",
-        "neos/neos-setup": "^3.0"
+        "neos/neos-setup": "^3.0",
+        "neos/cli-setup": "~8.2.0"
     },
     "require-dev": {
         "neos/buildessentials": "~8.2.0",

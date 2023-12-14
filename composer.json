@@ -49,7 +49,8 @@
         "typo3/neos-base-distribution": "self.version"
     },
     "suggest": {
-        "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
+        "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required",
+        "neos/behat": "For running neos behat tests"
     },
     "allow-plugins": {
         "neos/composer-plugin": true,

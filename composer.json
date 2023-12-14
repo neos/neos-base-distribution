@@ -55,7 +55,7 @@
         "composer/package-versions-deprecated": true
     },
     "scripts": {
-        "post-create-project-cmd": "./flow welcome",
+        "post-create-project-cmd": "./flow setup:index",
         "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",

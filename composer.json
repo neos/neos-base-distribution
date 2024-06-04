@@ -38,10 +38,10 @@
         "neos/diff": "8.4.x-dev"
     },
     "require-dev": {
-        "neos/buildessentials": "8.4.x-dev",
+        "neos/buildessentials": "8.3.x-dev",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.0",
-        "neos/behat": "8.4.x-dev"
+        "neos/behat": "8.3.x-dev"
     },
     "repositories": {
         "distributionPackages": {

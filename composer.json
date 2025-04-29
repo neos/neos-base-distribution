@@ -24,7 +24,7 @@
     "require": {
         "neos/neos": "~9.0.0",
         "neos/contentgraph-doctrinedbaladapter": "~9.0.0",
-        "neos/neos-ui": "9.0.x-dev",
+        "neos/neos-ui": "~9.0.0",
         "neos/seo": "~4.1",
         "neos/demo": "~9.0.0"
     },

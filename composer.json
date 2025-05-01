@@ -19,8 +19,6 @@
             "neos/composer-plugin": true
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "neos/neos": "~9.0.0",
         "neos/contentgraph-doctrinedbaladapter": "~9.0.0",
@@ -32,7 +30,7 @@
         "neos/buildessentials": "~9.0.0",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.0",
-        "neos/neos-setup": "^4.0.x-dev",
+        "neos/neos-setup": "^4.0",
         "neos/site-kickstarter": "~9.0.0"
     },
     "repositories": {

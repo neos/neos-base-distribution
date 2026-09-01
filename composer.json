@@ -34,8 +34,8 @@
     },
     "require-dev": {
         "neos/buildessentials": "~8.4.0",
-        "mikey179/vfsstream": "^1.6",
-        "phpunit/phpunit": "^9.0",
+        "mikey179/vfsstream": "^1.6.12",
+        "phpunit/phpunit": "~11.5",
         "neos/behat": "~8.4.0"
     },
     "repositories": {

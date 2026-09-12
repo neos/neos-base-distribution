@@ -20,18 +20,18 @@
         }
     },
     "require": {
-        "neos/neos": "9.2.0-beta3",
-        "neos/contentgraph-doctrinedbaladapter": "9.2.0-beta3",
+        "neos/neos": "9.2.0-beta4",
+        "neos/contentgraph-doctrinedbaladapter": "9.2.0-beta4",
         "neos/neos-ui": "~9.2.0",
         "neos/seo": "~4.1",
-        "neos/demo": "9.2.0-beta3"
+        "neos/demo": "9.2.0-beta4"
     },
     "require-dev": {
         "neos/buildessentials": "9.2.x-dev as 9.2",
         "mikey179/vfsstream": "^1.6.12",
         "phpunit/phpunit": "~11.5",
         "neos/neos-setup": "^4.0",
-        "neos/site-kickstarter": "9.2.0-beta3",
+        "neos/site-kickstarter": "9.2.0-beta4",
         "neos/behat": "9.2.x-dev as 9.2"
     },
     "repositories": {

@@ -20,19 +20,19 @@
         }
     },
     "require": {
-        "neos/neos": "~9.2.0",
-        "neos/contentgraph-doctrinedbaladapter": "~9.2.0",
-        "neos/neos-ui": "~9.2.0",
+        "neos/neos": "9.3.x-dev",
+        "neos/contentgraph-doctrinedbaladapter": "9.3.x-dev",
+        "neos/neos-ui": "9.3.x-dev",
         "neos/seo": "~4.1",
-        "neos/demo": "~9.2.0"
+        "neos/demo": "9.3.x-dev"
     },
     "require-dev": {
-        "neos/buildessentials": "~9.2.0",
+        "neos/buildessentials": "9.3.x-dev",
         "mikey179/vfsstream": "^1.6.12",
         "phpunit/phpunit": "~11.5",
         "neos/neos-setup": "^4.0",
-        "neos/site-kickstarter": "~9.2.0",
-        "neos/behat": "~9.2.0"
+        "neos/site-kickstarter": "9.3.x-dev",
+        "neos/behat": "9.3.x-dev"
     },
     "repositories": {
         "distributionPackages": {
@@ -57,5 +57,7 @@
         "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
         "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
